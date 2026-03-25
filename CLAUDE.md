@@ -156,9 +156,10 @@ All Small Unit format (2-6 players):
 - **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
 
 ## Deployment
-- **Always deploy changes to GitHub and Cloudflare Pages** after making code changes.
-- No git remote configured yet. Will be set up when a new repo is created.
+- **Always deploy changes to GitHub and Cloudflare Pages** after making code changes. This must happen automatically at the end of every task without the user needing to ask.
+- **Remote:** `origin` is set to `https://github.com/suterasites/AcceleratePerformanceFootball.git`
 - Push to `main` branch. Cloudflare Pages auto-deploys from the repo.
+- After completing any code changes, stage the modified files, commit with a clear message, and `git push` to deploy.
 
 ## Multi-Page Consistency
 - **Navbar:** The navbar must be identical across all pages. If the navbar is modified on any page, apply the same change to every other page immediately.
