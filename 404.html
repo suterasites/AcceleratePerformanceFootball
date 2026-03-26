@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Accelerate Performance Football</title>
+  <link rel="icon" href="Assets/Logo.png">
+  <link rel="apple-touch-icon" href="Assets/Logo.png">
+  <meta name="robots" content="noindex, follow">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0A0A0A',
+              dark: '#141414',
+              mid: '#1A1A1A',
+              grey: '#2A2A2A',
+              muted: '#888888',
+              light: '#CCCCCC',
+              white: '#F5F5F5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-weight: 300; }
+    h1, h2, h3, .font-display { font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.04em; }
+    .btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+    .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+  <div class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+    <a href="/" class="mb-12">
+      <img src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-16 w-auto">
+    </a>
+    <h1 class="font-display text-[clamp(5rem,15vw,12rem)] text-white leading-[0.95] mb-4">404</h1>
+    <p class="text-white/40 text-lg mb-10 max-w-md" style="line-height: 1.8;">The page you're looking for doesn't exist or has been moved.</p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="/" class="btn inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
+        Back to Home
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="contact.html" class="btn inline-flex items-center justify-center gap-3 text-white font-medium text-sm tracking-wide px-8 py-4 border border-white/15 hover:border-white/30 hover:bg-white/5 active:bg-white/8 transition-colors duration-300">
+        Contact Us
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
