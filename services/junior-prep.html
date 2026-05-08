@@ -16,6 +16,13 @@
   <meta property="og:url" content="https://www.accelerateperformancefootball.com.au/services/junior-prep">
   <meta property="og:image" content="https://www.accelerateperformancefootball.com.au/Assets/Logo.png">
   <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Accelerate Performance Football">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Accelerate Performance Football logo">
+  <meta name="geo.region" content="AU-VIC">
+  <meta name="geo.placename" content="West Melbourne, Victoria">
+  <meta name="ICBM" content="-37.7996, 144.9353">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Junior Prep | Accelerate Performance Football">
@@ -133,6 +140,9 @@
       line-height: 1;
       letter-spacing: 0.02em;
     }
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
+    .skip-link:focus { left: 0; }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -140,43 +150,33 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Accelerate Performance Football",
-    "url": "https://www.accelerateperformancefootball.com.au",
-    "image": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
-    "telephone": "+61401117862",
-    "email": "info.accelerateperformancefootball@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "West Melbourne",
-      "addressRegion": "VIC",
-      "addressCountry": "AU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -37.7996,
-      "longitude": 144.9353
-    },
-    "priceRange": "$$",
-    "sameAs": ["https://www.instagram.com/accelerate.performance_/"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.accelerateperformancefootball.com.au/services" },
-      { "@type": "ListItem", "position": 3, "name": "Junior Prep", "item": "https://www.accelerateperformancefootball.com.au/services/junior-prep" }
+    "@graph": [
+      { "@type": "LocalBusiness", "@id": "https://www.accelerateperformancefootball.com.au/#business" },
+      {
+        "@type": "Service",
+        "name": "Junior Prep",
+        "description": "Private junior football coaching in West Melbourne. Technique drills, game awareness, and confidence building for young players stepping up to senior-level football.",
+        "url": "https://www.accelerateperformancefootball.com.au/services/junior-prep",
+        "serviceType": "Junior Football Training",
+        "provider": { "@id": "https://www.accelerateperformancefootball.com.au/#business" },
+        "areaServed": { "@type": "Place", "name": "Melbourne" },
+        "isPartOf": { "@id": "https://www.accelerateperformancefootball.com.au/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.accelerateperformancefootball.com.au/services" },
+          { "@type": "ListItem", "position": 3, "name": "Junior Prep", "item": "https://www.accelerateperformancefootball.com.au/services/junior-prep" }
+        ]
+      }
     ]
   }
   </script>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:text-brand-black focus:px-4 focus:py-2 focus:text-sm focus:font-semibold">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ==================== NAVIGATION ==================== -->
   <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
@@ -289,8 +289,20 @@
     (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;if(y>80){n.style.background='rgba(10,10,10,0.92)';n.style.backdropFilter='blur(16px)'}else{n.style.background='';n.style.backdropFilter=''}n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y})})();
   </script>
 
+  <main id="main">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-3 text-sm text-brand-muted">
+      <a href="/" class="hover:text-brand-white">Home</a>
+      <span class="mx-2 text-brand-grey">/</span>
+      <a href="/services" class="hover:text-brand-white">Services</a>
+      <span class="mx-2 text-brand-grey">/</span>
+      <span class="text-brand-white">Junior Prep</span>
+    </div>
+  </nav>
+
   <!-- ==================== HERO ==================== -->
-  <header id="main-content" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden grain">
+  <header id="main-content" class="relative pt-10 pb-20 lg:pt-14 lg:pb-28 overflow-hidden grain">
     <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-black to-brand-dark"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
       <div class="max-w-3xl">
@@ -385,6 +397,8 @@
     </div>
   </section>
 
+
+  </main>
 
   <!-- ==================== GOOGLE REVIEWS (STICKY) ==================== -->
   <div class="fixed bottom-4 left-4 z-50">

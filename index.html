@@ -18,6 +18,13 @@
   <meta property="og:locale" content="en_AU">
   <meta property="og:url" content="https://www.accelerateperformancefootball.com.au/">
   <meta property="og:image" content="https://www.accelerateperformancefootball.com.au/Assets/Logo.png">
+  <meta property="og:site_name" content="Accelerate Performance Football">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Accelerate Performance Football logo">
+  <meta name="geo.region" content="AU-VIC">
+  <meta name="geo.placename" content="West Melbourne, Victoria">
+  <meta name="ICBM" content="-37.7996, 144.9353">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accelerate Performance Football | Private Football Coaching Melbourne">
@@ -27,33 +34,52 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Accelerate Performance Football",
-    "description": "Private football (soccer) coaching business based in West Melbourne offering technique and performance coaching for footballers of all levels.",
-    "url": "https://www.accelerateperformancefootball.com.au",
-    "image": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
-    "telephone": "+61401117862",
-    "email": "info.accelerateperformancefootball@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "West Melbourne",
-      "addressRegion": "VIC",
-      "addressCountry": "AU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -37.7996,
-      "longitude": 144.9353
-    },
-    "areaServed": [
-      { "@type": "Place", "name": "Melbourne" },
-      { "@type": "Place", "name": "West Melbourne" },
-      { "@type": "Place", "name": "Victoria" }
-    ],
-    "serviceType": ["Private Football Coaching", "Junior Football Training", "Senior Football Training", "Off-Season Conditioning", "Injury Return Training"],
-    "priceRange": "$$",
-    "sameAs": [
-      "https://www.instagram.com/accelerate.performance_/"
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.accelerateperformancefootball.com.au/#business",
+        "name": "Accelerate Performance Football",
+        "description": "Private football (soccer) coaching business based in West Melbourne offering technique and performance coaching for footballers of all levels.",
+        "url": "https://www.accelerateperformancefootball.com.au/",
+        "image": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
+        "logo": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
+        "telephone": "+61401117862",
+        "email": "info.accelerateperformancefootball@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "West Melbourne",
+          "addressRegion": "VIC",
+          "addressCountry": "AU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -37.7996,
+          "longitude": 144.9353
+        },
+        "areaServed": [
+          { "@type": "Place", "name": "Melbourne" },
+          { "@type": "Place", "name": "West Melbourne" },
+          { "@type": "Place", "name": "Victoria" }
+        ],
+        "serviceType": ["Private Football Coaching", "Junior Football Training", "Senior Football Training", "Off-Season Conditioning", "Injury Return Training"],
+        "priceRange": "$$",
+        "sameAs": [
+          "https://www.instagram.com/accelerate.performance_/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.accelerateperformancefootball.com.au/#website",
+        "url": "https://www.accelerateperformancefootball.com.au/",
+        "name": "Accelerate Performance Football",
+        "publisher": { "@id": "https://www.accelerateperformancefootball.com.au/#business" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" }
+        ]
+      }
     ]
   }
   </script>
@@ -232,13 +258,16 @@
       height: 1px;
       background: rgba(255,255,255,0.15);
     }
+
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
+    .skip-link:focus { left: 0; }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:text-brand-black focus:px-4 focus:py-2 focus:text-sm focus:font-semibold">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ==================== NAVIGATION ==================== -->
   <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
@@ -350,6 +379,8 @@
     (function(){var t=document.getElementById('mobile-services-toggle'),p=document.getElementById('mobile-services-panel'),ch=document.getElementById('mobile-services-chevron');if(t&&p){t.addEventListener('click',function(){var o=p.style.maxHeight&&p.style.maxHeight!=='0px';p.style.maxHeight=o?'0px':p.scrollHeight+'px';ch.style.transform=o?'':'rotate(180deg)'})}})();
     (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;if(y>80){n.style.background='rgba(10,10,10,0.92)';n.style.backdropFilter='blur(16px)'}else{n.style.background='';n.style.backdropFilter=''}n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y})})();
   </script>
+
+  <main id="main">
 
   <!-- ==================== HERO - VIDEO BACKGROUND ==================== -->
   <header id="main-content" class="relative min-h-[100svh] flex items-center overflow-hidden grain">
@@ -897,6 +928,8 @@
       <div class="elfsight-app-7e023c1a-eec5-465e-ba5d-24f87b944c89" data-elfsight-app-lazy></div>
     </div>
   </section>
+
+  </main>
 
   <!-- ==================== GOOGLE REVIEWS (STICKY) ==================== -->
   <div class="fixed bottom-4 left-4 z-50">
