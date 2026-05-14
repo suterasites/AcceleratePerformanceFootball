@@ -143,6 +143,15 @@
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
     .skip-link:focus { left: 0; }
+
+    .tier-faq summary { list-style: none; cursor: pointer; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq summary::-webkit-details-marker { display: none; } .tier-faq summary:hover { color: #fff; }
+    .tier-faq .plus { width: 18px; height: 18px; position: relative; flex-shrink: 0; margin-top: 4px; }
+    .tier-faq .plus::before, .tier-faq .plus::after { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: rgba(255,255,255,0.55); transform-origin: center; transition: transform 0.3s ease; }
+    .tier-faq .plus::before { transform: translate(-50%, -50%); } .tier-faq .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .tier-faq[open] .plus::after { transform: translate(-50%, -50%); }
+    .tier-faq .answer { padding: 1rem 0 1.25rem 0; color: rgba(245,245,245,0.55); font-size: 0.95rem; line-height: 1.8; max-width: 60ch; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq .answer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -167,6 +176,16 @@
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" },
           { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.accelerateperformancefootball.com.au/services" },
           { "@type": "ListItem", "position": 3, "name": "Senior Refinement", "item": "https://www.accelerateperformancefootball.com.au/services/senior-refinement" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What level of player do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "Anyone from grade-club seniors to state league. Sessions adapt to the player's current ability - we assess on the first session and build from there. The drill complexity and conditioning load scale to where you are." } },
+          { "@type": "Question", "name": "Can you work on position-specific skills?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drills are tailored to your position. Strikers do finishing under pressure, midfielders work on scanning and first-touch in tight spaces, defenders drill reading-and-recovery, goalkeepers work shot-stopping and distribution." } },
+          { "@type": "Question", "name": "Do you work with players approaching trial windows?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work with players approaching trials on what selectors look for - technical proficiency at speed, decision-making, off-ball movement. Sessions in the lead-up tighten the specific skills that show up in the test." } },
+          { "@type": "Question", "name": "How long until I see improvement?", "acceptedAnswer": { "@type": "Answer", "text": "Most players notice technical sharpness within 4-6 sessions. Bigger shifts - tactical reads, in-game conditioning, composure under pressure - typically settle in across a full 13-week block." } },
+          { "@type": "Question", "name": "Is this 1-on-1 or group?", "acceptedAnswer": { "@type": "Answer", "text": "Both. The 5-pack Tune Up runs as private 1-on-1 ($500). The Game Changer (13-week) and Total 90 (26-week) run as Small Unit (2-6 players) where players push each other through the drills." } }
         ]
       }
     ]
@@ -373,6 +392,91 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHO IT'S FOR ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">04 &middot; Who it's for</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Players past the basics.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Senior-grade players</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">State league, NPL, amateur, social comp. Anyone playing senior football who wants to lift the technical ceiling.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Pre-season &amp; trials</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Players approaching trial windows or club pre-seasons who need to peak on demand.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Position-specific work</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Strikers, midfielders, defenders, goalkeepers. Drills are built around what your position actually demands.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Returning seniors</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Players coming back to senior football after a break or a step down. Get back to match standard, then push past it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSIDE A SESSION ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5 relative grain">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">05 &middot; Inside a 60-minute session</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">How the hour breaks down.</h2>
+      </div>
+      <div class="space-y-1 reveal">
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 0-10</p><p class="text-white font-medium">Activation</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Dynamic prep loaded for the day's main work. Position-specific movement primers - quick feet for midfielders, change-of-direction for defenders, shoulder-loading for GKs.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 10-35</p><p class="text-white font-medium">Technical refinement</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Position-specific drills. Strikers finish, midfielders scan, defenders read, GKs distribute. Refining what already works rather than teaching from scratch.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 35-50</p><p class="text-white font-medium">Pressure work</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Small-sided constraints, restricted touches, decision-under-fatigue. Building habits that hold up when the game gets ugly.</p></div></div>
+        <div class="flex gap-6 py-5"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 50-60</p><p class="text-white font-medium">Match-pace conditioning</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Sport-specific loading. Builds the engine that holds the full 90 - aerobic capacity layered with the repeated-sprint work that decides games.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUTCOMES ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">06 &middot; Outcomes</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">What a block delivers.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">01</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Sharper execution at full speed</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">02</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Tactical reads that arrive earlier</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">03</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Stronger conditioning across the full 90</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">04</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Composure under match-state pressure</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="mb-10 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">07 &middot; Common questions</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Quick answers.</h2>
+      </div>
+      <div>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">What level of player do you work with?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Anyone from grade-club seniors to state league. Sessions adapt to the player's current ability - we assess on the first session and build from there. The drill complexity and conditioning load scale to where you are.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Can you work on position-specific skills?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Yes. Drills are tailored to your position. Strikers do finishing under pressure, midfielders work on scanning and first-touch in tight spaces, defenders drill reading-and-recovery, goalkeepers work shot-stopping and distribution.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Do you work with players approaching trial windows?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Yes. We work with players approaching trials on what selectors look for - technical proficiency at speed, decision-making, off-ball movement. Sessions in the lead-up tighten the specific skills that show up in the test.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">How long until I see improvement?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Most players notice technical sharpness within 4-6 sessions. Bigger shifts - tactical reads, in-game conditioning, composure under pressure - typically settle in across a full 13-week block.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Is this 1-on-1 or group?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Both. The <a href="../pricing/tune-up-private.html">5-pack Tune Up runs as private 1-on-1</a> ($500). The <a href="../pricing/game-changer.html">Game Changer (13-week)</a> and <a href="../pricing/total-90.html">Total 90 (26-week)</a> run as Small Unit (2-6 players) where players push each other through the drills.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RELATED + PRICING ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">08 &middot; Pricing &amp; related programs</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Where this fits.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 mb-12">
+        <a href="../pricing.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Pricing overview</p><p class="font-display text-2xl text-white mb-2">All programs &amp; tiers</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">5-pack Tune Ups through to full 26-week Total 90 blocks. Sibling and WPSC discounts available across the Small Unit tiers.</p></a>
+        <a href="../pricing/game-changer.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Recommended starting tier</p><p class="font-display text-2xl text-white mb-2">The Game Changer - 13-week block</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">A 13-week block matches a typical comp half - enough to lock in technical changes that show up on game day.</p></a>
+      </div>
+      <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 reveal">Related programs</p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="junior-prep.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">01</span><p class="font-display text-xl text-white mb-1.5">Junior Prep</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Getting younger players ready for senior football.</p></a>
+        <a href="off-season-conditioning.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">03</span><p class="font-display text-xl text-white mb-1.5">Off-Season Conditioning</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Gain an edge while others rest. Off-season blocks built for peak.</p></a>
+        <a href="injury-return.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">04</span><p class="font-display text-xl text-white mb-1.5">Injury Return</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Structured recovery to come back stronger.</p></a>
       </div>
     </div>
   </section>

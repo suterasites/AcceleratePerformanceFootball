@@ -143,6 +143,15 @@
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
     .skip-link:focus { left: 0; }
+
+    .tier-faq summary { list-style: none; cursor: pointer; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq summary::-webkit-details-marker { display: none; } .tier-faq summary:hover { color: #fff; }
+    .tier-faq .plus { width: 18px; height: 18px; position: relative; flex-shrink: 0; margin-top: 4px; }
+    .tier-faq .plus::before, .tier-faq .plus::after { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: rgba(255,255,255,0.55); transform-origin: center; transition: transform 0.3s ease; }
+    .tier-faq .plus::before { transform: translate(-50%, -50%); } .tier-faq .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .tier-faq[open] .plus::after { transform: translate(-50%, -50%); }
+    .tier-faq .answer { padding: 1rem 0 1.25rem 0; color: rgba(245,245,245,0.55); font-size: 0.95rem; line-height: 1.8; max-width: 60ch; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq .answer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -167,6 +176,16 @@
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" },
           { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.accelerateperformancefootball.com.au/services" },
           { "@type": "ListItem", "position": 3, "name": "Off-Season Conditioning", "item": "https://www.accelerateperformancefootball.com.au/services/off-season-conditioning" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "When should off-season conditioning start?", "acceptedAnswer": { "@type": "Answer", "text": "Most senior players start within 2-3 weeks of grand final. Earlier is fine if you've come off a short season. We typically run 8-16 weeks across the break, periodised so peak fitness lands at the start of pre-season." } },
+          { "@type": "Question", "name": "Will I burn out before pre-season?", "acceptedAnswer": { "@type": "Answer", "text": "No. The block is periodised - higher volume in the first half with more general conditioning, and more sport-specific intensity as your club's pre-season approaches. The taper is built into the program." } },
+          { "@type": "Question", "name": "Can I keep training if I'm playing futsal or social over summer?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sessions integrate with whatever match-play you're doing. We adjust load so you don't double-up on the same demands - if you're playing weekly futsal, conditioning shifts toward strength and movement quality instead of more aerobic volume." } },
+          { "@type": "Question", "name": "Is this just fitness, or do skills matter too?", "acceptedAnswer": { "@type": "Answer", "text": "Skills matter. Around half of every session is technical work loaded with conditioning - small-sided games, finishing under fatigue, change-of-direction with the ball. That's the bit that separates this from gym-based pre-season." } },
+          { "@type": "Question", "name": "Do you run group conditioning sessions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Off-season works well as a Small Unit block (2-6 players). We see strong gains when players train alongside friends or teammates at the same level - the competition during conditioning sets is the point." } }
         ]
       }
     ]
@@ -398,6 +417,91 @@
           <h3 class="font-display text-2xl text-white mb-3">Peak Form</h3>
           <p class="text-white/30 text-sm" style="line-height: 1.8;">Arrive at preseason in peak physical condition. No catching up, no easing in. Ready from day one.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHO IT'S FOR ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">04 &middot; Who it's for</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Players who don't take the break off.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Senior off-season</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Oct to Mar window. Senior players who want to come back to pre-season ahead of the field.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Junior pre-season</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Juniors preparing for the start of the next comp. Aerobic base plus skill work that doesn't decay over summer.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Pre-pre-season</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Athletes whose club's pre-season program hasn't started yet. Get the head start, walk into pre-season already conditioned.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Returning from a break</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Players coming back from a layoff who want to land above the field's baseline, not behind it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSIDE A SESSION ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5 relative grain">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">05 &middot; Inside a 60-minute session</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">How the hour breaks down.</h2>
+      </div>
+      <div class="space-y-1 reveal">
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 0-10</p><p class="text-white font-medium">Movement prep</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Dynamic warm-up and joint mobility loaded for the day's main work. Off-season blocks load the body harder, so the prep matters more.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 10-30</p><p class="text-white font-medium">Power &amp; conditioning</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Acceleration, change of direction, plyometrics, repeated-sprint sets. The block that builds the engine carrying you through matches.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 30-50</p><p class="text-white font-medium">Skill under load</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Small-sided games, finishing under fatigue. Technical work that has to hold when the legs are gone - which is when most games are won.</p></div></div>
+        <div class="flex gap-6 py-5"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 50-60</p><p class="text-white font-medium">Cool-down</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Aerobic flush plus position-specific mobility work. Recovery is part of the block, not an afterthought.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUTCOMES ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">06 &middot; Outcomes</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">What a block delivers.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">01</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Aerobic base preserved through the break</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">02</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Higher peak speed and explosive acceleration</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">03</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Lower injury risk going into pre-season</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">04</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Arrives at pre-season above the field's baseline</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="mb-10 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">07 &middot; Common questions</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Quick answers.</h2>
+      </div>
+      <div>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">When should off-season conditioning start?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Most senior players start within 2-3 weeks of grand final. Earlier is fine if you've come off a short season. We typically run 8-16 weeks across the break, periodised so peak fitness lands at the start of pre-season.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Will I burn out before pre-season?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">No. The block is periodised - higher volume in the first half with more general conditioning, and more sport-specific intensity as your club's pre-season approaches. The taper is built into the program.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Can I keep training if I'm playing futsal or social over summer?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Yes. Sessions integrate with whatever match-play you're doing. We adjust load so you don't double-up on the same demands - if you're playing weekly futsal, conditioning shifts toward strength and movement quality instead of more aerobic volume.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Is this just fitness, or do skills matter too?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Skills matter. Around half of every session is technical work loaded with conditioning - small-sided games, finishing under fatigue, change-of-direction with the ball. That's the bit that separates this from gym-based pre-season.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Do you run group conditioning sessions?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Yes. Off-season works well as a <a href="../pricing/total-90.html">Small Unit block (2-6 players)</a>. We see strong gains when players train alongside friends or teammates at the same level - the competition during conditioning sets is the point.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RELATED + PRICING ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">08 &middot; Pricing &amp; related programs</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Where this fits.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 mb-12">
+        <a href="../pricing.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Pricing overview</p><p class="font-display text-2xl text-white mb-2">All programs &amp; tiers</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">5-pack Tune Ups through to full 26-week Total 90 blocks. Sibling and WPSC discounts available across the Small Unit tiers.</p></a>
+        <a href="../pricing/total-90.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Recommended starting tier</p><p class="font-display text-2xl text-white mb-2">The Total 90 - 26-week block</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Off-season conditioning works best across a full break - 26 weeks lets us periodise load through the dead months.</p></a>
+      </div>
+      <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 reveal">Related programs</p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="junior-prep.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">01</span><p class="font-display text-xl text-white mb-1.5">Junior Prep</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Getting younger players ready for senior football.</p></a>
+        <a href="senior-refinement.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">02</span><p class="font-display text-xl text-white mb-1.5">Senior Refinement</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Level up what already makes you dangerous.</p></a>
+        <a href="injury-return.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">04</span><p class="font-display text-xl text-white mb-1.5">Injury Return</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Structured recovery to come back stronger.</p></a>
       </div>
     </div>
   </section>

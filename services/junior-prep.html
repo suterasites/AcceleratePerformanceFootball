@@ -143,6 +143,15 @@
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
     .skip-link:focus { left: 0; }
+
+    .tier-faq summary { list-style: none; cursor: pointer; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq summary::-webkit-details-marker { display: none; } .tier-faq summary:hover { color: #fff; }
+    .tier-faq .plus { width: 18px; height: 18px; position: relative; flex-shrink: 0; margin-top: 4px; }
+    .tier-faq .plus::before, .tier-faq .plus::after { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: rgba(255,255,255,0.55); transform-origin: center; transition: transform 0.3s ease; }
+    .tier-faq .plus::before { transform: translate(-50%, -50%); } .tier-faq .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .tier-faq[open] .plus::after { transform: translate(-50%, -50%); }
+    .tier-faq .answer { padding: 1rem 0 1.25rem 0; color: rgba(245,245,245,0.55); font-size: 0.95rem; line-height: 1.8; max-width: 60ch; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .tier-faq .answer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -167,6 +176,16 @@
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.accelerateperformancefootball.com.au/" },
           { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.accelerateperformancefootball.com.au/services" },
           { "@type": "ListItem", "position": 3, "name": "Junior Prep", "item": "https://www.accelerateperformancefootball.com.au/services/junior-prep" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What age do you start junior football coaching?", "acceptedAnswer": { "@type": "Answer", "text": "From age 6. Younger players run shorter drills focused on fundamentals - first touch, passing, basic footwork. Older juniors run the full 60-minute structure with technique, game-context work, and conditioning." } },
+          { "@type": "Question", "name": "How often should a junior train?", "acceptedAnswer": { "@type": "Answer", "text": "Most juniors run 1-2 sessions a week alongside their club training. Across a 13-week block we see measurable progression at 1 session per week. 2 per week accelerates technical development noticeably." } },
+          { "@type": "Question", "name": "What does a junior player need to bring?", "acceptedAnswer": { "@type": "Answer", "text": "Boots, water, and shin pads (optional but recommended). We supply all training equipment - balls, cones, gates, mannequins, ladders." } },
+          { "@type": "Question", "name": "Can siblings train together?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two siblings on the same Small Unit session pay the sibling rate - $55 per session on the 5-pack Tune Up ($275 total). Many of our junior bookings are sibling pairs and the format works well for it." } },
+          { "@type": "Question", "name": "Will you replace my child's club coach?", "acceptedAnswer": { "@type": "Answer", "text": "No. We run alongside club training, not as a substitute. Most of our junior players keep playing for their club and use our sessions to sharpen specific areas the club doesn't have time to drill." } }
         ]
       }
     ]
@@ -363,6 +382,91 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHO IT'S FOR ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">04 &middot; Who it's for</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Built for juniors at every step.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Ages 6 to 16</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Juniors stepping up the junior ranks, or preparing for senior football. Drills scale with age and ability.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Club juniors</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Players looking for sharper technique than weekly club training has time to drill. Runs alongside, doesn't replace.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Trial-window prep</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Players approaching selection windows or trial timelines who need polish on specific skills before the test.</p></div>
+        <div class="reveal border border-white/8 p-6 lg:p-7 hover:border-white/15 transition-colors duration-300"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">New or returning</p><p class="text-white/65 text-[14px]" style="line-height: 1.75;">Kids new to the sport, switching clubs, or coming back after time off. We meet the player where they are.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSIDE A SESSION ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5 relative grain">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">05 &middot; Inside a 60-minute session</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">How the hour breaks down.</h2>
+      </div>
+      <div class="space-y-1 reveal">
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 0-10</p><p class="text-white font-medium">Warm-up</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Dynamic activation and ball familiarisation. Gets the body ready and reintroduces the player to the ball before any pressure work starts.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 10-35</p><p class="text-white font-medium">Technique block</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Touch, passing across short, long, and weighted ranges, footwork patterns. Repetition-heavy and error-tolerant - this is where reps build the habits.</p></div></div>
+        <div class="flex gap-6 py-5 border-b border-white/8"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 35-50</p><p class="text-white font-medium">Game context</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">1v1 work, decision-making drills, finishing under pressure. The gap between drill and match closes here.</p></div></div>
+        <div class="flex gap-6 py-5"><div class="flex-shrink-0 w-24"><p class="text-[10px] uppercase tracking-[0.22em] text-white/30 mb-1">Min 50-60</p><p class="text-white font-medium">Conditioning</p></div><div class="flex-1"><p class="text-white/40 text-[14px]" style="line-height: 1.75;">Light aerobic work and cool-down. Builds the engine without burning out a developing junior.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUTCOMES ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">06 &middot; Outcomes</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">What a block delivers.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">01</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Sharper first touch under pressure</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">02</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Tighter passing - short, long, and weighted</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">03</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Faster decision-making in tight spaces</p></div>
+        <div class="reveal border border-white/8 p-6 hover:border-white/20 transition-colors duration-300"><span class="font-display text-5xl text-white/15 block mb-3">04</span><p class="text-white/65 text-[14px]" style="line-height: 1.7;">Match-day confidence, visible week over week</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="mb-10 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">07 &middot; Common questions</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Quick answers.</h2>
+      </div>
+      <div>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">What age do you start junior football coaching?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">From age 6. Younger players run shorter drills focused on fundamentals - first touch, passing, basic footwork. Older juniors run the full 60-minute structure with technique, game-context work, and conditioning.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">How often should a junior train?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Most juniors run 1-2 sessions a week alongside their club training. Across a 13-week block we see measurable progression at 1 session per week. 2 per week accelerates technical development noticeably.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">What does a junior player need to bring?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Boots, water, and shin pads (optional but recommended). We supply all training equipment - balls, cones, gates, mannequins, ladders.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Can siblings train together?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">Yes. Two siblings on the same Small Unit session pay the sibling rate - <a href="../pricing/tune-up-group.html">$55 per session on the 5-pack Tune Up</a> ($275 total). Many of our junior bookings are sibling pairs and the format works well for it.</div></details>
+        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">Will you replace my child's club coach?</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">No. We run alongside club training, not as a substitute. Most of our junior players keep playing for their club and use our sessions to sharpen specific areas the club doesn't have time to drill.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RELATED + PRICING ==================== -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">08 &middot; Pricing &amp; related programs</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Where this fits.</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 mb-12">
+        <a href="../pricing.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Pricing overview</p><p class="font-display text-2xl text-white mb-2">All programs &amp; tiers</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">5-pack Tune Ups through to full 26-week Total 90 blocks. Sibling and WPSC discounts available across the Small Unit tiers.</p></a>
+        <a href="../pricing/total-90.html" class="reveal border border-white/8 p-7 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">Recommended starting tier</p><p class="font-display text-2xl text-white mb-2">The Total 90 - 26-week season</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Most juniors run on the 26-week season block - week-over-week progression compounds across a full season.</p></a>
+      </div>
+      <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 reveal">Related programs</p>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="senior-refinement.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">02</span><p class="font-display text-xl text-white mb-1.5">Senior Refinement</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Next stage. Sharpening what already makes you dangerous.</p></a>
+        <a href="off-season-conditioning.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">03</span><p class="font-display text-xl text-white mb-1.5">Off-Season Conditioning</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Stay ahead while the comp's quiet. Junior pre-season blocks.</p></a>
+        <a href="injury-return.html" class="reveal border border-white/8 p-6 hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 block"><span class="font-display text-4xl text-white/15 block mb-2">04</span><p class="font-display text-xl text-white mb-1.5">Injury Return</p><p class="text-white/40 text-[13px]" style="line-height: 1.7;">Structured return-to-play. We work alongside your medical team.</p></a>
       </div>
     </div>
   </section>
