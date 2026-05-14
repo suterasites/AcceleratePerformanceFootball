@@ -104,6 +104,7 @@ All Small Unit format (2-6 players):
 - Kstruct
 - Western Mitsubishi
 - DiLallo Electrical
+- HC Distributors
 - Branded gear sold through Macron Vic
 
 ---
