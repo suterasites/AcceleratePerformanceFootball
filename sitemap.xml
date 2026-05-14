@@ -44,9 +44,33 @@
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/pricing</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/pricing/tune-up-private</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/pricing/tune-up-group</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/pricing/game-changer</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/pricing/total-90</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/faq</loc>
