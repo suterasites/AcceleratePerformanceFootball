@@ -859,39 +859,41 @@
             <p class="text-white/30 text-sm mb-8">We'll get back to you within 24 hours.</p>
 
             <form id="home-contact-form" action="https://formspree.io/f/xgopwqga" method="POST">
+              <input type="hidden" name="_subject" value="New enquiry (homepage) - Accelerate Performance Football">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
               <div class="grid sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label for="form-first-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">First name</label>
-                  <input type="text" id="form-first-name" name="first_name" autocomplete="given-name" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-first-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">First name <span class="text-white/50">*</span></label>
+                  <input type="text" id="home-form-first-name" name="first_name" autocomplete="given-name" required aria-required="true" placeholder="Jordan" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
                 <div>
-                  <label for="form-last-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Last name</label>
-                  <input type="text" id="form-last-name" name="last_name" autocomplete="family-name" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-last-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Last name</label>
+                  <input type="text" id="home-form-last-name" name="last_name" autocomplete="family-name" placeholder="Smith" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
               </div>
               <div class="grid sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label for="form-email" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Email</label>
-                  <input type="email" id="form-email" name="email" autocomplete="email" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-email" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Email <span class="text-white/50">*</span></label>
+                  <input type="email" id="home-form-email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
                 <div>
-                  <label for="form-phone" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Phone number</label>
-                  <input type="tel" id="form-phone" name="phone" autocomplete="tel" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-phone" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Phone number <span class="text-white/50">*</span></label>
+                  <input type="tel" id="home-form-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true" placeholder="04XX XXX XXX" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
               </div>
               <div class="grid sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label for="form-age" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Age</label>
-                  <input type="number" id="form-age" name="age" min="5" max="99" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-age" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Age</label>
+                  <input type="number" id="home-form-age" name="age" min="5" max="99" inputmode="numeric" placeholder="e.g. 14" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
                 <div>
-                  <label for="form-club" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Current Club (if any)</label>
-                  <input type="text" id="form-club" name="current_club" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
+                  <label for="home-form-club" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Current Club (if any)</label>
+                  <input type="text" id="home-form-club" name="current_club" placeholder="e.g. West Point SC" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
                 </div>
               </div>
               <div class="mb-4">
-                <label for="form-service" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Interested In</label>
-                <select id="form-service" name="service" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 appearance-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
+                <label for="home-form-service" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Interested In</label>
+                <select id="home-form-service" name="service" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 appearance-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
                   <option value="">Select a program</option>
                   <option value="junior-prep">Junior Prep</option>
                   <option value="senior-refinement">Senior Refinement</option>
@@ -901,9 +903,10 @@
                 </select>
               </div>
               <div class="mb-6">
-                <label for="form-message" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Message</label>
-                <textarea id="form-message" name="message" rows="4" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 resize-none" placeholder="Tell us about your goals and current level"></textarea>
+                <label for="home-form-message" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Message <span class="text-white/50">*</span></label>
+                <textarea id="home-form-message" name="message" rows="4" required aria-required="true" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 resize-none" placeholder="Tell us about your goals and current level"></textarea>
               </div>
+              <p class="text-xs text-white/30 mb-5"><span class="text-white/50">*</span> Required. We'll reply within 24 hours.</p>
               <button type="submit" class="btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto">
                 Send Message
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
