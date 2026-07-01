@@ -1,3 +1,21 @@
+/* Self-hosted fonts (latin subset). url() paths are relative to styles.css at the
+   site root, so they resolve correctly from every page regardless of folder depth.
+   Bebas Neue: display/headings. Inter: body (variable weight axis 100-900). */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Assets/fonts/bebas-neue-latin-400.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(Assets/fonts/inter-latin-variable.woff2) format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
