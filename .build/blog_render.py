@@ -1,0 +1,631 @@
+#!/usr/bin/env python3
+"""
+Accelerate Performance Football - blog generator.
+
+Deterministic. Reads structured post sources from blog/_posts/*.json and renders:
+  - blog/<slug>.html         (one full article page per post, brand chrome + BlogPosting schema)
+  - blog.html                (index page: hero + newest-first card grid)
+  - sitemap.xml              (adds/refreshes /blog and every /blog/<slug> entry)
+
+Run from the site root:  python3 .build/blog_render.py
+
+Why a generator (not hand-written HTML each week): posts auto-publish weekly with no
+human review, so the page chrome (nav, footer, head, schema) must be identical and correct
+every time. The weekly agent only authors one JSON file; everything structural is locked here.
+
+Post JSON schema (see blog/_posts/README for the canonical copy):
+{
+  "slug": "junior-to-senior-football",     # url-safe, no spaces
+  "title": "From Junior to Senior Football: What Changes and How to Prepare",
+  "description": "<=160 chars meta description",
+  "category": "Junior Development",         # shows as the kicker label
+  "date": "2026-07-22",                     # YYYY-MM-DD, Melbourne date
+  "author": "APF Coaching Team",            # optional, defaults to APF Coaching Team
+  "read_minutes": 0,                         # optional, 0 = auto from word count
+  "blocks": [                                # article body, in order
+    {"type": "lead", "text": "..."},        # opening paragraph, larger
+    {"type": "h2", "text": "..."},
+    {"type": "h3", "text": "..."},
+    {"type": "p", "text": "..."},
+    {"type": "ul", "items": ["...", "..."]},
+    {"type": "ol", "items": ["...", "..."]},
+    {"type": "quote", "text": "..."}
+  ],
+  "cta": {"heading": "Ready to make the jump?", "text": "One line under the heading."}
+}
+Inline markup allowed inside any text/item: **bold** and [label](url). Em dashes are
+auto-normalised to hyphens (hard brand rule).
+"""
+
+import html
+import json
+import os
+import re
+import sys
+
+SITE = "https://www.accelerateperformancefootball.com.au"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+POSTS_DIR = os.path.join(ROOT, "blog", "_posts")
+BLOG_OUT_DIR = os.path.join(ROOT, "blog")
+INDEX_OUT = os.path.join(ROOT, "blog.html")
+SITEMAP = os.path.join(ROOT, "sitemap.xml")
+
+DEFAULT_AUTHOR = "APF Coaching Team"
+
+
+# ----------------------------------------------------------------------------- helpers
+
+def no_dashes(s: str) -> str:
+    """Enforce the hard no-em-dash / no-en-dash brand rule everywhere."""
+    return s.replace("—", " - ").replace("–", "-")
+
+
+def inline(text: str) -> str:
+    """Escape text, then re-enable a tiny safe markup subset: **bold** and [label](url)."""
+    text = no_dashes(text)
+    out = html.escape(text, quote=False)
+    # links: [label](url)  ->  <a href="url">label</a>
+    out = re.sub(
+        r"\[([^\]]+)\]\((https?://[^\s)]+|[^\s)]+\.html[^\s)]*|/[^\s)]*)\)",
+        r'<a href="\2">\1</a>',
+        out,
+    )
+    # bold: **text**
+    out = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", out)
+    return out
+
+
+def word_count(post: dict) -> int:
+    n = 0
+    for b in post.get("blocks", []):
+        if b.get("type") in ("lead", "h2", "h3", "p", "quote"):
+            n += len(re.findall(r"\w+", b.get("text", "")))
+        elif b.get("type") in ("ul", "ol"):
+            for it in b.get("items", []):
+                n += len(re.findall(r"\w+", it))
+    return n
+
+
+def read_minutes(post: dict) -> int:
+    if post.get("read_minutes"):
+        return int(post["read_minutes"])
+    return max(1, round(word_count(post) / 200))
+
+
+def pretty_date(iso: str) -> str:
+    y, m, d = iso.split("-")
+    months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"]
+    return f"{int(d)} {months[int(m) - 1]} {y}"
+
+
+# ----------------------------------------------------------------------------- chrome
+
+def head(prefix: str, *, title: str, description: str, canonical: str,
+         og_type: str, extra_schema: str) -> str:
+    description = no_dashes(html.escape(description, quote=True))
+    title = no_dashes(html.escape(title, quote=True))
+    return f"""<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="/Assets/favicon-96.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{canonical}">
+  <link rel="apple-touch-icon" href="/Assets/apple-touch-icon.png">
+
+  <meta property="og:type" content="{og_type}">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:image" content="{SITE}/Assets/Logo.png">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Accelerate Performance Football">
+  <meta name="geo.region" content="AU-VIC">
+  <meta name="geo.placename" content="West Melbourne, Victoria">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{SITE}/Assets/Logo.png">
+
+{extra_schema}
+  <link rel="stylesheet" href="{prefix}styles.css">
+
+  <link rel="preload" href="{prefix}Assets/fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{prefix}Assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    html {{ scroll-behavior: smooth; }}
+    body {{ font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-weight: 300; }}
+    h1, h2, h3, .font-display {{ font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.04em; }}
+    h4, .font-sans-bold {{ font-family: 'Inter', system-ui, sans-serif; font-weight: 700; }}
+    .grain::after {{ content: ''; position: absolute; inset: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1; }}
+    .shadow-lift {{ box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.2), 0 28px 56px rgba(0,0,0,0.12); }}
+    .ease-spring {{ transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }}
+    .btn:focus-visible {{ outline: 3px solid #FFFFFF; outline-offset: 3px; }}
+    .reveal {{ opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }}
+    .reveal.visible {{ opacity: 1; transform: translateY(0); }}
+    ::-webkit-scrollbar {{ width: 7px; }} ::-webkit-scrollbar-track {{ background: #0A0A0A; }} ::-webkit-scrollbar-thumb {{ background: #2A2A2A; border-radius: 4px; }} ::-webkit-scrollbar-thumb:hover {{ background: #444; }}
+    .accent-line {{ width: 40px; height: 1px; background: #FFFFFF; }}
+    .skip-link {{ position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }} .skip-link:focus {{ left: 0; }}
+    .img-treat {{ position: relative; overflow: hidden; }}
+    .img-treat img {{ transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }}
+    .img-treat:hover img {{ transform: scale(1.04); }}
+    /* Article prose (precompiled Tailwind has no typography plugin, so scope it here) */
+    .prose-apf {{ color: rgba(245,245,245,0.62); font-size: 1.0625rem; line-height: 1.85; }}
+    .prose-apf > * + * {{ margin-top: 1.5rem; }}
+    .prose-apf .lead {{ color: rgba(245,245,245,0.8); font-size: 1.25rem; line-height: 1.75; font-weight: 300; }}
+    .prose-apf h2 {{ font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.03em; color: #fff; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.05; margin-top: 3rem; }}
+    .prose-apf h3 {{ font-family: 'Inter', system-ui, sans-serif; font-weight: 700; color: #fff; font-size: 1.15rem; letter-spacing: normal; margin-top: 2.25rem; }}
+    .prose-apf p {{ max-width: 68ch; }}
+    .prose-apf a {{ color: #fff; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.35); transition: text-decoration-color 0.2s ease; }}
+    .prose-apf a:hover {{ text-decoration-color: #fff; }}
+    .prose-apf strong {{ color: rgba(245,245,245,0.92); font-weight: 600; }}
+    .prose-apf ul, .prose-apf ol {{ max-width: 66ch; padding-left: 0; list-style: none; }}
+    .prose-apf ul li, .prose-apf ol li {{ position: relative; padding-left: 1.75rem; margin-top: 0.85rem; }}
+    .prose-apf ul li::before {{ content: ''; position: absolute; left: 0.1rem; top: 0.7rem; width: 6px; height: 6px; border-radius: 9999px; background: rgba(255,255,255,0.4); }}
+    .prose-apf ol {{ counter-reset: apf; }}
+    .prose-apf ol li {{ counter-increment: apf; }}
+    .prose-apf ol li::before {{ content: counter(apf); position: absolute; left: 0; top: -0.1rem; font-family: 'Bebas Neue', system-ui, sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.3); }}
+    .prose-apf blockquote {{ border-left: 2px solid rgba(255,255,255,0.25); padding: 0.25rem 0 0.25rem 1.5rem; margin-left: 0; color: rgba(245,245,245,0.85); font-size: 1.2rem; line-height: 1.6; font-weight: 300; }}
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+"""
+
+
+def nav(prefix: str) -> str:
+    p = prefix
+    return f"""
+  <!-- NAV -->
+  <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <a href="{p}index.html" class="relative z-10 flex items-center gap-3" aria-label="Accelerate Performance Football home"><img width="500" height="500" src="{p}Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 lg:h-12 w-auto"></a>
+        <div class="hidden lg:flex items-center gap-10">
+          <div class="relative group/services">
+            <a href="{p}services.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-1.5">What We Do<svg class="w-3 h-3 opacity-50 group-hover/services:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-[opacity,visibility] duration-300 pointer-events-none group-hover/services:pointer-events-auto">
+              <div class="border border-white/8 p-5 w-[480px] shadow-lift" style="backdrop-filter: blur(16px); background: rgba(20,20,20,0.97);">
+                <div class="grid grid-cols-2 gap-2">
+                  <a href="{p}services/junior-prep.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200"><span class="font-display text-xl text-white/10 mt-0.5 shrink-0">01</span><div><p class="text-sm font-semibold text-white mb-0.5">Junior Prep</p><p class="text-[11px] text-white/30 leading-relaxed">Getting younger players ready for senior football</p></div></a>
+                  <a href="{p}services/senior-refinement.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200"><span class="font-display text-xl text-white/10 mt-0.5 shrink-0">02</span><div><p class="text-sm font-semibold text-white mb-0.5">Senior Refinement</p><p class="text-[11px] text-white/30 leading-relaxed">Level up what already makes you dangerous</p></div></a>
+                  <a href="{p}services/off-season-conditioning.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200"><span class="font-display text-xl text-white/10 mt-0.5 shrink-0">03</span><div><p class="text-sm font-semibold text-white mb-0.5">Off-Season Conditioning</p><p class="text-[11px] text-white/30 leading-relaxed">Gain an edge while others rest</p></div></a>
+                  <a href="{p}services/injury-return.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200"><span class="font-display text-xl text-white/10 mt-0.5 shrink-0">04</span><div><p class="text-sm font-semibold text-white mb-0.5">Injury Return</p><p class="text-[11px] text-white/30 leading-relaxed">Structured recovery to come back stronger</p></div></a>
+                </div>
+                <div class="mt-3 pt-3 border-t border-white/5"><a href="{p}services.html" class="text-xs text-white/30 hover:text-white/60 transition-colors duration-200 inline-flex items-center gap-1">View all programs <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a></div>
+              </div>
+            </div>
+          </div>
+          <a href="{p}about.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">About</a>
+          <a href="{p}pricing.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Pricing</a>
+          <a href="{p}faq.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">FAQ</a>
+          <a href="{p}blog.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Blog</a>
+          <a href="{p}contact.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="{p}contact.html" class="btn hidden sm:inline-flex items-center gap-2 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-[13px] tracking-wide px-6 py-2.5 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">Book a Session</a>
+          <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 text-white hover:text-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95 transition-transform duration-200" aria-label="Open menu" aria-expanded="false"><svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden overflow-hidden transition-[max-height] duration-300 ease-out max-h-0 bg-brand-black/97 backdrop-blur-xl border-t border-white/5">
+      <div class="px-6 py-6 flex flex-col gap-1">
+        <div>
+          <button id="mobile-services-toggle" class="w-full flex items-center justify-between px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 bg-transparent border-none cursor-pointer text-left" type="button">What We Do<svg id="mobile-services-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+          <div id="mobile-services-panel" class="overflow-hidden max-h-0 transition-[max-height] duration-300">
+            <div class="pl-8 pr-4 pb-2 space-y-1">
+              <a href="{p}services/junior-prep.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Junior Prep</a>
+              <a href="{p}services/senior-refinement.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Senior Refinement</a>
+              <a href="{p}services/off-season-conditioning.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Off-Season Conditioning</a>
+              <a href="{p}services/injury-return.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Injury Return</a>
+              <a href="{p}services.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/30 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">View All Programs</a>
+            </div>
+          </div>
+        </div>
+        <a href="{p}about.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
+        <a href="{p}pricing.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Pricing</a>
+        <a href="{p}faq.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">FAQ</a>
+        <a href="{p}blog.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Blog</a>
+        <a href="{p}contact.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Contact</a>
+        <div class="mt-4 px-4"><a href="{p}contact.html" class="btn flex items-center justify-center gap-2 bg-white text-brand-black font-semibold text-sm px-6 py-3.5 w-full">Book a Session</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    (function(){{var b=document.getElementById('mobile-menu-btn'),m=document.getElementById('mobile-menu'),h=document.getElementById('hamburger-icon'),c=document.getElementById('close-icon'),ls=m.querySelectorAll('a.mobile-nav-link');function t(){{var o=m.style.maxHeight&&m.style.maxHeight!=='0px';m.style.maxHeight=o?'0px':m.scrollHeight+'px';h.classList.toggle('hidden',!o);c.classList.toggle('hidden',o);b.setAttribute('aria-expanded',String(!o))}}b.addEventListener('click',t);ls.forEach(function(l){{l.addEventListener('click',function(){{m.style.maxHeight='0px';h.classList.remove('hidden');c.classList.add('hidden');b.setAttribute('aria-expanded','false')}})}})}})();
+    (function(){{var t=document.getElementById('mobile-services-toggle'),p=document.getElementById('mobile-services-panel'),ch=document.getElementById('mobile-services-chevron');if(t&&p){{t.addEventListener('click',function(){{var o=p.style.maxHeight&&p.style.maxHeight!=='0px';p.style.maxHeight=o?'0px':p.scrollHeight+'px';ch.style.transform=o?'':'rotate(180deg)'}})}}}})();
+    (function(){{var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){{var y=window.scrollY;if(y>80){{n.style.background='rgba(10,10,10,0.92)';n.style.backdropFilter='blur(16px)'}}else{{n.style.background='';n.style.backdropFilter=''}}n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y}})}})();
+  </script>
+"""
+
+
+def footer(prefix: str) -> str:
+    p = prefix
+    return f"""
+  <!-- FOOTER -->
+  <footer class="bg-brand-black pt-16 pb-8 border-t border-white/5" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-14">
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-5"><img width="500" height="500" src="{p}Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 w-auto" loading="lazy"></div>
+          <p class="text-sm text-white/35 mb-5" style="line-height: 1.7;">Private football coaching in Point Cook. Sessions run at West Point Soccer Club, 2 Webster St, Point Cook. Dedicated technique and performance training for footballers who want more.</p>
+          <a href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-white/45 hover:bg-white/10 hover:text-white transition-colors duration-200" aria-label="Follow us on Instagram"><svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+        <div>
+          <h4 class="text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Programs</h4>
+          <nav class="space-y-2.5" aria-label="Programs">
+            <a href="{p}services/junior-prep.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Junior Prep</a>
+            <a href="{p}services/senior-refinement.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Senior Refinement</a>
+            <a href="{p}services/off-season-conditioning.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Off-Season Conditioning</a>
+            <a href="{p}services/injury-return.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Injury Return</a>
+            <a href="{p}online.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Online Training</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Service Areas</h4>
+          <nav class="space-y-2.5" aria-label="Service areas">
+            <a href="{p}suburbs/point-cook.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Point Cook</a>
+            <a href="{p}suburbs/altona.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Altona</a>
+            <a href="{p}suburbs/williamstown.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Williamstown</a>
+            <a href="{p}suburbs/werribee.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Werribee</a>
+            <a href="{p}suburbs/hoppers-crossing.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Hoppers Crossing</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Navigation</h4>
+          <nav class="space-y-2.5" aria-label="Footer navigation">
+            <a href="{p}about.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">About</a>
+            <a href="{p}coaches/chris-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Chris Sutera</a>
+            <a href="{p}coaches/james-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">James Sutera</a>
+            <a href="{p}pricing.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Pricing</a>
+            <a href="{p}faq.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">FAQ</a>
+            <a href="{p}blog.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Blog</a>
+            <a href="{p}contact.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Contact</a>
+            <a href="{p}privacy.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Privacy Policy</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Contact</h4>
+          <div class="space-y-2.5">
+            <a href="tel:0401117862" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">0401 117 862</a>
+            <a href="mailto:info.accelerateperformance@gmail.com" class="block text-xs text-white/35 hover:text-white transition-colors duration-200">info.accelerateperformance@gmail.com</a>
+            <p class="text-sm text-white/35">Western Melbourne, VIC</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p class="text-xs text-white/20">&copy; 2026 Accelerate Performance Football. All rights reserved.</p>
+        <p class="text-xs text-white/20">Melbourne, Victoria, Australia</p>
+        <p class="text-xs text-white/20">Built by <a href="https://suterasites.com.au/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">Sutera Sites</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){{var e=document.querySelectorAll('.reveal');var o=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting)en.target.classList.add('visible')}})}},{{threshold:0.08,rootMargin:'0px 0px -30px 0px'}});e.forEach(function(el){{o.observe(el)}})}})();
+  </script>
+
+</body>
+</html>
+"""
+
+
+# ----------------------------------------------------------------------------- blocks
+
+def render_blocks(blocks: list) -> str:
+    parts = []
+    for b in blocks:
+        t = b.get("type")
+        if t == "lead":
+            parts.append(f'<p class="lead">{inline(b["text"])}</p>')
+        elif t == "p":
+            parts.append(f"<p>{inline(b['text'])}</p>")
+        elif t == "h2":
+            parts.append(f"<h2>{inline(b['text'])}</h2>")
+        elif t == "h3":
+            parts.append(f"<h3>{inline(b['text'])}</h3>")
+        elif t == "quote":
+            parts.append(f"<blockquote>{inline(b['text'])}</blockquote>")
+        elif t in ("ul", "ol"):
+            items = "".join(f"<li>{inline(it)}</li>" for it in b.get("items", []))
+            parts.append(f"<{t}>{items}</{t}>")
+    return "\n            ".join(parts)
+
+
+# ----------------------------------------------------------------------------- pages
+
+def post_schema(post: dict, canonical: str) -> str:
+    obj = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+        "headline": no_dashes(post["title"]),
+        "description": no_dashes(post["description"]),
+        "datePublished": post["date"],
+        "dateModified": post["date"],
+        "author": {"@type": "Organization", "name": post.get("author", DEFAULT_AUTHOR),
+                   "url": SITE + "/"},
+        "publisher": {
+            "@type": "Organization",
+            "name": "Accelerate Performance Football",
+            "logo": {"@type": "ImageObject", "url": SITE + "/Assets/Logo.png"},
+        },
+        "image": SITE + "/Assets/Logo.png",
+        "articleSection": post.get("category", "Football Coaching"),
+        "url": canonical,
+    }
+    return ('  <script type="application/ld+json">\n  '
+            + json.dumps(obj, indent=2).replace("\n", "\n  ")
+            + "\n  </script>\n")
+
+
+def render_post(post: dict, others: list) -> str:
+    slug = post["slug"]
+    canonical = f"{SITE}/blog/{slug}"
+    title_tag = f"{post['title']} | Accelerate Performance Football"
+    cta = post.get("cta", {})
+    cta_heading = no_dashes(cta.get("heading", "Ready to get to work?"))
+    cta_text = no_dashes(cta.get("text",
+                          "Book a session and we'll build a plan around exactly where you want to go."))
+
+    # up to two "related" posts (newest others)
+    related = [o for o in others if o["slug"] != slug][:2]
+    related_html = ""
+    if related:
+        cards = []
+        for o in related:
+            cards.append(f"""            <a href="{o['slug']}.html" class="group block border border-white/8 p-7 hover:border-white/20 transition-colors duration-300">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-white/35 mb-3">{html.escape(no_dashes(o.get('category','')))}</p>
+              <h3 class="font-display text-2xl text-white leading-[1.05] mb-2 group-hover:text-white">{html.escape(no_dashes(o['title']))}</h3>
+              <span class="text-sm text-white/40 inline-flex items-center gap-2 group-hover:gap-3 transition-[gap] duration-300">Read article<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+            </a>""")
+        related_html = f"""
+  <!-- RELATED -->
+  <section class="bg-brand-dark py-20 sm:py-24 relative grain">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="inline-flex items-center gap-4 mb-8"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Keep reading</span></div>
+      <div class="grid sm:grid-cols-2 gap-4">
+{chr(10).join(cards)}
+      </div>
+    </div>
+  </section>
+"""
+
+    doc = head(
+        "../",
+        title=title_tag,
+        description=post["description"],
+        canonical=canonical,
+        og_type="article",
+        extra_schema=post_schema(post, canonical),
+    )
+    doc += nav("../")
+    doc += f"""
+  <main id="main">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 lg:pt-32 pb-3 text-sm text-brand-muted">
+      <a href="../index.html" class="hover:text-brand-white">Home</a>
+      <span class="mx-2 text-brand-grey">/</span>
+      <a href="../blog.html" class="hover:text-brand-white">Blog</a>
+      <span class="mx-2 text-brand-grey">/</span>
+      <span class="text-brand-white">{html.escape(no_dashes(post['title']))}</span>
+    </div>
+  </nav>
+
+  <!-- ARTICLE -->
+  <article class="bg-brand-black">
+    <header id="main-content" class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 pt-4 lg:pt-8 pb-10 lg:pb-14">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/50 text-xs font-medium tracking-[0.3em] uppercase">{html.escape(no_dashes(post.get('category','')))}</span></div>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-[1] mb-6">{html.escape(no_dashes(post['title']))}</h1>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/35">
+          <span>{pretty_date(post['date'])}</span>
+          <span class="w-1 h-1 rounded-full bg-white/20"></span>
+          <span>{read_minutes(post)} min read</span>
+          <span class="w-1 h-1 rounded-full bg-white/20"></span>
+          <span>{html.escape(no_dashes(post.get('author', DEFAULT_AUTHOR)))}</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 lg:pb-24">
+      <div class="prose-apf reveal">
+            {render_blocks(post['blocks'])}
+      </div>
+
+      <!-- inline CTA -->
+      <div class="mt-14 border border-white/10 p-8 sm:p-10 relative grain bg-brand-dark/60">
+        <div class="relative z-10">
+          <h2 class="font-display text-3xl sm:text-4xl text-white mb-3">{html.escape(cta_heading)}</h2>
+          <p class="text-white/45 text-[15px] mb-7 max-w-xl" style="line-height: 1.8;">{html.escape(cta_text)}</p>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="../contact.html" class="btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98]">Book a Session<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+            <a href="../pricing.html" class="btn inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/40 hover:bg-white/5 text-white font-medium text-sm tracking-wide px-7 py-4 transition-colors duration-200">View Pricing</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10"><a href="../blog.html" class="text-sm text-white/40 hover:text-white inline-flex items-center gap-2 transition-colors duration-200"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>All articles</a></div>
+    </div>
+  </article>
+{related_html}
+  </main>
+"""
+    doc += footer("../")
+    return no_dashes(doc)
+
+
+def render_index(posts: list) -> str:
+    canonical = f"{SITE}/blog"
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": canonical,
+        "name": "Accelerate Performance Football Blog",
+        "description": "Football coaching insights, drills, and player development guides from a private coaching team in West Melbourne.",
+        "url": canonical,
+        "publisher": {"@type": "Organization", "name": "Accelerate Performance Football",
+                      "logo": {"@type": "ImageObject", "url": SITE + "/Assets/Logo.png"}},
+        "blogPost": [
+            {"@type": "BlogPosting", "headline": no_dashes(p["title"]),
+             "url": f"{SITE}/blog/{p['slug']}", "datePublished": p["date"]}
+            for p in posts
+        ],
+    }
+    schema_tag = ('  <script type="application/ld+json">\n  '
+                  + json.dumps(schema, indent=2).replace("\n", "\n  ")
+                  + "\n  </script>\n")
+
+    doc = head(
+        "",
+        title="Blog | Accelerate Performance Football",
+        description="Football coaching insights, skills drills, and player development guides for juniors and seniors across West Melbourne. New articles every week.",
+        canonical=canonical,
+        og_type="website",
+        extra_schema=schema_tag,
+    )
+    doc += nav("")
+    doc += """
+  <main id="main">
+
+  <!-- HERO -->
+  <header id="main-content" class="bg-brand-black">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 lg:pt-36 pb-12 lg:pb-16">
+      <div class="max-w-3xl reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/50 text-xs font-medium tracking-[0.3em] uppercase">The Blog</span></div>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-[0.95] mb-6">Coaching notes<br>and player guides.</h1>
+        <p class="text-white/45 text-lg max-w-xl" style="line-height: 1.8;">Practical football insight from our coaches in Point Cook and across West Melbourne. Technique, conditioning, decision-making, and how to actually get better between sessions. New articles every week.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- POSTS -->
+  <section class="bg-brand-black pb-24 sm:pb-32">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+"""
+    if not posts:
+        doc += '      <p class="text-white/40">Articles are on the way. Check back soon.</p>\n'
+    else:
+        feat = posts[0]
+        doc += f"""      <!-- Featured (latest) -->
+      <a href="blog/{feat['slug']}.html" class="group block border border-white/10 hover:border-white/25 transition-colors duration-500 mb-4 reveal">
+        <div class="p-8 sm:p-12 lg:p-16">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6"><span class="text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 border border-white/15 px-3 py-1">Latest</span><span class="text-[11px] uppercase tracking-[0.2em] text-white/35">{html.escape(no_dashes(feat.get('category','')))}</span></div>
+          <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-[1] mb-5 max-w-3xl">{html.escape(no_dashes(feat['title']))}</h2>
+          <p class="text-white/40 text-base sm:text-lg max-w-2xl mb-8" style="line-height: 1.8;">{html.escape(no_dashes(feat['description']))}</p>
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/35">
+            <span>{pretty_date(feat['date'])}</span><span class="w-1 h-1 rounded-full bg-white/20"></span><span>{read_minutes(feat)} min read</span>
+            <span class="ml-auto text-white inline-flex items-center gap-2 group-hover:gap-3 transition-[gap] duration-300">Read article<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+          </div>
+        </div>
+      </a>
+"""
+        rest = posts[1:]
+        if rest:
+            cards = []
+            for post in rest:
+                cards.append(f"""        <a href="blog/{post['slug']}.html" class="group flex flex-col border border-white/8 p-8 hover:border-white/20 transition-colors duration-300 reveal">
+          <div class="flex items-center gap-3 mb-5"><span class="text-[11px] uppercase tracking-[0.2em] text-white/35">{html.escape(no_dashes(post.get('category','')))}</span></div>
+          <h3 class="font-display text-2xl sm:text-3xl text-white leading-[1.05] mb-3">{html.escape(no_dashes(post['title']))}</h3>
+          <p class="text-white/40 text-sm mb-6" style="line-height: 1.75;">{html.escape(no_dashes(post['description']))}</p>
+          <div class="mt-auto flex items-center gap-x-4 text-xs text-white/30"><span>{pretty_date(post['date'])}</span><span class="w-1 h-1 rounded-full bg-white/20"></span><span>{read_minutes(post)} min read</span></div>
+        </a>""")
+            doc += '      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">\n'
+            doc += "\n".join(cards)
+            doc += "\n      </div>\n"
+    doc += """    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative bg-white overflow-hidden">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 py-20 sm:py-24 text-center">
+      <h2 class="font-display text-4xl sm:text-5xl text-brand-black mb-5">Reading is good. Reps are better.</h2>
+      <p class="text-brand-muted text-lg mb-9 max-w-xl mx-auto" style="line-height: 1.75;">Turn these ideas into real progress. Book a session and train with a coach who builds the plan around you.</p>
+      <a href="contact.html" class="btn inline-flex items-center justify-center gap-3 bg-brand-black hover:bg-brand-dark active:bg-brand-grey text-white font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">Book a Session<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+  </section>
+
+  </main>
+"""
+    doc += footer("")
+    return no_dashes(doc)
+
+
+# ----------------------------------------------------------------------------- sitemap
+
+def update_sitemap(posts: list) -> None:
+    with open(SITEMAP, "r", encoding="utf-8") as f:
+        xml = f.read()
+
+    def block(loc, lastmod, changefreq, priority):
+        return (f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n"
+                f"    <changefreq>{changefreq}</changefreq>\n    <priority>{priority}</priority>\n  </url>")
+
+    # Strip any previously-generated blog block so this is idempotent.
+    xml = re.sub(r"\n  <!-- BLOG:START -->.*?<!-- BLOG:END -->", "", xml, flags=re.DOTALL)
+
+    latest = posts[0]["date"] if posts else "2026-01-01"
+    lines = ["\n  <!-- BLOG:START -->",
+             block(f"{SITE}/blog", latest, "weekly", "0.8")]
+    for p in posts:
+        lines.append(block(f"{SITE}/blog/{p['slug']}", p["date"], "monthly", "0.7"))
+    lines.append("  <!-- BLOG:END -->")
+    blog_xml = "\n".join(lines)
+
+    xml = xml.replace("</urlset>", blog_xml + "\n</urlset>")
+    with open(SITEMAP, "w", encoding="utf-8") as f:
+        f.write(xml)
+
+
+# ----------------------------------------------------------------------------- main
+
+def load_posts() -> list:
+    posts = []
+    if not os.path.isdir(POSTS_DIR):
+        return posts
+    for fn in os.listdir(POSTS_DIR):
+        if not fn.endswith(".json"):
+            continue
+        with open(os.path.join(POSTS_DIR, fn), "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for key in ("slug", "title", "description", "category", "date", "blocks"):
+            if key not in data:
+                raise SystemExit(f"[blog_render] {fn} is missing required key: {key}")
+        posts.append(data)
+    # newest first, tiebreak by slug for determinism
+    posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
+    return posts
+
+
+def main() -> None:
+    posts = load_posts()
+    os.makedirs(BLOG_OUT_DIR, exist_ok=True)
+
+    for post in posts:
+        out = os.path.join(BLOG_OUT_DIR, f"{post['slug']}.html")
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(render_post(post, posts))
+        print(f"[blog_render] wrote {os.path.relpath(out, ROOT)}")
+
+    with open(INDEX_OUT, "w", encoding="utf-8") as f:
+        f.write(render_index(posts))
+    print(f"[blog_render] wrote {os.path.relpath(INDEX_OUT, ROOT)}")
+
+    update_sitemap(posts)
+    print(f"[blog_render] updated sitemap.xml ({len(posts)} post(s))")
+
+
+if __name__ == "__main__":
+    main()

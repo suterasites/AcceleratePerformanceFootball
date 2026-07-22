@@ -1,3 +1,6 @@
 # Tailwind standalone CLI binary (platform-specific, ~46MB) - download per platform from
 # https://github.com/tailwindlabs/tailwindcss/releases when rebuilding styles.css
-.build/
+.build/*
+# ...but keep the blog tooling tracked: the weekly cloud routine runs blog_render.py from the repo.
+!.build/blog_render.py
+!.build/add_blog_nav.py

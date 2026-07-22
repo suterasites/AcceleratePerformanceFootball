@@ -1,0 +1,43 @@
+{
+  "slug": "junior-to-senior-football",
+  "title": "From Junior to Senior Football: What Changes and How to Prepare",
+  "description": "Stepping up from junior to senior football in Melbourne? Here is what really changes on the pitch, and how West Melbourne players can prepare for the jump.",
+  "category": "Junior Development",
+  "date": "2026-07-22",
+  "author": "APF Coaching Team",
+  "read_minutes": 6,
+  "blocks": [
+    { "type": "lead", "text": "The step up from junior to senior football is bigger than most players expect. The pitch is the same size, the ball is the same ball, but almost everything else speeds up. Players who were comfortable dominating junior grades in Point Cook, Werribee, or Williamstown suddenly find they have half the time on the ball and twice the physical pressure. The good news: the jump is very trainable if you know what actually changes." },
+
+    { "type": "h2", "text": "The game gets faster, and your first touch decides everything" },
+    { "type": "p", "text": "At junior level you can often take a heavy touch, look up, and still have time to pick a pass. In senior football that window disappears. A defender who used to give you two seconds now closes you down in half of one. The single biggest difference between players who cope with the step up and players who struggle is the quality of their first touch under pressure." },
+    { "type": "p", "text": "A clean first touch that sets the ball into space buys you the time senior football takes away. A sloppy one hands possession straight back. This is why we drill first touch relentlessly, both feet, receiving on the half-turn, killing the ball with the sole, cushioning a driven pass. It is not glamorous, but it is the skill that most often separates a player who thrives in seniors from one who gets rushed into mistakes." },
+
+    { "type": "h2", "text": "Physicality is no longer optional" },
+    { "type": "p", "text": "Senior opponents are stronger, quicker over the first few metres, and far more willing to put their body into a challenge. Young players stepping up often have the technique but not yet the physical base to hold their position, ride a shoulder, or last ninety minutes at pace." },
+    { "type": "p", "text": "You do not need to be the biggest player on the park. You do need to be strong enough to protect the ball and fit enough that your decisions in the last twenty minutes are as sharp as your first twenty. Building that base is exactly what off-season and preseason conditioning is for, and it is far easier to arrive with it than to try to catch up mid-season." },
+
+    { "type": "h2", "text": "Decisions win games, not just skill" },
+    { "type": "p", "text": "In junior grades a talented player can beat opponents on skill alone. In seniors, the players around you are good enough that raw skill is not enough. What matters is how quickly you read the play: scanning before the ball arrives, knowing your next pass before you receive, recognising when to keep it simple and when to take a risk." },
+    { "type": "p", "text": "This is the part of the game that is hardest to coach in a big group, because it is specific to your position and your habits. It is also the part that improves fastest with focused, one-on-one attention, where every rep can be paused, questioned, and adjusted." },
+
+    { "type": "h2", "text": "Five things to work on before you step up" },
+    { "type": "ol", "items": [
+      "First touch under pressure, both feet. Practise receiving with a defender bearing down, not in space.",
+      "Scanning. Get into the habit of checking your shoulders before every touch so you already know your options.",
+      "Change of pace. Senior football rewards the ability to shift gears, not just top speed. Train acceleration and the first two steps.",
+      "Strength and balance. Simple bodyweight and resistance work so you can hold the ball and stay on your feet in a challenge.",
+      "Game fitness. Build the engine to keep your quality high for a full match, not just the opening spell."
+    ]},
+
+    { "type": "h2", "text": "Where West Melbourne players can get support" },
+    { "type": "p", "text": "Accelerate Performance Football runs private and small-group coaching out of West Point Soccer Club at 2 Webster St, Point Cook, working with players across the western suburbs from Altona to Werribee and Hoppers Crossing. Our [Junior Prep](../services/junior-prep.html) program is built specifically for this transition: assess where a player is now, target the weaknesses that senior football will expose, and track real progress session to session." },
+    { "type": "p", "text": "Every session is tailored to the individual, not a group template, so a defender and a striker preparing for the same step up work on very different things. If you or your child is about to make the jump, the best time to start closing the gap is before the season demands it." },
+
+    { "type": "quote", "text": "The pitch does not change. The time you have on the ball does. Everything we train is about buying that time back." }
+  ],
+  "cta": {
+    "heading": "Ready to make the jump?",
+    "text": "Book an assessment session and we will build a plan around exactly where you are now and where you want to get to."
+  }
+}
