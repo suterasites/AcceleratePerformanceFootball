@@ -108,6 +108,14 @@ def head(prefix: str, *, title: str, description: str, canonical: str,
     return f"""<!DOCTYPE html>
 <html lang="en-AU">
 <head>
+  <!-- Google tag (gtag.js) - GA4 G-7P2NC2YGW2 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P2NC2YGW2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-7P2NC2YGW2');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
