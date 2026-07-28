@@ -107,6 +107,23 @@
     .prose-apf ol li::before { content: counter(apf); position: absolute; left: 0; top: -0.1rem; font-family: 'Bebas Neue', system-ui, sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.3); }
     .prose-apf blockquote { border-left: 2px solid rgba(255,255,255,0.25); padding: 0.25rem 0 0.25rem 1.5rem; margin-left: 0; color: rgba(245,245,245,0.85); font-size: 1.2rem; line-height: 1.6; font-weight: 300; }
   </style>
+  <!-- Sutera lead events (GA4) -->
+  <script>/* SUTERA_LEAD_EVENTS */
+  (function(){
+    function ev(n, p){ if (typeof window.gtag === 'function') { window.gtag('event', n, Object.assign({transport_type:'beacon'}, p||{})); } }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+      if (a) ev('click_to_call', { link_url: a.getAttribute('href') });
+    }, true);
+    document.addEventListener('submit', function(e){
+      var f = e.target;
+      if (!f || f.tagName !== 'FORM' || f.hasAttribute('data-no-lead')) return;
+      var action = f.getAttribute('action') || '';
+      var isLead = /formspree/i.test(action) || f.querySelector('input[type="email"], input[type="tel"], textarea');
+      if (isLead) ev('generate_lead', { form_id: f.id || f.getAttribute('name') || 'contact' });
+    }, true);
+  })();
+  </script>
 </head>
 <body class="antialiased overflow-x-hidden">
 
