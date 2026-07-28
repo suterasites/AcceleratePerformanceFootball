@@ -4,3 +4,4 @@
 # ...but keep the blog tooling tracked: the weekly cloud routine runs blog_render.py from the repo.
 !.build/blog_render.py
 !.build/add_blog_nav.py
+!.build/seo_100_patch.py

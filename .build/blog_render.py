@@ -99,6 +99,57 @@ def pretty_date(iso: str) -> str:
     return f"{int(d)} {months[int(m) - 1]} {y}"
 
 
+# ----------------------------------------------------------------------------- seo helpers
+
+def normalize_headings(doc: str) -> str:
+    """Renumber the heading outline so no level is skipped (the on-page audit
+    flags H2->H4 / H1->H3 jumps). A stack maps each original level to a tight
+    emitted level, so sibling headings stay consistent. When an original <h4>
+    changes level it gets the .apf-sub class (styles.css) so its Inter font is
+    kept - h1/h2/h3 use the Bebas display font, h4 uses Inter."""
+    norm: list = []
+    pair: list = []
+
+    def add_apf_sub(attrs: str) -> str:
+        cm = re.search(r'class="([^"]*)"', attrs)
+        if cm:
+            return attrs if "apf-sub" in cm.group(1) else \
+                attrs[:cm.start(1)] + "apf-sub " + cm.group(1) + attrs[cm.end(1):]
+        return ' class="apf-sub"' + attrs
+
+    def rep(m):
+        tag = m.group(0)
+        lvl = int(m.group(2))
+        if m.group(1) == "/":
+            return f"</h{pair.pop() if pair else lvl}>"
+        while norm and norm[-1][0] >= lvl:
+            norm.pop()
+        emitted = min(norm[-1][1] + 1 if norm else 1, 6)
+        norm.append((lvl, emitted))
+        pair.append(emitted)
+        if emitted == lvl:
+            return tag
+        if lvl == 4:
+            return f"<h{emitted}{add_apf_sub(tag[3:-1])}>"
+        return f"<h{emitted}{tag[3:-1]}>"
+
+    return re.sub(r"<(/?)h([1-6])\b[^>]*>", rep, doc)
+
+
+def breadcrumb_ld(trail: list) -> str:
+    """A BreadcrumbList JSON-LD block. trail = [(name, url_or_None), ...]."""
+    items = []
+    for i, (name, url) in enumerate(trail, 1):
+        it = {"@type": "ListItem", "position": i, "name": no_dashes(name)}
+        if url is not None:
+            it["item"] = url
+        items.append(it)
+    obj = {"@context": "https://schema.org", "@type": "BreadcrumbList",
+           "itemListElement": items}
+    return ('  <script type="application/ld+json">\n  '
+            + json.dumps(obj, indent=2).replace("\n", "\n  ") + "\n  </script>\n")
+
+
 # ----------------------------------------------------------------------------- chrome
 
 def head(prefix: str, *, title: str, description: str, canonical: str,
@@ -390,15 +441,19 @@ def post_schema(post: dict, canonical: str) -> str:
         "articleSection": post.get("category", "Football Coaching"),
         "url": canonical,
     }
+    crumb = breadcrumb_ld([("Home", SITE + "/"), ("Blog", SITE + "/blog"),
+                           (post["title"], None)])
     return ('  <script type="application/ld+json">\n  '
             + json.dumps(obj, indent=2).replace("\n", "\n  ")
-            + "\n  </script>\n")
+            + "\n  </script>\n" + crumb)
 
 
 def render_post(post: dict, others: list) -> str:
     slug = post["slug"]
     canonical = f"{SITE}/blog/{slug}"
-    title_tag = f"{post['title']} | Accelerate Performance Football"
+    # Post titles are descriptive enough on their own; appending the site name
+    # pushes them past the 60-char target. Allow a per-post seo_title override.
+    title_tag = post.get("seo_title", post["title"])
     cta = post.get("cta", {})
     cta_heading = no_dashes(cta.get("heading", "Ready to get to work?"))
     cta_text = no_dashes(cta.get("text",
@@ -511,11 +566,12 @@ def render_index(posts: list) -> str:
     }
     schema_tag = ('  <script type="application/ld+json">\n  '
                   + json.dumps(schema, indent=2).replace("\n", "\n  ")
-                  + "\n  </script>\n")
+                  + "\n  </script>\n"
+                  + breadcrumb_ld([("Home", SITE + "/"), ("Blog", None)]))
 
     doc = head(
         "",
-        title="Blog | Accelerate Performance Football",
+        title="Football Coaching Blog | Accelerate Performance Football",
         description="Football coaching insights, skills drills, and player development guides for juniors and seniors across West Melbourne. New articles every week.",
         canonical=canonical,
         og_type="website",
@@ -525,9 +581,17 @@ def render_index(posts: list) -> str:
     doc += """
   <main id="main">
 
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 lg:pt-32 pb-3 text-sm text-brand-muted">
+      <a href="index.html" class="hover:text-brand-white">Home</a>
+      <span class="mx-2 text-brand-grey">/</span>
+      <span class="text-brand-white">Blog</span>
+    </div>
+  </nav>
+
   <!-- HERO -->
   <header id="main-content" class="bg-brand-black">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 lg:pt-36 pb-12 lg:pb-16">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-4 lg:pt-6 pb-12 lg:pb-16">
       <div class="max-w-3xl reveal">
         <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/50 text-xs font-medium tracking-[0.3em] uppercase">The Blog</span></div>
         <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-[0.95] mb-6">Coaching notes<br>and player guides.</h1>
@@ -641,11 +705,11 @@ def main() -> None:
     for post in posts:
         out = os.path.join(BLOG_OUT_DIR, f"{post['slug']}.html")
         with open(out, "w", encoding="utf-8") as f:
-            f.write(render_post(post, posts))
+            f.write(normalize_headings(render_post(post, posts)))
         print(f"[blog_render] wrote {os.path.relpath(out, ROOT)}")
 
     with open(INDEX_OUT, "w", encoding="utf-8") as f:
-        f.write(render_index(posts))
+        f.write(normalize_headings(render_index(posts)))
     print(f"[blog_render] wrote {os.path.relpath(INDEX_OUT, ROOT)}")
 
     update_sitemap(posts)
