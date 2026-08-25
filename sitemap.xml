@@ -205,12 +205,19 @@
 
 
 
+
   <!-- BLOG:START -->
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/blog/what-to-look-for-in-a-football-coach-western-suburbs</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog/coming-back-from-football-injury</loc>
