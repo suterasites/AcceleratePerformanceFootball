@@ -41,21 +41,23 @@ Altona, Williamstown, Hoppers Crossing). Every post routes to a service and the 
 | 2026-08-26 | What to Look for in a Football Coach in the Western Suburbs | what-to-look-for-in-a-football-coach-western-suburbs | Local Football | Contact |
 | 2026-09-02 | Scanning: The Habit That Separates Good Players From Great Ones | scanning-habit-separates-good-players-from-great | Senior Performance | Senior Refinement |
 | 2026-09-09 | Off-Season Is Where Next Season Is Won | off-season-is-where-next-season-is-won | Conditioning & Fitness | Off-Season Conditioning |
+| 2026-09-16 | A Parent's Guide to Supporting a Young Footballer | parents-guide-supporting-young-footballer | Junior Development | Junior Prep |
 
 ## Topic backlog (pick the top unstarted one each week)
 
 | # | Working title | Category | Target search intent | Routes to |
 |---|---------------|----------|----------------------|-----------|
-| 1 | A Parent's Guide to Supporting a Young Footballer | Junior Development | "helping my child improve at soccer" | Junior Prep |
-| 2 | Weak Foot Training: How to Become Genuinely Two-Footed | Skills & Drills | "how to improve weak foot football" | Junior Prep |
-| 3 | Speed and Agility for Footballers: Training the First Two Steps | Conditioning & Fitness | "football speed agility training" | Off-Season Conditioning |
-| 4 | How Many Sessions Does It Take to See Improvement? | Senior Performance | "how long to improve at football" | Pricing |
-| 5 | Position-Specific Training: Why a Striker and a Defender Train Differently | Senior Performance | "position specific soccer training" | Senior Refinement |
-| 6 | Football Training in Point Cook: Your Local Options | Local Football | "football training Point Cook" | suburbs/point-cook |
-| 7 | Building Match Fitness That Lasts 90 Minutes | Conditioning & Fitness | "how to build match fitness soccer" | Off-Season Conditioning |
-| 8 | Confidence on the Ball: Coaching the Mental Side of Football | Junior Development | "building confidence young footballer" | Junior Prep |
-| 9 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
-| 10 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Pricing |
-| 11 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
+| 1 | Weak Foot Training: How to Become Genuinely Two-Footed | Skills & Drills | "how to improve weak foot football" | Junior Prep |
+| 2 | Speed and Agility for Footballers: Training the First Two Steps | Conditioning & Fitness | "football speed agility training" | Off-Season Conditioning |
+| 3 | How Many Sessions Does It Take to See Improvement? | Senior Performance | "how long to improve at football" | Pricing |
+| 4 | Position-Specific Training: Why a Striker and a Defender Train Differently | Senior Performance | "position specific soccer training" | Senior Refinement |
+| 5 | Football Training in Point Cook: Your Local Options | Local Football | "football training Point Cook" | suburbs/point-cook |
+| 6 | Building Match Fitness That Lasts 90 Minutes | Conditioning & Fitness | "how to build match fitness soccer" | Off-Season Conditioning |
+| 7 | Confidence on the Ball: Coaching the Mental Side of Football | Junior Development | "building confidence young footballer" | Junior Prep |
+| 8 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
+| 9 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Pricing |
+| 10 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
+| 11 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
+| 12 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |
 
 Keep at least ~8 topics here. When it runs low, append a fresh batch before the next Wednesday.
