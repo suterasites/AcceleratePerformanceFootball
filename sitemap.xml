@@ -212,12 +212,19 @@
 
 
 
+
   <!-- BLOG:START -->
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/blog/position-specific-training-striker-defender</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog/how-many-sessions-to-see-improvement</loc>
