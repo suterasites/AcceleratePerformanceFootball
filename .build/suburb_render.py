@@ -15,6 +15,19 @@ williamstown) are HAND-MAINTAINED and are NOT written by this script - it only
 emits the suburbs listed in NEW_SUBURBS. Run:  python3 .build/suburb_render.py
 Add --all to also (re)write the originals from this template (not the default;
 they carry bespoke copy).
+
+It also emits the Junior Prep x suburb pages in JUNIOR_SUBURBS, at
+suburbs/junior-prep-<slug>.html (added 2026-10-19 from the WP HQ suburb move). The
+basename carries "junior-prep" + the suburb slug so WP HQ's coverage grid lights the
+Junior Prep row for that suburb with no alias. Junior Prep is the program most
+website enquiries ask for, so it is the first service row taken past the suburb
+pages. Each page carries its OWN angle (Point Cook: the first session, Werribee:
+siblings, Hoppers Crossing: off-season and trials) - wphq-validate-site.py's
+duplication check fails a page that shares more than 15% of its prose with another,
+and a junior page that is the suburb page with "junior" pasted in is exactly the
+doorway-page footprint that check exists for. Write the next suburb the same way.
+The chrome (head, nav, sponsors, footer) is cut from TEMPLATE, so a chrome change
+made there reaches both page types.
 """
 import os
 import sys
@@ -283,7 +296,7 @@ TEMPLATE = r"""<!DOCTYPE html>
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "@@DOMAIN@@/" },
-          { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "@@DOMAIN@@/suburbs" },
+          { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "@@DOMAIN@@/suburbs/" },
           { "@type": "ListItem", "position": 3, "name": "@@NAME@@", "item": "@@DOMAIN@@/suburbs/@@SLUG@@" }
         ]
       },
@@ -435,7 +448,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-3 text-sm text-brand-muted">
       <a href="/" class="hover:text-brand-white">Home</a>
       <span class="mx-2 text-brand-grey">/</span>
-      <a href="/suburbs" class="hover:text-brand-white">Service Areas</a>
+      <a href="/suburbs/" class="hover:text-brand-white">Service Areas</a>
       <span class="mx-2 text-brand-grey">/</span>
       <span class="text-brand-white">@@NAME@@</span>
     </div>
@@ -745,6 +758,585 @@ def render(s):
     return out
 
 
+# ── Junior Prep x suburb pages ───────────────────────────────────────────────
+# Facts only from the client's own material: services/junior-prep.html, faq.html,
+# pricing.html and the APF CLAUDE.md. Drive times match each suburb's own page.
+# Never name a club as a partner (West Point SC is the venue APF hires, nothing more).
+JUNIOR_SUBURBS = [
+    {
+        "name": "Point Cook", "slug": "point-cook", "postcode": "3030",
+        "lat": "-37.9166", "lon": "144.7556",
+        "drive_short": "2-5 min", "drive_caption": "2-5 min, same suburb",
+        "title": "Junior Football & Soccer Coaching Point Cook | Ages 6-16",
+        "meta": ("Junior football and soccer coaching in Point Cook for ages 6 to 16. Private "
+                 "and small-group sessions at West Point Soccer Club, 2 Webster St, from $55 a session."),
+        "h1": "Junior football coaching in Point Cook.",
+        "hero_sub": ("Private coaching for players aged 6 to 16 at West Point Soccer Club, 2 Webster St - "
+                     "our home training venue, inside Point Cook itself. One-on-one, or a Small Unit "
+                     "session shared with a sibling or teammate. For most Point Cook families the field "
+                     "is a 2-5 minute drive."),
+        "img": "Chris and Junior Player 2.webp", "img_w": "864", "img_h": "1080",
+        "img_alt": "Coach Chris Sutera running a private one-on-one junior football session",
+        "why_eyebrow": "Why Point Cook juniors train here",
+        "why_h2": "Close to home. Built around one player.",
+        "why": [
+            ("Around the corner",
+             "The venue is in Point Cook, so an after-school session fits between pick-up and dinner "
+             "without a freeway in sight. Parking is free on-site, and parents can watch from the side "
+             "of the field or wait in the car."),
+            ("One player, one plan",
+             "Every junior starts with an assessment of touch, passing, decisions and fitness. The "
+             "sessions that follow target what that assessment found, not a generic drill sheet "
+             "written for a whole squad."),
+            ("Progress you can see",
+             "We track each junior's progress visibly, so the player can see the improvement for "
+             "themselves and carry it into match day. Across 4+ years and 125+ athletes, 92% have "
+             "shown measurable progression by the end of a block."),
+        ],
+        "feat_eyebrow": "Your first session",
+        "feat_h2": "What happens when you book.",
+        "feat_intro": ("Most parents ask the same thing before a first booking: what will my child "
+                       "actually do? Here is how the first few weeks run."),
+        "feat": [
+            ("Assessment",
+             "The first session is an assessment. We look at first touch, passing range, footwork, "
+             "decision-making and conditioning, so you and your child get a clear picture of where "
+             "they sit right now."),
+            ("A plan",
+             "From that hour we build a personalised plan around the weaknesses we found and the "
+             "position your child plays. A winger and a centre back will not spend their sessions on "
+             "the same drills."),
+            ("Measured weeks",
+             "Ongoing sessions run for 60 minutes and build on the one before. We keep track of what "
+             "is improving, so progress is measured rather than guessed and the plan moves as your "
+             "child does."),
+        ],
+        "feat_extra": "",
+        "feat_link": ("../blog/what-to-look-for-in-a-football-coach-western-suburbs.html",
+                      "Read: what to look for in a football coach in the western suburbs"),
+        "local_h2": "Built for after school.",
+        "local": [
+            "Most Point Cook juniors train on a weeknight after school, and weekend slots are there for "
+            "families who would rather keep weeknights free. We confirm the time and the field "
+            "allocation when you book, so there is no guessing on the day.",
+            "Younger players, from six up, run shorter drills built on the fundamentals: first touch, "
+            "passing and basic footwork. Older juniors work through the full hour, including the "
+            "game-context work and conditioning that gets them ready for senior football.",
+            "We run alongside club football rather than replacing it. Plenty of juniors come to us new "
+            "to the game, switching clubs or returning after time off, and every session starts from "
+            "where the player is now.",
+        ],
+        "faq": [
+            ("What age can my child start junior coaching?",
+             "From age 6. The youngest players work on short, fundamentals-first drills, and the work "
+             "grows with them. Junior Prep runs through to age 16, when players are getting ready for "
+             "senior football."),
+            ("Where do parents wait during a session?",
+             "Wherever suits you. Parking at West Point Soccer Club on Webster St is free, and most "
+             "parents either watch from the side of the field or wait in the car for the hour."),
+            ("Can my child train on weekends?",
+             "Yes. Weeknights after school are the most common choice for Point Cook families, and "
+             "weekend slots are available too. We confirm the session time and field when you book."),
+            ("What should my child bring?",
+             "Boots, water and shin pads, which are optional but recommended. We bring all the "
+             "training equipment: balls, cones, gates, mannequins and ladders."),
+            ("Which package suits a junior?",
+             'Most juniors run <a href="../pricing/total-90.html">the Total 90</a>, a 26-week season '
+             "block at $55 a session in a Small Unit, because progress compounds across a full season. "
+             'To try us first, <a href="../pricing.html">the Tune Up</a> is a 5-session pack: $500 '
+             "one-on-one or $325 in a Small Unit."),
+        ],
+        "related": [("point-cook.html", "All programs in Point Cook"),
+                    ("../services/junior-prep.html", "The Junior Prep program"),
+                    ("junior-prep-werribee.html", "Junior coaching for Werribee"),
+                    ("junior-prep-hoppers-crossing.html", "Junior coaching for Hoppers Crossing")],
+    },
+    {
+        "name": "Werribee", "slug": "werribee", "postcode": "3030",
+        "lat": "-37.9012", "lon": "144.6597",
+        "drive_short": "~12-15 min", "drive_caption": "~12-15 min via Princes Fwy",
+        "title": "Junior Football & Soccer Coaching Werribee | Ages 6-16",
+        "meta": ("Junior football and soccer coaching for Werribee kids aged 6 to 16, 12-15 minutes "
+                 "away at West Point Soccer Club, Point Cook. Private sessions, plus a sibling rate."),
+        "h1": "Junior football coaching for Werribee kids.",
+        "hero_sub": ("A 12-15 minute run up the Princes Freeway to West Point Soccer Club in Point Cook, "
+                     "our home training venue. Private coaching for players aged 6 to 16, and when there "
+                     "are two footballers in the family, a shared Small Unit session at the sibling rate."),
+        "img": "Chris and Junior Players.webp", "img_w": "500", "img_h": "552",
+        "img_alt": "Coach Chris Sutera leading a small-group junior football session",
+        "why_eyebrow": "Why Werribee families choose us",
+        "why_h2": "One drive. Both kids.",
+        "why": [
+            ("12-15 minutes up the freeway",
+             "Princes Freeway eastbound, exit toward Point Cook, and you are at the venue in 12-15 "
+             "minutes. One direct run that stays predictable on a school night, with free parking "
+             "when you arrive."),
+            ("Siblings share the session",
+             "Two juniors in the same Small Unit session pay the sibling rate, so a family with two "
+             "players makes one trip and pays less per child than booking them separately."),
+            ("Club stays club",
+             "Most of the juniors we coach keep playing for their club every weekend. Our sessions sit "
+             "alongside that, drilling the technique a busy squad training night rarely gets to."),
+        ],
+        "feat_eyebrow": "Training siblings together",
+        "feat_h2": "How a sibling session works.",
+        "feat_intro": ("Brothers and sisters can share a Small Unit session, which takes 2 to 6 players. "
+                       "Drills scale with age and ability, and each child's work is set from their own "
+                       "first assessment, so two siblings a couple of years apart can share the hour."),
+        "feat": [
+            ("One booking",
+             "Both children train in the same hour at the same venue, so a family with two players "
+             "has one drive, one session time and one block to keep track of."),
+            ("Their own targets",
+             "Sharing a session does not mean sharing a plan. A younger child might spend the hour on "
+             "first touch while an older sibling works on weighted passing and decisions under pressure."),
+            ("The sibling rate",
+             "Siblings pay a discounted rate on every Small Unit package, from $50 a session on the "
+             "26-week Total 90. The full comparison with standard pricing is below."),
+        ],
+        "feat_extra": "sibling_table",
+        "feat_link": ("../blog/parents-guide-supporting-young-footballer.html",
+                      "Read: a parent's guide to supporting a young footballer"),
+        "local_h2": "Fits a school night.",
+        "local": [
+            "From Werribee the trip is a straight freeway run east, so most families book a weeknight "
+            "slot after school rather than giving up a weekend. A session is an hour, which with the "
+            "drive each way has you home in about an hour and a half.",
+            "Werribee juniors come to us at every stage: six-year-olds learning to keep the ball close, "
+            "players in their first seasons of club football, and older juniors stepping toward senior "
+            "football or rep selection.",
+            "If your child is new to the game, switching clubs or coming back after time off, that is "
+            "fine too. The first session is an assessment, and the plan starts from where they are now, "
+            "not where an age group says they should be.",
+        ],
+        "faq": [
+            ("How long is the drive from Werribee to the venue?",
+             "About 12-15 minutes on the Princes Freeway eastbound, exiting toward Point Cook. The venue "
+             "is West Point Soccer Club, 2 Webster St, Point Cook, with free parking on-site."),
+            ("Can two siblings of different ages train together?",
+             "Yes. Siblings share a Small Unit session and pay the sibling rate. Drills scale with age "
+             "and ability, and each player's work comes from their own first assessment, so an older "
+             "and a younger child both get something out of the hour."),
+            ("How often should a junior train with you?",
+             "Most juniors do one or two sessions a week alongside club training. One a week across a "
+             "13-week block is enough to see measurable progression, and two a week speeds up "
+             "technical development noticeably."),
+            ("Do you replace my child's club coach?",
+             "No. We work alongside club football. Most of our juniors keep playing for their club and "
+             "use our sessions for the specific skills a squad session does not have time to drill."),
+            ("What does the sibling rate cost?",
+             "$55 a session on the Tune Up ($275 for 5), $55 a session on the Game Changer ($715) and "
+             "$50 a session on the Total 90 ($1,300). Registered West Point Soccer Club players get "
+             'the same discounted rates. Full details are on the <a href="../pricing.html">pricing page</a>.'),
+        ],
+        "related": [("werribee.html", "All programs for Werribee players"),
+                    ("../services/junior-prep.html", "The Junior Prep program"),
+                    ("junior-prep-point-cook.html", "Junior coaching in Point Cook"),
+                    ("junior-prep-hoppers-crossing.html", "Junior coaching for Hoppers Crossing")],
+    },
+    {
+        "name": "Hoppers Crossing", "slug": "hoppers-crossing", "postcode": "3029",
+        "lat": "-37.8800", "lon": "144.7000",
+        "drive_short": "~8-10 min", "drive_caption": "~8-10 min, adjacent suburb",
+        "title": "Junior Football & Soccer Coaching Hoppers Crossing | APF",
+        "meta": ("Junior football and soccer coaching for Hoppers Crossing kids aged 6 to 16, 8-10 "
+                 "minutes away in Point Cook. Private sessions in season, off-season, before trials."),
+        "h1": "Junior football coaching for Hoppers Crossing kids.",
+        "hero_sub": ("8-10 minutes from Hoppers Crossing to West Point Soccer Club in neighbouring Point "
+                     "Cook. Private coaching for players aged 6 to 16, through the season alongside club "
+                     "football and through the off-season, so the break does not undo the work."),
+        "img": "Chris and Junior Player.webp", "img_w": "864", "img_h": "1080",
+        "img_alt": "Coach Chris working with a junior player on technique",
+        "why_eyebrow": "Why Hoppers Crossing juniors train here",
+        "why_h2": "Next door to the venue.",
+        "why": [
+            ("8-10 minutes away",
+             "Hoppers Crossing sits right beside Point Cook, so the venue is a short trip on surface "
+             "streets or a quick freeway hop. A weeknight session after school barely dents the evening."),
+            ("Year-round, not just in season",
+             "Club training winds down when the season ends. Our sessions keep going, so a junior can "
+             "keep building through the off-season instead of starting again at pre-season."),
+            ("Ready before trials",
+             "When a selection window is coming, a short block on the specific skills a coach will be "
+             "watching gives a junior something concrete to show, and the confidence to show it."),
+        ],
+        "feat_eyebrow": "The off-season and trials",
+        "feat_h2": "Where juniors make up ground.",
+        "feat_intro": ("The weeks between seasons are where a lot of junior development is won or lost. "
+                       "We run off-season blocks from October to March, and the work suits juniors "
+                       "heading into trials as much as players who simply want to keep improving."),
+        "feat": [
+            ("Keep the touch",
+             "Passing, shooting and ball-control work carries on through the break, so the skills a "
+             "junior built during the season are still there when pre-season starts."),
+            ("Build the engine",
+             "Conditioning sized for a developing player: an aerobic base, acceleration and changes of "
+             "direction. Enough to arrive at pre-season ahead, without overloading a growing body."),
+            ("Sharpen for selection",
+             "A Tune Up 5-pack is the short option before trials, aimed at one or two specific skills. "
+             "Most players notice gains in touch and decision-making within 4 to 6 sessions when they "
+             "also practise on their own."),
+        ],
+        "feat_extra": "",
+        "feat_link": ("../blog/off-season-is-where-next-season-is-won.html",
+                      "Read: off-season is where next season is won"),
+        "local_h2": "A short trip, every week.",
+        "local": [
+            "Because the venue is so close, Hoppers Crossing families usually fit sessions into a "
+            "weeknight after school or work. Weekend slots are available for anyone who would rather "
+            "keep the week clear, and we confirm the time and field when you book.",
+            "Juniors from Hoppers Crossing come to us at every stage, from six-year-olds learning to "
+            "keep the ball close to older juniors getting ready for senior football. Every plan starts "
+            "from a first-session assessment, and the drills scale with age and ability.",
+            "Whatever club your child plays for, our sessions sit alongside it. Most use the hour to "
+            "drill what club training does not have time for, or to keep improving once the season "
+            'is over. For older players the <a href="../services/off-season-conditioning.html">'
+            "Off-Season Conditioning</a> program takes the physical side further.",
+        ],
+        "faq": [
+            ("How far is the venue from Hoppers Crossing?",
+             "About 8-10 minutes. West Point Soccer Club is at 2 Webster St in neighbouring Point Cook, "
+             "reachable on surface streets or a quick freeway hop, with free parking on-site."),
+            ("Do you coach juniors in the off-season?",
+             "Yes. Off-season blocks run from October to March, combining technical work with "
+             "conditioning sized for a junior, so your child arrives at pre-season ahead rather than "
+             "catching up."),
+            ("My child has trials coming up. Is a 5-pack enough?",
+             "It can be, if the goal is specific. A Tune Up 5-pack suits a player working on a "
+             "particular skill, and most notice gains in touch and decision-making within 4 to 6 "
+             "sessions. Bigger changes, like positional awareness and match-day composure, usually "
+             'land across a 13-week <a href="../pricing/game-changer.html">Game Changer</a> block.'),
+            ("Is my child too new to football for private coaching?",
+             "No. We coach kids who are new to the sport, switching clubs or returning after a break. "
+             "The first session is an assessment, and everything after it starts from the player's "
+             "current level."),
+            ("What does junior coaching cost?",
+             "A Tune Up 5-pack is $500 one-on-one or $325 in a Small Unit of 2 to 6 players. Longer "
+             "blocks bring the rate down: $60 a session on the 13-week Game Changer and $55 on the "
+             '26-week Total 90. See the <a href="../pricing.html">pricing page</a> for every option.'),
+        ],
+        "related": [("hoppers-crossing.html", "All programs for Hoppers Crossing players"),
+                    ("../services/junior-prep.html", "The Junior Prep program"),
+                    ("junior-prep-point-cook.html", "Junior coaching in Point Cook"),
+                    ("junior-prep-werribee.html", "Junior coaching for Werribee")],
+    },
+]
+
+# The four stages of a junior hour (services/junior-prep.html). Kept to short labels:
+# it is a fact about the program, identical on every junior page, not local copy.
+JUNIOR_HOUR = [
+    ("Min 0-10", "Warm-up", "Activation and ball familiarisation before any pressure work."),
+    ("Min 10-35", "Technique", "First touch, short, long and weighted passing, footwork."),
+    ("Min 35-50", "Game context", "1v1s, decisions and finishing under pressure."),
+    ("Min 50-60", "Conditioning", "Light aerobic work and a cool-down, sized for a junior."),
+]
+
+# Sibling rate vs standard Small Unit rate, per package (pricing.html).
+SIBLING_ROWS = [
+    ("The Tune Up, 5 sessions", "$55 ($275)", "$65 ($325)"),
+    ("The Game Changer, 13 weeks", "$55 ($715)", "$60 ($780)"),
+    ("The Total 90, 26 weeks", "$50 ($1,300)", "$55 ($1,430)"),
+]
+
+
+def _cut(text, marker):
+    assert text.count(marker) == 1, "template marker not unique: " + marker
+    return text.split(marker, 1)
+
+
+def _swap(text, old, new):
+    assert text.count(old) == 1, "template anchor not unique: " + old[:60]
+    return text.replace(old, new)
+
+
+_HEAD, _REST = _cut(TEMPLATE, "  <!-- HERO -->\n")
+_, _FOOT = _cut(_REST, "  <!-- SPONSORS -->\n")
+_FOOT = "  <!-- SPONSORS -->\n" + _FOOT
+
+JUNIOR_HEAD = _swap(_HEAD, '"serviceType": "Private Football and Soccer Coaching",',
+                    '"serviceType": "Junior Football and Soccer Coaching",\n'
+                    '        "audience": { "@type": "PeopleAudience", "suggestedMinAge": 6, "suggestedMaxAge": 16 },')
+JUNIOR_HEAD = _swap(JUNIOR_HEAD,
+                    '{ "@type": "ListItem", "position": 3, "name": "@@NAME@@", "item": "@@DOMAIN@@/suburbs/@@SLUG@@" }',
+                    '{ "@type": "ListItem", "position": 3, "name": "@@NAME@@", "item": "@@DOMAIN@@/suburbs/@@SUB_SLUG@@" },\n'
+                    '          { "@type": "ListItem", "position": 4, "name": "Junior Prep", "item": "@@DOMAIN@@/suburbs/@@SLUG@@" }')
+JUNIOR_HEAD = _swap(JUNIOR_HEAD, '      <span class="text-brand-white">@@NAME@@</span>\n',
+                    '      <a href="@@SUB_SLUG@@.html" class="hover:text-brand-white">@@NAME@@</a>\n'
+                    '      <span class="mx-2 text-brand-grey">/</span>\n'
+                    '      <span class="text-brand-white">Junior Prep</span>\n')
+JUNIOR_FOOT = _swap(_FOOT, '../contact.html?suburb=@@SLUG@@"', '../contact.html?@@QS@@"')
+
+_ARROW = ('<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" '
+          'stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>')
+_PHONE = ('<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" '
+          'stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 '
+          '1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 '
+          '0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>')
+_BTN_PRIMARY = ('btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 '
+                'text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 '
+                'ease-spring hover:scale-[1.02] active:scale-[0.98]')
+
+JUNIOR_BODY = r"""  <!-- HERO -->
+  <header id="main-content" class="bg-brand-black">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 lg:pt-10 pb-14 lg:pb-20">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div class="lg:col-span-7 reveal">
+          <div class="inline-flex items-center gap-4 mb-6">
+            <div class="accent-line"></div>
+            <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Junior Prep &middot; @@NAME@@</span>
+          </div>
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-[0.95] mb-6">@@H1@@</h1>
+          <p class="text-white/45 text-base sm:text-lg max-w-xl mb-8" style="line-height: 1.8;">@@HERO_SUB@@</p>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="../contact.html?@@QS@@" class="@@BTN@@">Book a Session@@ARROW@@</a>
+            <a href="../pricing.html" class="btn inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/40 hover:bg-white/5 text-white font-medium text-sm tracking-wide px-7 py-4 transition-colors duration-200">View Pricing</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 reveal space-y-5">
+          <div class="relative aspect-[4/5] overflow-hidden border border-white/8 shadow-lift">
+            <img width="@@IMG_W@@" height="@@IMG_H@@" src="../Assets/@@IMG@@" alt="@@IMG_ALT@@" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-1.5">From @@NAME@@</p>
+              <p class="text-white text-sm font-medium">@@DRIVE_CAPTION@@</p>
+            </div>
+          </div>
+          <div class="border border-white/8 p-6 sm:p-8 relative grain bg-brand-dark/80">
+            <div class="relative z-10">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-white/35 mb-4">Quick reference</p>
+              <div class="space-y-4">
+                <div class="flex justify-between items-baseline border-b border-white/8 pb-3"><span class="text-[12px] text-white/40 uppercase tracking-wider">Ages</span><span class="text-sm text-white">6 to 16</span></div>
+                <div class="flex justify-between items-baseline border-b border-white/8 pb-3"><span class="text-[12px] text-white/40 uppercase tracking-wider">Venue</span><span class="text-sm text-white">West Point SC, Point Cook</span></div>
+                <div class="flex justify-between items-baseline border-b border-white/8 pb-3"><span class="text-[12px] text-white/40 uppercase tracking-wider">Drive time</span><span class="text-sm text-white">@@DRIVE_SHORT@@</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[12px] text-white/40 uppercase tracking-wider">Session</span><span class="text-sm text-white">60 minutes</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">01 &middot; @@WHY_EYEBROW@@</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">@@WHY_H2@@</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
+@@WHY_CARDS@@
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">02 &middot; @@FEAT_EYEBROW@@</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white mb-6">@@FEAT_H2@@</h2>
+        <p class="text-white/45 text-[15px]" style="line-height: 1.85;">@@FEAT_INTRO@@</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
+@@FEAT_CARDS@@
+      </div>
+@@FEAT_EXTRA@@
+      <p class="mt-8 reveal"><a href="@@FEAT_LINK_HREF@@" class="text-sm text-white/55 hover:text-white transition-colors duration-200">@@FEAT_LINK_TEXT@@</a></p>
+    </div>
+  </section>
+
+  <!-- SESSION -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5 relative grain">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div class="max-w-2xl mb-12 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">03 &middot; Inside a junior session</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">How the hour runs.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+@@HOUR_CARDS@@
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL CONTEXT -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 reveal">
+      <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">04 &middot; Junior football from @@NAME@@</span></div>
+      <h2 class="font-display text-4xl sm:text-5xl text-white mb-6">@@LOCAL_H2@@</h2>
+      <div class="space-y-5 text-white/45 text-[15px]" style="line-height: 1.85;">
+@@LOCAL_PS@@
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-brand-dark py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="mb-10 reveal">
+        <div class="inline-flex items-center gap-4 mb-6"><div class="accent-line"></div><span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">05 &middot; Questions @@NAME@@ parents ask</span></div>
+        <h2 class="font-display text-4xl sm:text-5xl text-white">Quick answers.</h2>
+      </div>
+      <div>
+@@FAQ_HTML@@
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-black py-20 lg:py-28 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center reveal">
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white mb-5">Book your first session.</h2>
+      <p class="text-white/35 text-base sm:text-lg mb-10 max-w-xl mx-auto" style="line-height: 1.75;">First session is an assessment - no commitment beyond that. We'll reply within 24 hours by call, text, or email.</p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+        <a href="../contact.html?@@QS@@" class="@@BTN@@">Book a Session@@ARROW@@</a>
+        <a href="tel:0401117862" class="btn inline-flex items-center justify-center gap-2.5 border border-white/15 hover:border-white/40 hover:bg-white/5 text-white font-medium text-sm tracking-wide px-8 py-4 transition-colors duration-200">@@PHONE@@0401 117 862</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="bg-brand-dark py-16 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+      <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 text-center reveal">More for @@NAME@@ players</p>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 reveal">
+@@RELATED@@
+      </div>
+      <p class="text-center mt-6 reveal"><a href="index.html" class="text-sm text-white/55 hover:text-white transition-colors duration-200">View all service areas</a></p>
+    </div>
+  </section>
+
+"""
+
+JUNIOR_TEMPLATE = JUNIOR_HEAD + JUNIOR_BODY + JUNIOR_FOOT
+
+
+def _strip_tags(text):
+    import re
+    return re.sub(r"<[^>]+>", "", text)
+
+
+def _cards(rows):
+    out = []
+    for i, (title, body) in enumerate(rows, 1):
+        out.append('        <div class="reveal border border-white/8 p-7 lg:p-8 hover:border-white/15 transition-colors '
+                   'duration-300"><span class="num-badge text-white/15">%02d</span><h3 class="font-display text-2xl '
+                   'text-white mt-3 mb-3">%s</h3><p class="text-white/40 text-[14px]" style="line-height: 1.75;">%s'
+                   '</p></div>' % (i, title, body))
+    return "\n".join(out)
+
+
+def _hour_cards():
+    out = []
+    for label, title, body in JUNIOR_HOUR:
+        out.append('        <div class="reveal border border-white/8 p-7"><p class="text-[10px] uppercase '
+                   'tracking-[0.3em] text-white/35">%s</p><h3 class="font-display text-xl text-white mt-3 mb-2">'
+                   '%s</h3><p class="text-white/40 text-[13px]" style="line-height: 1.7;">%s</p></div>'
+                   % (label, title, body))
+    return "\n".join(out)
+
+
+def _sibling_table():
+    rows = []
+    for i, (pkg, sib, std) in enumerate(SIBLING_ROWS):
+        last = i == len(SIBLING_ROWS) - 1
+        rows.append('            <div class="flex justify-between items-baseline%s"><span class="text-[12px] '
+                    'text-white/40 uppercase tracking-wider">%s</span><span class="text-sm text-white">%s '
+                    '<span class="text-white/35">vs %s</span></span></div>'
+                    % ("" if last else " border-b border-white/8 pb-3", pkg, sib, std))
+    return ('      <div class="reveal border border-white/8 p-6 sm:p-8 relative grain bg-brand-dark/80 mt-8">\n'
+            '        <div class="relative z-10">\n'
+            '          <p class="text-[10px] uppercase tracking-[0.3em] text-white/35 mb-4">Per session, sibling rate vs '
+            'standard Small Unit rate</p>\n'
+            '          <div class="space-y-4">\n' + "\n".join(rows) + '\n          </div>\n'
+            '        </div>\n      </div>')
+
+
+def junior_faq_jsonld(j):
+    items = [{"@type": "Question", "name": q,
+              "acceptedAnswer": {"@type": "Answer", "text": _strip_tags(a)}} for q, a in j["faq"]]
+    return json.dumps(items, ensure_ascii=False, indent=10).rstrip()
+
+
+def junior_faq_html(j):
+    return "\n".join(
+        '        <details class="tier-faq"><summary><span class="text-base sm:text-lg text-white/80 font-medium">'
+        + q + '</span><span class="plus" aria-hidden="true"></span></summary><div class="answer">' + a
+        + '</div></details>' for q, a in j["faq"])
+
+
+def junior_related_html(j):
+    links = []
+    for i, (href, label) in enumerate(j["related"]):
+        if i:
+            links.append('        <span class="text-white/15">&middot;</span>')
+        links.append('        <a href="' + href + '" class="text-sm text-white/55 hover:text-white transition-colors '
+                     'duration-200">' + label + '</a>')
+    return "\n".join(links)
+
+
+def junior_slug(j):
+    return "junior-prep-" + j["slug"]
+
+
+def render_junior(j):
+    # Every page lands in the ranges the APF SEO patcher holds the rest of the site to.
+    assert 50 <= len(j["title"]) <= 60, (j["slug"], "title", len(j["title"]))
+    assert 150 <= len(j["meta"]) <= 165, (j["slug"], "meta", len(j["meta"]))
+    name = j["name"]
+    repl = {
+        "@@DOMAIN@@": DOMAIN,
+        "@@TITLE@@": j["title"],
+        "@@META_DESC@@": j["meta"],
+        "@@OG_TITLE@@": "Junior Football & Soccer Coaching " + name + " | Accelerate Performance Football",
+        "@@OG_DESC@@": j["meta"],
+        "@@TW_DESC@@": j["meta"],
+        "@@SUB_SLUG@@": j["slug"],
+        "@@SLUG@@": junior_slug(j),
+        "@@NAME@@": name,
+        "@@LAT@@": j["lat"],
+        "@@LON@@": j["lon"],
+        "@@POSTCODE@@": j["postcode"],
+        "@@SERVICE_NAME@@": "Junior Football and Soccer Coaching - " + name,
+        "@@SERVICE_DESC@@": ("Junior Prep: private and Small Unit football and soccer coaching for players "
+                             "aged 6 to 16 from " + name + ". Sessions run at West Point Soccer Club, "
+                             "2 Webster St, Point Cook."),
+        "@@FAQ_JSONLD@@": junior_faq_jsonld(j),
+        "@@QS@@": "suburb=" + j["slug"] + "&amp;service=junior-prep",
+        "@@BTN@@": _BTN_PRIMARY,
+        "@@ARROW@@": _ARROW,
+        "@@PHONE@@": _PHONE,
+        "@@H1@@": j["h1"],
+        "@@HERO_SUB@@": j["hero_sub"],
+        "@@IMG@@": j["img"], "@@IMG_W@@": j["img_w"], "@@IMG_H@@": j["img_h"], "@@IMG_ALT@@": j["img_alt"],
+        "@@DRIVE_CAPTION@@": j["drive_caption"],
+        "@@DRIVE_SHORT@@": j["drive_short"],
+        "@@WHY_EYEBROW@@": j["why_eyebrow"],
+        "@@WHY_H2@@": j["why_h2"],
+        "@@WHY_CARDS@@": _cards(j["why"]),
+        "@@FEAT_EYEBROW@@": j["feat_eyebrow"],
+        "@@FEAT_H2@@": j["feat_h2"],
+        "@@FEAT_INTRO@@": j["feat_intro"],
+        "@@FEAT_CARDS@@": _cards(j["feat"]),
+        "@@FEAT_EXTRA@@": _sibling_table() if j["feat_extra"] == "sibling_table" else "",
+        "@@FEAT_LINK_HREF@@": j["feat_link"][0],
+        "@@FEAT_LINK_TEXT@@": j["feat_link"][1],
+        "@@HOUR_CARDS@@": _hour_cards(),
+        "@@LOCAL_H2@@": j["local_h2"],
+        "@@LOCAL_PS@@": "\n".join("        <p>" + para + "</p>" for para in j["local"]),
+        "@@FAQ_HTML@@": junior_faq_html(j),
+        "@@RELATED@@": junior_related_html(j),
+    }
+    out = JUNIOR_TEMPLATE
+    # Longest token first, so @@SLUG@@ can never eat the tail of @@SUB_SLUG@@.
+    for k in sorted(repl, key=len, reverse=True):
+        out = out.replace(k, repl[k])
+    if "@@" in out:
+        leftover = set(t for t in out.split("@@")[1::2])
+        raise SystemExit("Unfilled tokens in {}: {}".format(junior_slug(j), leftover))
+    return out
+
+
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     written = []
@@ -754,6 +1346,13 @@ def main():
             fh.write(render(s))
         written.append(s["slug"])
     print("Wrote {} suburb pages: {}".format(len(written), ", ".join(written)))
+    juniors = []
+    for j in JUNIOR_SUBURBS:
+        path = os.path.join(OUT_DIR, junior_slug(j) + ".html")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(render_junior(j))
+        juniors.append(junior_slug(j))
+    print("Wrote {} junior pages: {}".format(len(juniors), ", ".join(juniors)))
 
 
 if __name__ == "__main__":
