@@ -231,12 +231,19 @@
 
 
 
+
   <!-- BLOG:START -->
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/blog/football-training-point-cook</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog/position-specific-training-striker-defender</loc>
