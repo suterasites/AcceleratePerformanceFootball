@@ -232,12 +232,19 @@
 
 
 
+
   <!-- BLOG:START -->
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.accelerateperformancefootball.com.au/blog/building-match-fitness-90-minutes</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.accelerateperformancefootball.com.au/blog/football-training-point-cook</loc>

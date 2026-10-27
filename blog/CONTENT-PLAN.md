@@ -47,21 +47,21 @@ Altona, Williamstown, Hoppers Crossing). Every post routes to a service and the 
 | 2026-10-07 | How Many Sessions Does It Take to See Improvement? | how-many-sessions-to-see-improvement | Senior Performance | Pricing |
 | 2026-10-14 | Position-Specific Training: Why a Striker and a Defender Train Differently | position-specific-training-striker-defender | Senior Performance | Senior Refinement |
 | 2026-10-21 | Football training in Point Cook: your local options | football-training-point-cook | Local Football | suburbs/point-cook |
+| 2026-10-28 | Building match fitness that lasts 90 minutes | building-match-fitness-90-minutes | Conditioning & Fitness | Off-Season Conditioning |
 
 ## Topic backlog (pick the top unstarted one each week)
 
 | # | Working title | Category | Target search intent | Routes to |
 |---|---------------|----------|----------------------|-----------|
-| 1 | Building Match Fitness That Lasts 90 Minutes | Conditioning & Fitness | "how to build match fitness soccer" | Off-Season Conditioning |
-| 2 | Confidence on the Ball: Coaching the Mental Side of Football | Junior Development | "building confidence young footballer" | Junior Prep |
-| 3 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
-| 4 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Pricing |
-| 5 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
-| 6 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
-| 7 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |
-| 8 | Reading the Game: How to Improve Your Football IQ | Senior Performance | "improve football iq decision making" | Senior Refinement |
-| 9 | Preseason vs Off-Season Training: What's the Difference? | Conditioning & Fitness | "preseason training soccer" | Off-Season Conditioning |
-| 10 | How to Choose the Right Football Program for Your Child | Junior Development | "football coaching for kids melbourne" | Junior Prep |
-| 11 | Five Signs Your Football Training Isn't Working | Senior Performance | "why am i not improving at football" | Senior Refinement |
+| 1 | Confidence on the Ball: Coaching the Mental Side of Football | Junior Development | "building confidence young footballer" | Junior Prep |
+| 2 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
+| 3 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Pricing |
+| 4 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
+| 5 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
+| 6 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |
+| 7 | Reading the Game: How to Improve Your Football IQ | Senior Performance | "improve football iq decision making" | Senior Refinement |
+| 8 | Preseason vs Off-Season Training: What's the Difference? | Conditioning & Fitness | "preseason training soccer" | Off-Season Conditioning |
+| 9 | How to Choose the Right Football Program for Your Child | Junior Development | "football coaching for kids melbourne" | Junior Prep |
+| 10 | Five Signs Your Football Training Isn't Working | Senior Performance | "why am i not improving at football" | Senior Refinement |
 
 Keep at least ~8 topics here. When it runs low, append a fresh batch before the next Wednesday.
