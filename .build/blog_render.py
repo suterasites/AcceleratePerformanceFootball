@@ -283,7 +283,6 @@ def nav(prefix: str) -> str:
             </div>
           </div>
           <a href="{p}about.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">About</a>
-          <a href="{p}pricing.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Pricing</a>
           <a href="{p}faq.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">FAQ</a>
           <a href="{p}blog.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Blog</a>
           <a href="{p}contact.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Contact</a>
@@ -309,7 +308,6 @@ def nav(prefix: str) -> str:
           </div>
         </div>
         <a href="{p}about.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
-        <a href="{p}pricing.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Pricing</a>
         <a href="{p}faq.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">FAQ</a>
         <a href="{p}blog.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Blog</a>
         <a href="{p}contact.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Contact</a>
@@ -354,7 +352,6 @@ def footer(prefix: str) -> str:
             <a href="{p}about.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">About</a>
             <a href="{p}coaches/chris-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Chris Sutera</a>
             <a href="{p}coaches/james-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">James Sutera</a>
-            <a href="{p}pricing.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Pricing</a>
             <a href="{p}faq.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">FAQ</a>
             <a href="{p}blog.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Blog</a>
             <a href="{p}contact.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Contact</a>
@@ -522,7 +519,7 @@ def render_post(post: dict, others: list) -> str:
           <p class="text-white/45 text-[15px] mb-7 max-w-xl" style="line-height: 1.8;">{html.escape(cta_text)}</p>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a href="../contact.html" class="btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98]">Book a Session<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-            <a href="../pricing.html" class="btn inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/40 hover:bg-white/5 text-white font-medium text-sm tracking-wide px-7 py-4 transition-colors duration-200">View Pricing</a>
+            <a href="../services.html" class="btn inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/40 hover:bg-white/5 text-white font-medium text-sm tracking-wide px-7 py-4 transition-colors duration-200">View Programs</a>
           </div>
         </div>
       </div>

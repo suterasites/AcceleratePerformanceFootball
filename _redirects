@@ -5,3 +5,8 @@
 /suburbs / 301
 /blog/football-training-point-cook /blog 301
 /blog/football-training-point-cook.html /blog 301
+
+# Pricing retired 2026-10-28: prices are no longer published, people enquire instead.
+/pricing/* /contact 301
+/pricing /contact 301
+/pricing.html /contact 301

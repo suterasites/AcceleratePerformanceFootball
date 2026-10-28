@@ -236,20 +236,6 @@
       object-fit: cover;
     }
 
-    /* Pricing toggle */
-    .price-highlight {
-      position: relative;
-    }
-    .price-highlight::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: rgba(255,255,255,0.15);
-    }
-
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
     .skip-link:focus { left: 0; }
   </style>
@@ -336,7 +322,6 @@
           </div>
 
           <a href="about.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">About</a>
-          <a href="pricing.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Pricing</a>
           <a href="faq.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">FAQ</a>
           <a href="blog.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Blog</a>
           <a href="contact.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Contact</a>
@@ -374,7 +359,6 @@
           </div>
         </div>
         <a href="about.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
-        <a href="pricing.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Pricing</a>
         <a href="faq.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">FAQ</a>
         <a href="blog.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Blog</a>
         <a href="contact.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Contact</a>
@@ -717,118 +701,6 @@
   </section>
 
 
-  <!-- ==================== PRICING ==================== -->
-  <section id="pricing" class="bg-brand-black py-24 sm:py-32">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <!-- Section header -->
-      <div class="max-w-2xl mb-16 reveal">
-        <div class="inline-flex items-center gap-4 mb-6">
-          <div class="accent-line"></div>
-          <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Pricing</span>
-        </div>
-        <h2 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] text-white leading-[1] mb-5">Simple, transparent pricing.</h2>
-        <p class="text-white/30 text-[15px]" style="line-height: 1.85;">Longer commitments mean lower per-session rates. All packages include personalised training plans and progress tracking.</p>
-      </div>
-
-      <!-- Standard Pricing -->
-      <div class="mb-16 reveal">
-        <h3 class="font-display text-2xl text-white mb-8">Standard Packages</h3>
-        <div class="grid md:grid-cols-3 gap-4">
-          <!-- The Tune Up -->
-          <div class="border border-white/5 p-8 sm:p-10 hover:border-white/10 transition-colors duration-300 group">
-            <h4 class="font-display text-3xl text-white mb-2">The Tune Up</h4>
-            <p class="text-white/20 text-xs font-medium tracking-[0.1em] uppercase mb-6">5-Pack Session</p>
-            <div class="mb-8">
-              <div class="flex items-baseline gap-1 mb-1">
-                <span class="font-display text-5xl text-white">$100</span>
-                <span class="text-white/20 text-sm">/session</span>
-              </div>
-              <p class="text-white/20 text-sm">$500 total (1 on 1)</p>
-            </div>
-            <div class="border-t border-white/5 pt-6 mb-8">
-              <div class="flex items-baseline gap-1 mb-1">
-                <span class="font-display text-4xl text-white">$65</span>
-                <span class="text-white/20 text-sm">/session</span>
-              </div>
-              <p class="text-white/20 text-sm">$325 total (Small Unit, 2-6 players)</p>
-            </div>
-            <a href="#contact" class="btn inline-flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm py-3.5 border border-white/5 hover:border-white/10 transition-colors duration-300">
-              Get Started
-            </a>
-          </div>
-
-          <!-- The Game Changer -->
-          <div class="border border-white/10 p-8 sm:p-10 hover:border-white/15 transition-colors duration-300 relative">
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-white"></div>
-            <h4 class="font-display text-3xl text-white mb-2">The Game Changer</h4>
-            <p class="text-white/20 text-xs font-medium tracking-[0.1em] uppercase mb-6">13-Week Block</p>
-            <div class="mb-8">
-              <div class="flex items-baseline gap-1 mb-1">
-                <span class="font-display text-5xl text-white">$60</span>
-                <span class="text-white/20 text-sm">/session</span>
-              </div>
-              <p class="text-white/20 text-sm">$780 total (Small Unit, 2-6 players)</p>
-            </div>
-            <div class="border-t border-white/5 pt-6 mb-8">
-              <p class="text-white/40 text-xs font-medium">Best value for a single block commitment</p>
-            </div>
-            <a href="#contact" class="btn inline-flex items-center justify-center gap-2 w-full bg-white hover:bg-white/90 text-brand-black font-semibold text-sm py-3.5 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98]">
-              Get Started
-            </a>
-          </div>
-
-          <!-- The Total 90 -->
-          <div class="border border-white/5 p-8 sm:p-10 hover:border-white/10 transition-colors duration-300 group">
-            <h4 class="font-display text-3xl text-white mb-2">The Total 90</h4>
-            <p class="text-white/20 text-xs font-medium tracking-[0.1em] uppercase mb-6">26-Week Season</p>
-            <div class="mb-8">
-              <div class="flex items-baseline gap-1 mb-1">
-                <span class="font-display text-5xl text-white">$55</span>
-                <span class="text-white/20 text-sm">/session</span>
-              </div>
-              <p class="text-white/20 text-sm">$1,430 total (Small Unit, 2-6 players)</p>
-            </div>
-            <div class="border-t border-white/5 pt-6 mb-8">
-              <p class="text-white/40 text-xs font-medium">Lowest rate - full season commitment</p>
-            </div>
-            <a href="#contact" class="btn inline-flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm py-3.5 border border-white/5 hover:border-white/10 transition-colors duration-300">
-              Get Started
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Discounted Pricing -->
-      <div class="reveal">
-        <div class="border border-[#1B5E20]/30 p-8 sm:p-10" style="background: linear-gradient(135deg, #0D2E10 0%, #143D18 50%, #0D2E10 100%);">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-            <div>
-              <h3 class="font-display text-2xl text-white mb-1">Sibling Discount</h3>
-              <p class="text-white/30 text-sm">Discounted rates for siblings training together</p>
-            </div>
-            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/30 border border-white/15 px-4 py-2 self-start">Save $5-$10/session</span>
-          </div>
-          <div class="grid sm:grid-cols-3 gap-6">
-            <div>
-              <p class="text-white/40 text-xs font-medium uppercase tracking-wide mb-2">The Tune Up</p>
-              <p class="font-display text-3xl text-white">$55<span class="text-white/20 text-lg">/session</span></p>
-              <p class="text-white/20 text-xs mt-1">$275 total - 5 sessions</p>
-            </div>
-            <div>
-              <p class="text-white/40 text-xs font-medium uppercase tracking-wide mb-2">The Game Changer</p>
-              <p class="font-display text-3xl text-white">$55<span class="text-white/20 text-lg">/session</span></p>
-              <p class="text-white/20 text-xs mt-1">$715 total</p>
-            </div>
-            <div>
-              <p class="text-white/40 text-xs font-medium uppercase tracking-wide mb-2">The Total 90</p>
-              <p class="font-display text-3xl text-white">$50<span class="text-white/20 text-lg">/session</span></p>
-              <p class="text-white/20 text-xs mt-1">$1,300 total</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==================== CONTACT ==================== -->
   <section id="contact" class="bg-brand-black">
@@ -1020,7 +892,6 @@
             <a href="about.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">About</a>
             <a href="coaches/chris-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Chris Sutera</a>
             <a href="coaches/james-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">James Sutera</a>
-            <a href="pricing.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Pricing</a>
             <a href="faq.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">FAQ</a>
             <a href="blog.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Blog</a>
             <a href="contact.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Contact</a>

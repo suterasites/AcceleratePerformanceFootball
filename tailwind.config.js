@@ -7,7 +7,6 @@ module.exports = {
   content: [
     './*.html',
     './services/*.html',
-    './pricing/*.html',
     './coaches/*.html',
   ],
   theme: {

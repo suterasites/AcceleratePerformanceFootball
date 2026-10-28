@@ -76,28 +76,7 @@
 
 ### Pricing
 
-Two formats: specialised 1-on-1 coaching (Tune Up pack only) and Small Unit sessions (2-6 players). Longer commitments = lower per-session rates.
-
-**Standard Pricing**
-
-| Package | Format | Duration | Total | Per Session |
-|---------|--------|----------|-------|-------------|
-| The Tune Up | 1 on 1 | 5-pack | $500 | $100 |
-| The Tune Up | Small Unit (2-6) | 5-pack | $325 | $65 |
-| The Game Changer | Small Unit (2-6) | 13-week block | $780 | $60 |
-| The Total 90 | Small Unit (2-6) | 26-week season | $1,430 | $55 |
-
-**Discounted Pricing (Siblings)**
-
-All Small Unit format (2-6 players):
-
-| Package | Duration | Total | Per Session | Saving vs Standard |
-|---------|----------|-------|-------------|--------------------|
-| The Tune Up | 5-pack | $275 | $55 | $10/session |
-| The Game Changer | 5-pack* | $715 | $55 | $5/session |
-| The Total 90 | 13-week block* | $1,300 | $50 | $5/session |
-
-*Possible inconsistencies on the site: The discounted Game Changer is listed as a "5 Pack Session" rather than a 13-week block (standard is 13 weeks). The discounted Total 90 is listed as 13 weeks rather than 26 weeks (standard is 26 weeks). These may be typos worth flagging to the client.
+Not published on the site (hidden 2026-10-28 at the client's request): no prices, no package pages, no pricing links. Visitors enquire through the contact page. The price list is kept in the CRM, not here, because every file in this repo is publicly served.
 
 ### Sponsors / Partners
 - Loutakis

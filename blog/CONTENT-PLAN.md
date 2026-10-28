@@ -24,6 +24,8 @@ based). Every post routes to a service and the Book a Session CTA.
 - No em dashes (hard rule, also auto-enforced by the renderer).
 - Location: APF is Melbourne based. Say "Melbourne" only - never name a training venue or club,
   and never list suburbs (removed 2026-10-28 at the client's request).
+- Pricing: never quote prices, per-session rates or package names (Tune Up, Game Changer, Total 90)
+  and never link to /pricing - pricing is not published (2026-10-28). Send cost questions to the contact page.
 - Never fabricate results, testimonials, athlete names, stats beyond the site's own
   (125+ athletes, 92% progression, 4+ years), or club affiliations.
 - One in-body link to the routing service page + the `cta` object. Use `../` paths in post links.
@@ -45,7 +47,7 @@ based). Every post routes to a service and the Book a Session CTA.
 | 2026-09-16 | A Parent's Guide to Supporting a Young Footballer | parents-guide-supporting-young-footballer | Junior Development | Junior Prep |
 | 2026-09-23 | Weak Foot Training: How to Become Genuinely Two-Footed | weak-foot-training-two-footed | Skills & Drills | Junior Prep |
 | 2026-09-30 | Speed and Agility for Footballers: Training the First Two Steps | speed-agility-footballers-first-two-steps | Conditioning & Fitness | Off-Season Conditioning |
-| 2026-10-07 | How Many Sessions Does It Take to See Improvement? | how-many-sessions-to-see-improvement | Senior Performance | Pricing |
+| 2026-10-07 | How Many Sessions Does It Take to See Improvement? | how-many-sessions-to-see-improvement | Senior Performance | Contact |
 | 2026-10-14 | Position-Specific Training: Why a Striker and a Defender Train Differently | position-specific-training-striker-defender | Senior Performance | Senior Refinement |
 | 2026-10-21 | Football training in Point Cook: your local options (retired 2026-10-28, 301 to /blog) | football-training-point-cook | Local Football | - |
 | 2026-10-28 | Building match fitness that lasts 90 minutes | building-match-fitness-90-minutes | Conditioning & Fitness | Off-Season Conditioning |
@@ -56,7 +58,7 @@ based). Every post routes to a service and the Book a Session CTA.
 |---|---------------|----------|----------------------|-----------|
 | 1 | Confidence on the Ball: Coaching the Mental Side of Football | Junior Development | "building confidence young footballer" | Junior Prep |
 | 2 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
-| 3 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Pricing |
+| 3 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Contact |
 | 4 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
 | 5 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
 | 6 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |

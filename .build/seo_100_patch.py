@@ -31,19 +31,15 @@ TITLES = {
     "faq.html": "Football Coaching FAQ | Accelerate Performance Football",
     "index.html": "Private Football Coaching Melbourne | Accelerate Performance",
     "online.html": "APF Online | Online Football Training Membership, Melbourne",
-    "pricing/game-changer.html": "The Game Changer 13-Week Block | Accelerate Performance",
-    "pricing/tune-up-group.html": "The Tune Up Small Unit | Accelerate Performance Football",
 }
 
 METAS = {
     "about.html": "Meet the coaches behind Accelerate Performance Football. Private football coaching in West Melbourne, built on precision and getting the best from every player.",
-    "faq.html": "Common questions about private football coaching in West Melbourne: who we coach, how sessions run, pricing, location, injury return, and sibling discounts.",
+    "faq.html": "Common questions about private football coaching in West Melbourne: who we coach, how sessions run, cost, location, injury return, and sibling discounts.",
     "online.html": "APF Online is an online football training membership: pro-level drills, technique tutorials and nutrition guidance you can follow from anywhere. Start a free trial.",
     "services/senior-refinement.html": "Advanced football coaching for experienced players in West Melbourne. Technical refinement, tactical awareness and match-ready conditioning to lift your game.",
     "coaches/chris-sutera.html": "Chris Sutera is Head Coach and founder of Accelerate Performance Football. 25 years playing, 5 years coaching, 125+ athletes trained in West Melbourne.",
     "coaches/james-sutera.html": "James Sutera is a Trainer at Accelerate Performance Football. 16 years playing, 2 years coaching, focused on building fundamentals and pushing athletes to their edge.",
-    "pricing/game-changer.html": "A 13-week Small Unit football coaching block in West Melbourne. $60 per session, $780 total. Periodised plan, mid-block reassessment, measurable change.",
-    "pricing/tune-up-group.html": "Five Small Unit football coaching sessions in Melbourne. $65 per session, $325 total. Train with a sibling or teammate, with sibling discounts available.",
 }
 
 
