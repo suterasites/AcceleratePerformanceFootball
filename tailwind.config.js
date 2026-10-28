@@ -7,7 +7,6 @@ module.exports = {
   content: [
     './*.html',
     './services/*.html',
-    './suburbs/*.html',
     './pricing/*.html',
     './coaches/*.html',
   ],

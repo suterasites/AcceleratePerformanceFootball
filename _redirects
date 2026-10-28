@@ -1,0 +1,7 @@
+# Suburb pages and the Point Cook post retired 2026-10-28: APF is now presented as Melbourne based,
+# with no named venue or service-area list. 301s pass their link equity to the closest live page.
+/suburbs/junior-prep-* /services/junior-prep 301
+/suburbs/* / 301
+/suburbs / 301
+/blog/football-training-point-cook /blog 301
+/blog/football-training-point-cook.html /blog 301

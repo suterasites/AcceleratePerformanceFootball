@@ -6,8 +6,8 @@ the operational source of truth for the backlog and published log.
 
 **Cadence:** one new post auto-published every **Wednesday** (Melbourne time).
 **Mode:** auto-write + auto-publish, no review gate (chosen 2026-07-22).
-**Goal:** local SEO + lead-gen for west-Melbourne football coaching (Point Cook, Werribee,
-Altona, Williamstown, Hoppers Crossing). Every post routes to a service and the Book a Session CTA.
+**Goal:** SEO + lead-gen for Melbourne football coaching (APF is presented as Melbourne
+based). Every post routes to a service and the Book a Session CTA.
 
 ## How it works (do not improvise)
 
@@ -22,9 +22,10 @@ Altona, Williamstown, Hoppers Crossing). Every post routes to a service and the 
 
 - 700-1100 words. Useful, specific, APF voice: precise, results-focused, no fluff, no consultant-speak.
 - No em dashes (hard rule, also auto-enforced by the renderer).
-- Anchor locally where natural (western suburbs; venue West Point SC, 2 Webster St, Point Cook).
+- Location: APF is Melbourne based. Say "Melbourne" only - never name a training venue or club,
+  and never list suburbs (removed 2026-10-28 at the client's request).
 - Never fabricate results, testimonials, athlete names, stats beyond the site's own
-  (125+ athletes, 92% progression, 4+ years), or club affiliations (West Point SC is a hired venue only).
+  (125+ athletes, 92% progression, 4+ years), or club affiliations.
 - One in-body link to the routing service page + the `cta` object. Use `../` paths in post links.
 - Meta `description` <=160 chars, keyword-rich. Byline `author`: "APF Coaching Team".
 - Take the top unstarted backlog topic (or a clearly better timely one), then move it to the Published log.
@@ -46,7 +47,7 @@ Altona, Williamstown, Hoppers Crossing). Every post routes to a service and the 
 | 2026-09-30 | Speed and Agility for Footballers: Training the First Two Steps | speed-agility-footballers-first-two-steps | Conditioning & Fitness | Off-Season Conditioning |
 | 2026-10-07 | How Many Sessions Does It Take to See Improvement? | how-many-sessions-to-see-improvement | Senior Performance | Pricing |
 | 2026-10-14 | Position-Specific Training: Why a Striker and a Defender Train Differently | position-specific-training-striker-defender | Senior Performance | Senior Refinement |
-| 2026-10-21 | Football training in Point Cook: your local options | football-training-point-cook | Local Football | suburbs/point-cook |
+| 2026-10-21 | Football training in Point Cook: your local options (retired 2026-10-28, 301 to /blog) | football-training-point-cook | Local Football | - |
 | 2026-10-28 | Building match fitness that lasts 90 minutes | building-match-fitness-90-minutes | Conditioning & Fitness | Off-Season Conditioning |
 
 ## Topic backlog (pick the top unstarted one each week)

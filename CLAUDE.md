@@ -6,7 +6,7 @@
 **Tagline:** "Football training refined"
 **Email:** info.accelerateperformancefootball@gmail.com
 **Phone:** 0401 117 862
-**Location:** Western Melbourne, Victoria, Australia
+**Location:** Melbourne, Victoria, Australia (presented as Melbourne based)
 **Copyright:** 2026
 
 ### Coaches
@@ -15,13 +15,13 @@
 - Both presented as experienced players dedicated to athlete development
 
 ### About
-- Private football (soccer) coaching business based in West Melbourne
+- Private football (soccer) coaching business based in Melbourne
 - Dedicated technique and performance coaching for footballers
 - Origin story: belief that junior players deserved access to professional-level coaching, and senior athletes deserved better training options than what was available
 - Emphasis on precision in every movement, decision, and play
 - Mission: bridging the gap between aspiring young talent and elite athletic development
 - Primarily private one-on-one coaching tailored to the individual, but can arrange small group sessions for players who want to train with a teammate
-- West Melbourne / Melbourne is the primary service area - use this for local SEO targeting (e.g. "private football coaching Melbourne", "soccer coaching West Melbourne")
+- Melbourne based. Say "Melbourne" for location: never name a training venue or club, and never list suburbs or service areas (both removed 2026-10-28 at the client's request; the old /suburbs pages 301 via `_redirects`). Target "private football coaching Melbourne" style terms
 - Target market: junior players stepping up to senior level, senior players wanting to sharpen their game, and parents of junior players
 
 ### Key Metrics
@@ -87,7 +87,7 @@ Two formats: specialised 1-on-1 coaching (Tune Up pack only) and Small Unit sess
 | The Game Changer | Small Unit (2-6) | 13-week block | $780 | $60 |
 | The Total 90 | Small Unit (2-6) | 26-week season | $1,430 | $55 |
 
-**Discounted Pricing (Siblings & West Point Soccer Club Players)**
+**Discounted Pricing (Siblings)**
 
 All Small Unit format (2-6 players):
 
