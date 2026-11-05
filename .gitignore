@@ -5,3 +5,6 @@
 !.build/blog_render.py
 !.build/add_blog_nav.py
 !.build/seo_100_patch.py
+
+# Internal notes. The host publishes everything tracked here, so this stays local.
+CLAUDE.md
