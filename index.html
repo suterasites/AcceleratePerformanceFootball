@@ -197,14 +197,6 @@
     }
     .drift-track { animation: drift 30s linear infinite; }
 
-    /* Counter animation */
-    .stat-num {
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      line-height: 1;
-      letter-spacing: 0.02em;
-    }
-
     /* Horizontal rule accent */
     .accent-line {
       width: 40px;
@@ -241,6 +233,7 @@
       --chip-hover: #2A2A2A;
       --ink: #FFFFFF;
       --ink-soft: #DCDDD8;
+      --line: rgba(255,255,255,0.1);
       --accent: #FA470B;
       --accent-hover: #FF5A22;
       --accent-ink: #140602;
@@ -301,7 +294,7 @@
       justify-content: center;
       min-height: max(calc(100svh - var(--bar) - var(--frame-gutter)), 560px);
       overflow: hidden;
-      border-radius: 6px;
+      border-radius: 6px 6px 0 0;
       background: #2A241C;
     }
     .hero-video {
@@ -324,6 +317,14 @@
     .hero-sub { margin-top: 58px; font: 400 14.4px/18px var(--font-note); color: var(--ink); }
     .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; margin-top: 30px; }
 
+    /* Proof strip */
+    .proof { padding: clamp(1.5rem, 2.5vw, 2.25rem) var(--frame-gutter) clamp(3rem, 6vw, 5rem); background: var(--ground); }
+    .proof-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 96px; padding: 4px 20px; text-align: center; }
+    .proof-cell + .proof-cell { border-left: 1px solid var(--line); }
+    .proof-value { font-family: var(--font-title); font-size: clamp(2.5rem, 3.1vw, 3.25rem); line-height: 1.02; color: var(--ink); }
+    .proof-label { margin-top: 10px; font: 400 14.4px/18px var(--font-note); color: var(--ink-soft); }
+
     @media (max-width: 1023px) {
       :root { --bar: 52px; --frame-gutter: 8px; }
       .topbar-clock { display: none; }
@@ -334,6 +335,8 @@
       .hero-actions .chip { height: 44px; padding: 0 16px; font-size: 14px; }
     }
     @media (max-width: 639px) {
+      .proof-cell { padding: 4px 8px; }
+      .proof-label { max-width: 10ch; font-size: 13px; line-height: 16px; }
       .only-wide { display: none; }
       .only-narrow { display: inline; }
       .hero-sub br { display: none; }
@@ -341,6 +344,7 @@
     }
     @media (max-width: 359px) {
       .topbar-brand span { display: none; }
+      .proof-value { font-size: 2rem; }
     }
 
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
@@ -508,18 +512,20 @@
     <script>if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){var hv=document.querySelector('.hero-video');hv.removeAttribute('autoplay');hv.pause()}</script>
   </header>
 
-  <!-- ==================== STATS BAR ==================== -->
-  <section class="bg-brand-black relative z-20 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
-      <div class="grid grid-cols-2 gap-10 lg:gap-8 max-w-md mx-auto lg:max-w-2xl stagger">
-        <div class="reveal text-center">
-          <p class="stat-num text-white">125+</p>
-          <p class="text-white/30 text-xs font-medium uppercase tracking-[0.15em] mt-2">Athletes Trained</p>
-        </div>
-        <div class="reveal text-center">
-          <p class="stat-num text-white">4+</p>
-          <p class="text-white/30 text-xs font-medium uppercase tracking-[0.15em] mt-2">Years in Business</p>
-        </div>
+  <!-- ==================== PROOF STRIP ==================== -->
+  <section class="proof" aria-label="Track record">
+    <div class="proof-row">
+      <div class="proof-cell">
+        <p class="proof-value">125+</p>
+        <p class="proof-label">athletes trained</p>
+      </div>
+      <div class="proof-cell">
+        <p class="proof-value">4+</p>
+        <p class="proof-label">years in business</p>
+      </div>
+      <div class="proof-cell">
+        <p class="proof-value">6+</p>
+        <p class="proof-label">ages coached</p>
       </div>
     </div>
   </section>
