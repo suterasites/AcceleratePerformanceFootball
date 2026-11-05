@@ -16,14 +16,14 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/Assets/favicon-96.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0A0A0A">
-  <meta name="description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in West Melbourne. Call 0401 117 862 or fill out our contact form.">
+  <meta name="description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in Melbourne. Call 0401 117 862 or fill out our contact form.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.accelerateperformancefootball.com.au/contact">
   <link rel="apple-touch-icon" href="/Assets/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact | Accelerate Performance Football">
-  <meta property="og:description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in West Melbourne. Call 0401 117 862 or fill out our contact form.">
+  <meta property="og:description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in Melbourne. Call 0401 117 862 or fill out our contact form.">
   <meta property="og:url" content="https://www.accelerateperformancefootball.com.au/contact">
   <meta property="og:image" content="https://www.accelerateperformancefootball.com.au/Assets/Logo.png">
   <meta property="og:locale" content="en_AU">
@@ -32,109 +32,18 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Accelerate Performance Football logo">
   <meta name="geo.region" content="AU-VIC">
-  <meta name="geo.placename" content="West Melbourne, Victoria">
+  <meta name="geo.placename" content="Melbourne, Victoria">
   <meta name="ICBM" content="-37.7996, 144.9353">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Accelerate Performance Football">
-  <meta name="twitter:description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in West Melbourne. Call 0401 117 862 or fill out our contact form.">
+  <meta name="twitter:description" content="Get in touch with Accelerate Performance Football. Book a private football coaching session in Melbourne. Call 0401 117 862 or fill out our contact form.">
   <meta name="twitter:image" content="https://www.accelerateperformancefootball.com.au/Assets/Logo.png">
 
-  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="apf.css">
+  <link rel="preload" href="Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="preload" href="Assets/fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="Assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-weight: 300; }
-    h1, h2, h3, .font-display { font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.04em; }
-    h4, .font-sans-bold { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; }
-
-    .grain::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .shadow-card {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 6px 16px rgba(0,0,0,0.15);
-    }
-    .shadow-lift {
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.2), 0 28px 56px rgba(0,0,0,0.12);
-    }
-
-    .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    .stagger > *:nth-child(1) { transition-delay: 0ms; }
-    .stagger > *:nth-child(2) { transition-delay: 120ms; }
-    .stagger > *:nth-child(3) { transition-delay: 240ms; }
-    .stagger > *:nth-child(4) { transition-delay: 360ms; }
-
-    .img-treat {
-      position: relative;
-      overflow: hidden;
-    }
-    .img-treat::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.15), transparent 60%);
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-    .img-treat img {
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .img-treat:hover img {
-      transform: scale(1.04);
-    }
-
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: #0A0A0A; }
-    ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #444; }
-
-    .accent-line {
-      width: 40px;
-      height: 1px;
-      background: #FFFFFF;
-    }
-
-    .stat-num {
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      line-height: 1;
-      letter-spacing: 0.02em;
-    }
-
-    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
-    .skip-link:focus { left: 0; }
-  </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
 
@@ -146,7 +55,7 @@
         "@type": "ContactPage",
         "url": "https://www.accelerateperformancefootball.com.au/contact",
         "name": "Contact | Accelerate Performance Football",
-        "description": "Get in touch with Accelerate Performance Football. Book a private football coaching session in West Melbourne. Call 0401 117 862 or fill out our contact form.",
+        "description": "Get in touch with Accelerate Performance Football. Book a private football coaching session in Melbourne. Call 0401 117 862 or fill out our contact form.",
         "isPartOf": { "@id": "https://www.accelerateperformancefootball.com.au/#website" },
         "about": { "@id": "https://www.accelerateperformancefootball.com.au/#business" }
       },
@@ -183,7 +92,7 @@
   "@type": "LocalBusiness",
   "@id": "https://www.accelerateperformancefootball.com.au/#business",
   "name": "Accelerate Performance Football",
-  "description": "Private football (soccer) coaching business based in West Melbourne offering technique and performance coaching for footballers of all levels.",
+  "description": "Private football (soccer) coaching business based in Melbourne offering technique and performance coaching for footballers of all levels.",
   "url": "https://www.accelerateperformancefootball.com.au/",
   "image": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
   "logo": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
@@ -191,7 +100,7 @@
   "email": "info.accelerateperformance@gmail.com",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "West Melbourne",
+    "addressLocality": "Melbourne",
     "addressRegion": "VIC",
     "addressCountry": "AU"
   },
@@ -207,7 +116,7 @@
     },
     {
       "@type": "Place",
-      "name": "West Melbourne"
+      "name": "Melbourne"
     },
     {
       "@type": "Place",
@@ -228,356 +137,244 @@
 }
 </script>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- ==================== NAVIGATION ==================== -->
-  <header>
-  <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="flex items-center justify-between h-20 lg:h-24">
-        <a href="index.html" class="relative z-10 flex items-center gap-3" aria-label="Accelerate Performance Football home">
-          <img width="500" height="500" src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 lg:h-12 w-auto">
-        </a>
-
-        <!-- Desktop links -->
-        <div class="hidden lg:flex items-center gap-10">
-          <!-- What We Do Megamenu -->
-          <div class="relative group/services">
-            <a href="services.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-1.5">
-              What We Do
-              <svg class="w-3 h-3 opacity-50 group-hover/services:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </a>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-[opacity,visibility] duration-300 pointer-events-none group-hover/services:pointer-events-auto">
-              <div class="border border-white/8 p-5 w-[480px] shadow-lift" style="backdrop-filter: blur(16px); background: rgba(20,20,20,0.97);">
-                <div class="grid grid-cols-2 gap-2">
-                  <a href="services/junior-prep.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">01</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Junior Prep</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Getting younger players ready for senior football</p>
-                    </div>
-                  </a>
-                  <a href="services/senior-refinement.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">02</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Senior Refinement</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Level up what already makes you dangerous</p>
-                    </div>
-                  </a>
-                  <a href="services/off-season-conditioning.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">03</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Off-Season Conditioning</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Gain an edge while others rest</p>
-                    </div>
-                  </a>
-                  <a href="services/injury-return.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">04</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Injury Return</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Structured recovery to come back stronger</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="mt-3 pt-3 border-t border-white/5">
-                  <a href="services.html" class="text-xs text-white/30 hover:text-white/60 transition-colors duration-200 inline-flex items-center gap-1">
-                    View all programs
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a href="about.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">About</a>
-          <a href="faq.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">FAQ</a>
-          <a href="blog.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Blog</a>
-          <a href="contact.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Contact</a>
-        </div>
-
-        <!-- CTA + mobile toggle -->
-        <div class="flex items-center gap-4">
-          <a href="contact.html" class="btn hidden sm:inline-flex items-center gap-2 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-[13px] tracking-wide px-6 py-2.5 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
-            Book a Session
-          </a>
-          <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 text-white hover:text-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95 transition-transform duration-200" aria-label="Open menu" aria-expanded="false">
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-      </div>
+  <!-- SITE-NAV:START -->
+  <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-start">
+      <button id="menu-btn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
+      <a href="index.html" class="nav-brand" aria-label="Accelerate Performance Football home">
+        <img width="209" height="213" src="Assets/Logo Mark.png" alt="Accelerate Performance Football">
+      </a>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="lg:hidden overflow-hidden transition-[max-height] duration-300 ease-out max-h-0 bg-brand-black/97 backdrop-blur-xl border-t border-white/5">
-      <div class="px-6 py-6 flex flex-col gap-1">
-        <div>
-          <button id="mobile-services-toggle" class="w-full flex items-center justify-between px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 bg-transparent border-none cursor-pointer text-left" type="button">
-            What We Do
-            <svg id="mobile-services-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="mobile-services-panel" class="overflow-hidden max-h-0 transition-[max-height] duration-300">
-            <div class="pl-8 pr-4 pb-2 space-y-1">
-              <a href="services/junior-prep.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Junior Prep</a>
-              <a href="services/senior-refinement.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Senior Refinement</a>
-              <a href="services/off-season-conditioning.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Off-Season Conditioning</a>
-              <a href="services/injury-return.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Injury Return</a>
-              <a href="services.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/30 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">View All Programs</a>
+    <div class="nav-links">
+      <div class="nav-group">
+        <a href="services.html" class="nav-link">What We Do</a>
+        <div class="nav-panel">
+          <div class="nav-panel-body">
+            <div class="nav-panel-grid">
+              <a href="services/junior-prep.html" class="nav-panel-item">
+                <span class="nav-panel-name">Junior Prep</span>
+                <span class="nav-panel-desc">Getting younger players ready for senior football</span>
+              </a>
+              <a href="services/senior-refinement.html" class="nav-panel-item">
+                <span class="nav-panel-name">Senior Refinement</span>
+                <span class="nav-panel-desc">Level up what already makes you dangerous</span>
+              </a>
+              <a href="services/off-season-conditioning.html" class="nav-panel-item">
+                <span class="nav-panel-name">Off-Season Conditioning</span>
+                <span class="nav-panel-desc">Gain an edge while others rest</span>
+              </a>
+              <a href="services/injury-return.html" class="nav-panel-item">
+                <span class="nav-panel-name">Injury Return</span>
+                <span class="nav-panel-desc">Structured recovery to come back stronger</span>
+              </a>
             </div>
+            <a href="services.html" class="nav-panel-all">View all programs</a>
           </div>
         </div>
-        <a href="about.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
-        <a href="faq.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">FAQ</a>
-        <a href="blog.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Blog</a>
-        <a href="contact.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Contact</a>
-        <div class="mt-4 px-4">
-          <a href="contact.html" class="btn flex items-center justify-center gap-2 bg-white text-brand-black font-semibold text-sm px-6 py-3.5 w-full">Book a Session</a>
-        </div>
       </div>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-end">
+      <a href="contact.html" class="btn btn-sm">Book a Session</a>
     </div>
   </nav>
-  </header>
 
-  <!-- Nav scripts -->
+  <!-- Menu, opened by the two-line button -->
+  <div id="site-menu" class="menu" inert>
+    <div class="menu-scrim" data-menu-close></div>
+    <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button id="menu-close" class="menu-close label" type="button" data-menu-close>Close</button>
+      <ul class="menu-list">
+        <li>
+          <a href="services.html" class="menu-item">What We Do</a>
+          <div class="menu-sub">
+            <a href="services/junior-prep.html">Junior Prep</a>
+            <a href="services/senior-refinement.html">Senior Refinement</a>
+            <a href="services/off-season-conditioning.html">Off-Season Conditioning</a>
+            <a href="services/injury-return.html">Injury Return</a>
+          </div>
+        </li>
+        <li><a href="about.html" class="menu-item">About</a></li>
+        <li><a href="faq.html" class="menu-item">FAQ</a></li>
+        <li><a href="blog.html" class="menu-item">Blog</a></li>
+        <li><a href="contact.html" class="menu-item">Contact</a></li>
+      </ul>
+      <div class="menu-end">
+        <a href="contact.html" class="btn">Book a Session</a>
+        <p class="links label">
+          <a href="tel:0401117862"><span>0401 117 862</span></a>
+          <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span>Text</span></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    (function(){var b=document.getElementById('mobile-menu-btn'),m=document.getElementById('mobile-menu'),h=document.getElementById('hamburger-icon'),c=document.getElementById('close-icon'),ls=m.querySelectorAll('a.mobile-nav-link');function t(){var o=m.style.maxHeight&&m.style.maxHeight!=='0px';m.style.maxHeight=o?'0px':m.scrollHeight+'px';h.classList.toggle('hidden',!o);c.classList.toggle('hidden',o);b.setAttribute('aria-expanded',String(!o))}b.addEventListener('click',t);ls.forEach(function(l){l.addEventListener('click',function(){m.style.maxHeight='0px';h.classList.remove('hidden');c.classList.add('hidden');b.setAttribute('aria-expanded','false')})})})();
-    (function(){var t=document.getElementById('mobile-services-toggle'),p=document.getElementById('mobile-services-panel'),ch=document.getElementById('mobile-services-chevron');if(t&&p){t.addEventListener('click',function(){var o=p.style.maxHeight&&p.style.maxHeight!=='0px';p.style.maxHeight=o?'0px':p.scrollHeight+'px';ch.style.transform=o?'':'rotate(180deg)'})}})();
-    (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;if(y>80){n.style.background='rgba(10,10,10,0.92)';n.style.backdropFilter='blur(16px)'}else{n.style.background='';n.style.backdropFilter=''}n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y})})();
+    (function(){var b=document.getElementById('menu-btn'),m=document.getElementById('site-menu'),c=document.getElementById('menu-close'),r=document.documentElement;function s(o){m.classList.toggle('is-open',o);m.inert=!o;b.setAttribute('aria-expanded',o?'true':'false');r.classList.toggle('menu-lock',o);(o?c:b).focus({preventScroll:true})}b.addEventListener('click',function(){s(true)});m.querySelectorAll('[data-menu-close],a').forEach(function(e){e.addEventListener('click',function(){s(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('is-open'))s(false)})})();
+    (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;n.classList.toggle('is-solid',y>80);n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y},{passive:true})})();
   </script>
+  <!-- SITE-NAV:END -->
 
   <main id="main">
 
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-3 text-sm text-brand-muted">
-      <a href="/" class="hover:text-brand-white">Home</a>
-      <span class="mx-2 text-brand-grey">/</span>
-      <span class="text-brand-white">Contact</span>
+  <section id="main-content" class="book contact-book">
+    <img class="frame-media" width="500" height="625" src="Assets/Chris 4.jpeg" alt="" fetchpriority="high" style="object-position: 50% 42%;">
+    <div class="frame-scrim" aria-hidden="true"></div>
+    <div class="book-info">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / Contact</nav>
+      <p class="label hero-label">Contact</p>
+      <h1 class="display">Get in touch.</h1>
+      <p class="text book-lead">Fill out the form and we'll get back to you. Or call directly to book your first session.</p>
+      <div class="methods"><a class="method" href="tel:0401117862"><span class="method-value">0401 117 862</span><span class="label">Tap to call</span></a><a class="method" href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span class="method-value">Send a text</span><span class="label">Tap to message</span></a><a class="method method-wide" href="mailto:info.accelerateperformance@gmail.com"><span class="method-value">info.accelerateperformance@gmail.com</span><span class="label">Email us</span></a><div class="method method-wide"><span class="method-value">Melbourne, VIC</span><span class="label">Training location</span></div></div>
+      <p class="label" style="margin-top: clamp(18px, 2vw, 28px);">What happens next</p>
+      <ol class="next-steps" style="margin-top: 10px;"><li><span class="num">1</span><span class="text">Chris replies within 24 hours by call, text, or email.</span></li><li><span class="num">2</span><span class="text">Quick chat to understand the player's goals, level, and schedule.</span></li><li><span class="num">3</span><span class="text">Book the first assessment session - no commitment beyond that.</span></li></ol>
     </div>
-  </nav>
-
-  <!-- ==================== CONTACT SECTION ==================== -->
-  <section id="main-content" class="bg-brand-black">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-5">
-        <!-- Left: Contact info -->
-        <div class="lg:col-span-2 bg-brand-dark px-6 sm:px-10 lg:px-14 pt-10 lg:pt-14 pb-16 sm:pb-20 lg:pb-28 relative grain">
-          <div class="max-w-sm reveal relative z-10">
-            <div class="inline-flex items-center gap-4 mb-6">
-              <div class="accent-line"></div>
-              <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Contact</span>
-            </div>
-            <h1 class="font-display text-4xl sm:text-5xl text-white mb-5">Get in touch.</h1>
-            <p class="text-white/30 text-[15px] mb-10" style="line-height: 1.8;">Fill out the form and we'll get back to you. Or call directly to book your first session.</p>
-
-            <div class="space-y-7">
-              <a href="tel:0401117862" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white/25 group-hover:bg-white/5 transition-colors duration-200">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-white group-hover:text-white/80 transition-colors duration-200">0401 117 862</p>
-                  <p class="text-xs text-white/20 mt-0.5">Tap to call</p>
-                </div>
-              </a>
-
-              <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session." class="flex items-center gap-4 group">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white/25 group-hover:bg-white/5 transition-colors duration-200">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-white group-hover:text-white/80 transition-colors duration-200">Send a text</p>
-                  <p class="text-xs text-white/20 mt-0.5">Tap to message</p>
-                </div>
-              </a>
-
-              <a href="mailto:info.accelerateperformance@gmail.com" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white/25 group-hover:bg-white/5 transition-colors duration-200">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-semibold text-white group-hover:text-white/80 transition-colors duration-200">info.accelerateperformance<wbr>@gmail.com</p>
-                  <p class="text-xs text-white/20 mt-0.5">Email us</p>
-                </div>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-white">Western Melbourne, VIC</p>
-                  <p class="text-xs text-white/20 mt-0.5">Training location</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Form -->
-        <div class="lg:col-span-3 px-6 sm:px-10 lg:px-14 pt-10 lg:pt-14 pb-16 sm:pb-20 lg:pb-28 flex items-center bg-brand-black">
-          <div class="w-full max-w-lg reveal">
-            <h2 class="font-display text-3xl text-white mb-2">Book your first session.</h2>
-            <p class="text-white/30 text-sm mb-6">We'll get back to you within 24 hours.</p>
-
-            <div class="mb-8 pb-7 border-b border-white/8">
-              <p class="text-[11px] uppercase tracking-[0.22em] text-white/35 mb-4">What happens next</p>
-              <ol class="space-y-3 text-[13px] text-white/55">
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">01</span>
-                  <span>Chris replies within 24 hours by call, text, or email.</span>
-                </li>
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">02</span>
-                  <span>Quick chat to understand the player's goals, level, and schedule.</span>
-                </li>
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">03</span>
-                  <span>Book the first assessment session - no commitment beyond that.</span>
-                </li>
-              </ol>
-            </div>
-
-            <form id="contact-form" action="https://formspree.io/f/xgopwqga" method="POST">
-              <input type="hidden" name="_subject" value="New enquiry - Accelerate Performance Football">
-              <input type="hidden" name="_next" value="https://www.accelerateperformancefootball.com.au/thank-you.html">
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="form-first-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">First name <span class="text-white/50">*</span></label>
-                  <input type="text" id="form-first-name" name="first_name" autocomplete="given-name" required aria-required="true" placeholder="Jordan" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="form-last-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Last name</label>
-                  <input type="text" id="form-last-name" name="last_name" autocomplete="family-name" placeholder="Smith" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="form-email" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Email <span class="text-white/50">*</span></label>
-                  <input type="email" id="form-email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="form-phone" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Phone number <span class="text-white/50">*</span></label>
-                  <input type="tel" id="form-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true" placeholder="04XX XXX XXX" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="form-age" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Age</label>
-                  <input type="number" id="form-age" name="age" min="5" max="99" inputmode="numeric" placeholder="e.g. 14" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="form-club" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Current Club (if any)</label>
-                  <input type="text" id="form-club" name="current_club" placeholder="e.g. your current club" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="form-service" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Interested In</label>
-                <select id="form-service" name="service" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 appearance-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
-                  <option value="">Select a program</option>
-                  <option value="junior-prep">Junior Prep</option>
-                  <option value="senior-refinement">Senior Refinement</option>
-                  <option value="off-season">Off-Season Conditioning</option>
-                  <option value="injury-return">Injury Return</option>
-                  <option value="not-sure">Not Sure Yet</option>
-                </select>
-              </div>
-              <div class="mb-6">
-                <label for="form-message" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Message <span class="text-white/50">*</span></label>
-                <textarea id="form-message" name="message" rows="4" required aria-required="true" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 resize-none" placeholder="Tell us about your goals and current level"></textarea>
-              </div>
-              <p class="text-xs text-white/30 mb-5"><span class="text-white/50">*</span> Required. We'll reply within 24 hours.</p>
-              <button type="submit" class="btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto">
+    <form action="https://formspree.io/f/xgopwqga" class="book-form reveal" id="contact-form" method="POST"><h2 class="form-title">Book your first session.</h2><p class="form-lead">We'll get back to you within 24 hours.</p>
+<input name="_subject" type="hidden" value="New enquiry - Accelerate Performance Football"/>
+<input name="_next" type="hidden" value="https://www.accelerateperformancefootball.com.au/thank-you.html"/>
+<input aria-hidden="true" autocomplete="off" name="_gotcha" style="display:none" tabindex="-1" type="text"/>
+<div class="field-row">
+<div>
+<label for="form-first-name">First name <span>*</span></label>
+<input aria-required="true" autocomplete="given-name" id="form-first-name" name="first_name" placeholder="Jordan" required="" type="text"/>
+</div>
+<div>
+<label for="form-last-name">Last name</label>
+<input autocomplete="family-name" id="form-last-name" name="last_name" placeholder="Smith" type="text"/>
+</div>
+</div>
+<div class="field-row">
+<div>
+<label for="form-email">Email <span>*</span></label>
+<input aria-required="true" autocomplete="email" id="form-email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div>
+<label for="form-phone">Phone number <span>*</span></label>
+<input aria-required="true" autocomplete="tel" id="form-phone" inputmode="tel" name="phone" placeholder="04XX XXX XXX" required="" type="tel"/>
+</div>
+</div>
+<div class="field-row">
+<div>
+<label for="form-age">Age</label>
+<input id="form-age" inputmode="numeric" max="99" min="5" name="age" placeholder="e.g. 14" type="number"/>
+</div>
+<div>
+<label for="form-club">Current Club (if any)</label>
+<input id="form-club" name="current_club" placeholder="e.g. your current club" type="text"/>
+</div>
+</div>
+<div class="field-row-single">
+<label for="form-service">Interested In</label>
+<select id="form-service" name="service" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
+<option value="">Select a program</option>
+<option value="junior-prep">Junior Prep</option>
+<option value="senior-refinement">Senior Refinement</option>
+<option value="off-season">Off-Season Conditioning</option>
+<option value="injury-return">Injury Return</option>
+<option value="not-sure">Not Sure Yet</option>
+</select>
+</div>
+<div class="field-row-single">
+<label for="form-message">Message <span>*</span></label>
+<textarea aria-required="true" id="form-message" name="message" placeholder="Tell us about your goals and current level" required="" rows="4"></textarea>
+</div>
+<p class="form-note"><span>*</span> Required. We'll reply within 24 hours.</p>
+<button class="btn" type="submit">
                 Send Message
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+                
+</button>
+</form>
+  </section>
+  <!-- SITE-PARTNERS:START -->
+  <section class="partners on-white" aria-labelledby="partners-title">
+    <h2 id="partners-title" class="label label-soft reveal">Partners</h2>
+    <div class="partner-row reveal">
+      <a class="partner" href="https://www.loutakis.com.au/" target="_blank" rel="noopener noreferrer"><img width="510" height="99" src="Assets/Sponsors/Loutakis Real Estate.png" alt="Loutakis Real Estate" loading="lazy"></a>
+      <a class="partner" href="https://www.instagram.com/kstruct_/?hl=en" target="_blank" rel="noopener noreferrer"><img width="163" height="133" src="Assets/Sponsors/K-Struct New.png" alt="K-Struct" loading="lazy"></a>
+      <a class="partner" href="https://www.westernmitsubishi.com.au/" target="_blank" rel="noopener noreferrer"><img width="418" height="120" src="Assets/Sponsors/Western Mitsubishi.jpeg" alt="Western Mitsubishi" loading="lazy"></a>
+      <a class="partner" href="https://www.dilalloelectrical.com.au/" target="_blank" rel="noopener noreferrer"><img width="367" height="137" src="Assets/Sponsors/Di Lallo Electrical Services.jpeg" alt="Di Lallo Electrical Services" loading="lazy"></a>
+      <a class="partner" href="https://hcdistributors.com.au/" target="_blank" rel="noopener noreferrer"><img width="300" height="300" src="Assets/Sponsors/cropped-HCD_Logo_New.webp" alt="HC Distributors" loading="lazy"></a>
     </div>
   </section>
-
-  <!-- ==================== SPONSORS ==================== -->
-  <section class="bg-white py-16">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <p class="text-center text-neutral-400 text-xs font-medium tracking-[0.2em] uppercase mb-10">Our Partners</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
-        <a href="https://www.loutakis.com.au/" target="_blank" rel="noopener noreferrer"><img width="510" height="99" src="Assets/Sponsors/Loutakis Real Estate.png" alt="Loutakis Real Estate" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.instagram.com/kstruct_/?hl=en" target="_blank" rel="noopener noreferrer"><img width="163" height="133" src="Assets/Sponsors/K-Struct New.png" alt="K-Struct" class="h-20 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.westernmitsubishi.com.au/" target="_blank" rel="noopener noreferrer"><img width="418" height="120" src="Assets/Sponsors/Western Mitsubishi.jpeg" alt="Western Mitsubishi" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.dilalloelectrical.com.au/" target="_blank" rel="noopener noreferrer"><img width="367" height="137" src="Assets/Sponsors/Di Lallo Electrical Services.jpeg" alt="Di Lallo Electrical Services" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://hcdistributors.com.au/" target="_blank" rel="noopener noreferrer"><img width="300" height="300" src="Assets/Sponsors/cropped-HCD_Logo_New.webp" alt="HC Distributors" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-      </div>
-    </div>
-  </section>
-
+  <!-- SITE-PARTNERS:END -->
 
   </main>
 
-  <!-- ==================== GOOGLE REVIEWS (STICKY) ==================== -->
-  <div class="fixed bottom-4 left-4 z-50">
+  <!-- GOOGLE REVIEWS (STICKY) -->
+  <div class="reviews-badge">
     <div class="elfsight-app-aefd1437-8568-466c-9489-4de114840c19" data-elfsight-app-lazy></div>
   </div>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-brand-black pt-16 pb-8 border-t border-white/5" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-14">
-        <div class="lg:col-span-2">
-          <div class="flex items-center gap-3 mb-5">
-            <img width="500" height="500" src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 w-auto" loading="lazy">
-          </div>
-          <p class="text-sm text-white/35 mb-5" style="line-height: 1.7;">Melbourne-based private football coaching. Dedicated technique and performance training for footballers who want more.</p>
-          <a href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-white/45 hover:bg-white/10 hover:text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2" aria-label="Follow us on Instagram">
-            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-        </div>
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Programs</h3>
-          <nav class="space-y-2.5" aria-label="Programs">
-            <a href="services/junior-prep.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Junior Prep</a>
-            <a href="services/senior-refinement.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Senior Refinement</a>
-            <a href="services/off-season-conditioning.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Off-Season Conditioning</a>
-            <a href="services/injury-return.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Injury Return</a>
-            <a href="online.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Online Training</a>
-          </nav>
-        </div>
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Navigation</h3>
-          <nav class="space-y-2.5" aria-label="Footer navigation">
-            <a href="about.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">About</a>
-            <a href="coaches/chris-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Chris Sutera</a>
-            <a href="coaches/james-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">James Sutera</a>
-            <a href="faq.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">FAQ</a>
-            <a href="blog.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Blog</a>
-            <a href="contact.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Contact</a>
-            <a href="privacy.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Privacy Policy</a>
-          </nav>
-        </div>
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Contact</h3>
-          <div class="space-y-2.5">
-            <a href="tel:0401117862" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">0401 117 862</a>
-            <a href="mailto:info.accelerateperformance@gmail.com" class="block text-xs text-white/35 hover:text-white transition-colors duration-200">info.accelerateperformance@gmail.com</a>
-            <p class="text-sm text-white/35">Melbourne based</p>
-          </div>
+  <!-- SITE-FOOTER:START -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" aria-label="Accelerate Performance Football home"><img width="209" height="213" src="Assets/Logo Mark.png" alt="Accelerate Performance Football" loading="lazy"></a>
+        <p class="text">Melbourne-based private football coaching. Dedicated technique and performance training for footballers who want more.</p>
+        <p class="links label"><a href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><span>Instagram</span></a></p>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="label">Programs</h2>
+        <nav class="footer-links" aria-label="Programs">
+          <a href="services/junior-prep.html">Junior Prep</a>
+          <a href="services/senior-refinement.html">Senior Refinement</a>
+          <a href="services/off-season-conditioning.html">Off-Season Conditioning</a>
+          <a href="services/injury-return.html">Injury Return</a>
+          <a href="online.html">Online Training</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="label">Navigation</h2>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="about.html">About</a>
+          <a href="coaches/chris-sutera.html">Chris Sutera</a>
+          <a href="coaches/james-sutera.html">James Sutera</a>
+          <a href="faq.html">FAQ</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </nav>
+      </div>
+
+      <div class="footer-col footer-col-contact">
+        <h2 class="label">Contact</h2>
+        <div class="footer-links">
+          <a href="tel:0401117862">0401 117 862</a>
+          <a href="mailto:info.accelerateperformance@gmail.com">info.accelerateperformance@gmail.com</a>
+          <p>Melbourne based</p>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <p class="text-xs text-white/20">&copy; 2026 Accelerate Performance Football. All rights reserved.</p>
-        <p class="text-xs text-white/20">Melbourne, Victoria, Australia</p>
-        <p class="text-xs text-white/20">Built by <a href="https://suterasites.com.au/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">Sutera Sites</a></p>
-      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Accelerate Performance Football. All rights reserved.</p>
+      <p>Melbourne, Victoria, Australia</p>
+      <p>Built by <a href="https://suterasites.com.au/" target="_blank" rel="noopener noreferrer">Sutera Sites</a></p>
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
+  <!-- Reveal on scroll -->
   <script>
-    (function(){var e=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');var o=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});e.forEach(function(el){o.observe(el)})})();
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      els.forEach(function(el) { observer.observe(el); });
+    })();
   </script>
+  <!-- SITE-FOOTER:END -->
 
 </body>
 </html>

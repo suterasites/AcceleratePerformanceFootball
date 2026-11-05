@@ -19,18 +19,10 @@
   <link rel="apple-touch-icon" href="/Assets/apple-touch-icon.png">
   <meta name="robots" content="noindex, follow">
 
-  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="/apf.css">
+  <link rel="preload" href="/Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="preload" href="Assets/fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="Assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-weight: 300; }
-    h1, h2, h3, .font-display { font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.04em; }
-    .btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
-    .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-  </style>
   <!-- Sutera lead events (GA4) -->
   <script>/* SUTERA_LEAD_EVENTS */
   (function(){
@@ -49,24 +41,20 @@
   })();
   </script>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body>
 
-  <div class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-    <a href="/" class="mb-12">
-      <img width="500" height="500" src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-16 w-auto">
-    </a>
-    <h1 class="font-display text-[clamp(5rem,15vw,12rem)] text-white leading-[0.95] mb-4">404</h1>
-    <p class="text-white/40 text-lg mb-10 max-w-md" style="line-height: 1.8;">The page you're looking for doesn't exist or has been moved.</p>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="/" class="btn inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
-        Back to Home
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-      <a href="contact.html" class="btn inline-flex items-center justify-center gap-3 text-white font-medium text-sm tracking-wide px-8 py-4 border border-white/15 hover:border-white/30 hover:bg-white/5 active:bg-white/8 transition-colors duration-300">
-        Contact Us
-      </a>
+  <main id="main">
+  <section class="solo frame">
+    <a class="solo-brand" href="/" aria-label="Accelerate Performance Football home"><img width="209" height="213" src="/Assets/Logo Mark.png" alt="Accelerate Performance Football"></a>
+    <img class="frame-media" width="1440" height="1800" src="/Assets/Chris.jpeg" alt="" style="object-position: 50% 62%;">
+    <div class="frame-scrim" style="background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.55) 40%, rgba(10, 10, 10, 0) 72%);" aria-hidden="true"></div>
+    <div class="frame-copy">
+      <h1 class="display">404</h1>
+      <p class="text">The page you're looking for doesn't exist or has been moved.</p>
+      <div class="btn-pair"><a class="btn" href="/">Back to Home</a><a class="btn" href="contact.html">Contact Us</a></div>
     </div>
-  </div>
+  </section>
+  </main>
 
 </body>
 </html>

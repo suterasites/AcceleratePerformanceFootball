@@ -16,15 +16,15 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/Assets/favicon-96.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0A0A0A">
-  <meta name="description" content="Private football coaching in West Melbourne. Technique-focused 1-on-1 sessions for juniors stepping up and seniors sharpening their game. Book a session today.">
-  <meta name="keywords" content="private football coaching Melbourne, soccer coaching West Melbourne, football training Melbourne, junior football coaching, senior football training, 1 on 1 football coaching">
+  <meta name="description" content="Private football coaching in Melbourne. Technique-focused 1-on-1 sessions for juniors stepping up and seniors sharpening their game. Book a session today.">
+  <meta name="keywords" content="private football coaching Melbourne, soccer coaching Melbourne, football training Melbourne, junior football coaching, senior football training, 1 on 1 football coaching">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="fUhtQqUs7HUlJXzFgBoF88DtxW2KTrwUGs9H42TWjMg" />
   <link rel="canonical" href="https://www.accelerateperformancefootball.com.au/">
   <link rel="apple-touch-icon" href="/Assets/apple-touch-icon.png">
 
   <meta property="og:title" content="Accelerate Performance Football | Private Football Coaching Melbourne">
-  <meta property="og:description" content="Private football coaching in West Melbourne. Technique-focused 1-on-1 sessions for juniors and seniors. Football training refined.">
+  <meta property="og:description" content="Private football coaching in Melbourne. Technique-focused 1-on-1 sessions for juniors and seniors. Football training refined.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_AU">
   <meta property="og:url" content="https://www.accelerateperformancefootball.com.au/">
@@ -34,12 +34,12 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Accelerate Performance Football logo">
   <meta name="geo.region" content="AU-VIC">
-  <meta name="geo.placename" content="West Melbourne, Victoria">
+  <meta name="geo.placename" content="Melbourne, Victoria">
   <meta name="ICBM" content="-37.7996, 144.9353">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accelerate Performance Football | Private Football Coaching Melbourne">
-  <meta name="twitter:description" content="Private football coaching in West Melbourne. Technique-focused 1-on-1 sessions for juniors and seniors. Football training refined.">
+  <meta name="twitter:description" content="Private football coaching in Melbourne. Technique-focused 1-on-1 sessions for juniors and seniors. Football training refined.">
   <meta name="twitter:image" content="https://www.accelerateperformancefootball.com.au/Assets/Logo.png">
 
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
         "@type": "LocalBusiness",
         "@id": "https://www.accelerateperformancefootball.com.au/#business",
         "name": "Accelerate Performance Football",
-        "description": "Private football (soccer) coaching business based in West Melbourne offering technique and performance coaching for footballers of all levels.",
+        "description": "Private football (soccer) coaching business based in Melbourne offering technique and performance coaching for footballers of all levels.",
         "url": "https://www.accelerateperformancefootball.com.au/",
         "image": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
         "logo": "https://www.accelerateperformancefootball.com.au/Assets/Logo.png",
@@ -58,7 +58,7 @@
         "email": "info.accelerateperformance@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "West Melbourne",
+          "addressLocality": "Melbourne",
           "addressRegion": "VIC",
           "addressCountry": "AU"
         },
@@ -69,7 +69,7 @@
         },
         "areaServed": [
           { "@type": "Place", "name": "Melbourne" },
-          { "@type": "Place", "name": "West Melbourne" },
+          { "@type": "Place", "name": "Melbourne" },
           { "@type": "Place", "name": "Victoria" }
         ],
         "serviceType": ["Private Football Coaching", "Junior Football Training", "Senior Football Training", "Off-Season Conditioning", "Injury Return Training"],
@@ -96,506 +96,9 @@
   </script>
 
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="styles.css">
-
+  <link rel="stylesheet" href="apf.css">
   <link rel="preload" href="Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 
-  <style>
-    @font-face {
-      font-family: 'Inter Tight';
-      src: url('Assets/fonts/inter-tight-latin-variable.woff2') format('woff2');
-      font-weight: 400 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    :root {
-      --ground: #0A0A0A;
-      --surface: #1C1C1C;
-      --ink: #FFFFFF;
-      --soft: #B8B8B8;
-      --deep: #0A0A0A;
-      --line: rgba(255, 255, 255, 0.2);
-      --mono: grayscale(1) contrast(1.06);
-      --font: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
-
-      --m: clamp(20px, 5.555vw, 140px);
-      --gap: clamp(4.5rem, 8.4vw, 10rem);
-      --radius: 5px;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-
-      --display: clamp(3rem, 5.37vw, 6.5rem);
-      --h2: clamp(2rem, 3.34vw, 4rem);
-      --h3: clamp(1.625rem, 2.2vw, 2.5rem);
-      --body: clamp(1rem, 1.16vw, 1.25rem);
-      --label: 0.75rem;
-      --frame-end: clamp(128px, 8.9vw, 160px);
-      --nav-top: clamp(18px, 4.3vw, 66px);
-    }
-
-    html { scroll-behavior: smooth; background: var(--ground); }
-    html.menu-lock { overflow: hidden; }
-    body { font-family: var(--font); color: var(--ink); background: var(--ground); font-weight: 400; }
-    a { color: inherit; text-decoration: none; }
-    ol, ul { list-style: none; margin: 0; padding: 0; }
-    figure { margin: 0; }
-    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: var(--ink); color: var(--deep); }
-    .skip-link:focus { left: 0; }
-    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-
-    /* White bands */
-    .on-white { --soft: #555555; --line: rgba(10, 10, 10, 0.18); background: var(--ink); color: var(--deep); }
-    .on-white .btn { background: var(--deep); color: var(--ink); }
-    .on-white .btn:hover { background: #333333; }
-    .on-white .links a:hover span { border-color: var(--deep); }
-    .on-white :focus-visible { outline-color: var(--deep); }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: var(--ground); }
-    ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
-
-    /* Reveal */
-    .js .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.9s ease, transform 0.9s var(--ease);
-    }
-    .js .reveal.visible { opacity: 1; transform: none; }
-    .stagger > *:nth-child(2) { transition-delay: 120ms; }
-    .stagger > *:nth-child(3) { transition-delay: 240ms; }
-    .stagger > *:nth-child(4) { transition-delay: 360ms; }
-
-    /* Type */
-    .label { font-size: var(--label); font-weight: 500; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; }
-    .label-soft { color: var(--soft); }
-    .display { font-size: var(--display); font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
-    .h2 { font-size: var(--h2); font-weight: 500; line-height: 1.04; letter-spacing: -0.018em; text-wrap: balance; }
-    .h3 { font-size: var(--h3); font-weight: 500; line-height: 1.06; letter-spacing: -0.014em; }
-    .text { font-size: var(--body); line-height: 1.55; color: var(--soft); text-wrap: pretty; }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 60px;
-      padding: 0 30px;
-      border-radius: var(--radius);
-      background: var(--ink);
-      color: var(--deep);
-      font-size: var(--label);
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-align: center;
-      white-space: nowrap;
-      transition: background 0.25s ease;
-    }
-    .btn:hover { background: var(--soft); }
-    .btn-sm { height: 46px; padding: 0 22px; }
-    .btn-pair {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      width: min(100%, clamp(30rem, 38.2vw, 52rem));
-    }
-    .btn-pair .btn { padding: 0 12px; }
-
-    .links { display: flex; flex-wrap: wrap; column-gap: 28px; row-gap: 4px; }
-    .links a { display: inline-flex; align-items: center; min-height: 44px; }
-    .links a span { padding-bottom: 3px; border-bottom: 1px solid var(--line); transition: border-color 0.25s ease; }
-    .links a:hover span { border-color: var(--ink); }
-
-    /* Top bar */
-    .site-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      align-items: center;
-      padding: var(--nav-top) var(--m) 12px;
-      transition: padding 0.45s var(--ease), background 0.45s ease, transform 0.45s var(--ease);
-    }
-    .site-nav.is-solid { padding-top: 12px; background: var(--ground); }
-    .nav-start { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 30px); }
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 6px;
-      width: 44px;
-      height: 44px;
-      margin-left: -14px;
-      padding: 0 14px;
-      border-radius: var(--radius);
-      background: none;
-      color: var(--ink);
-      cursor: pointer;
-    }
-    .menu-btn span { display: block; width: 16px; height: 2px; background: currentColor; }
-    .nav-brand { display: block; }
-    .nav-brand img { width: auto; height: 44px; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      font-size: var(--label);
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.72);
-      transition: color 0.25s ease;
-    }
-    .nav-link:hover, .nav-group:hover .nav-link { color: var(--ink); }
-    .nav-group { position: relative; }
-    .nav-panel {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      width: min(500px, 80vw);
-      padding-top: 8px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translate(-50%, 6px);
-      transition: opacity 0.25s ease, transform 0.35s var(--ease), visibility 0.25s;
-    }
-    .nav-group:hover .nav-panel, .nav-group:focus-within .nav-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-    .nav-panel-body { padding: 10px; border-radius: var(--radius); background: var(--ink); color: var(--deep); }
-    .nav-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; }
-    .nav-panel-item { display: block; padding: 14px; border-radius: 3px; transition: background 0.2s ease; }
-    .nav-panel-item:hover, .nav-panel-all:hover { background: #EDEDED; }
-    .nav-panel-name { display: block; font-size: 15px; font-weight: 600; line-height: 1.25; }
-    .nav-panel-desc { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: #555555; }
-    .nav-panel-all { display: block; margin-top: 2px; padding: 12px 14px; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s ease; }
-    .nav-end { display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; }
-    .is-solid .nav-end { opacity: 1; visibility: visible; }
-    .site-nav :focus-visible, .menu :focus-visible { outline-offset: 2px; }
-
-    /* Menu */
-    .menu { position: fixed; inset: 0; z-index: 2147483600; visibility: hidden; transition: visibility 0s linear 0.55s; }
-    .menu.is-open { visibility: visible; transition-delay: 0s; }
-    .menu-scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.62); opacity: 0; transition: opacity 0.5s ease; }
-    .menu.is-open .menu-scrim { opacity: 1; }
-    .menu-panel {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      width: min(100%, 37rem);
-      padding: var(--nav-top) var(--m) clamp(24px, 4vh, 48px);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      background: var(--ground);
-      transform: translateX(-100%);
-      transition: transform 0.55s var(--ease);
-    }
-    .menu.is-open .menu-panel { transform: none; }
-    .menu-close { display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; background: none; color: var(--ink); cursor: pointer; }
-    .menu-list { margin-top: clamp(16px, 4vh, 44px); }
-    .menu-list > li { border-bottom: 1px solid var(--line); }
-    .menu-item { display: block; padding: 14px 0; font-size: clamp(1.625rem, 2.4vw, 2.125rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.014em; transition: color 0.2s ease; }
-    .menu-item:hover { color: var(--soft); }
-    .menu-sub { padding: 0 0 14px; }
-    .menu-sub a { display: flex; align-items: center; min-height: 34px; font-size: 16px; color: var(--soft); transition: color 0.2s ease; }
-    .menu-sub a:hover { color: var(--ink); }
-    .menu-end { display: grid; gap: 14px; margin-top: auto; padding-top: 28px; }
-    .menu-end .btn { width: 100%; }
-
-    /* Full-bleed frames: the hero's composition, repeated */
-    .frame { position: relative; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: var(--ground); }
-    .frame-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .frame-scrim { position: absolute; inset: 0; pointer-events: none; }
-    .frame-copy { position: relative; display: grid; justify-items: start; }
-    .frame-copy .label { margin-bottom: 14px; }
-
-    /* Hero */
-    .hero { height: 100vh; height: 100svh; min-height: 34rem; padding: 0 var(--m) var(--frame-end); }
-    .hero-video { filter: grayscale(1) contrast(1.08) brightness(0.88); }
-    .hero .frame-scrim {
-      background:
-        linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0) 24%),
-        linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.56) 36%, rgba(10, 10, 10, 0) 68%);
-    }
-    .hero-label { display: flex; align-items: center; gap: 13px; }
-    .hero-label::before { content: ''; flex: none; width: 26px; height: 1px; background: currentColor; }
-    .hero .display { margin-bottom: clamp(24px, 2.7vw, 40px); }
-    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-    .hero .frame-copy > * { animation: rise 1.1s var(--ease) both; }
-    .hero .frame-copy > *:nth-child(2) { animation-delay: 0.1s; }
-    .hero .frame-copy > *:nth-child(3) { animation-delay: 0.2s; }
-
-    /* Intro and proof */
-    .intro { padding: var(--gap) var(--m); }
-    .intro-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 6vw, 7rem); align-items: end; }
-    .intro .h2 { max-width: 19.5em; }
-    .intro-reach .label { margin-bottom: 6px; }
-    .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(3rem, 6vw, 6rem); border-top: 1px solid var(--line); }
-    .fact { padding: clamp(16px, 1.6vw, 26px) 24px 0 0; }
-    .fact + .fact { padding-left: clamp(16px, 1.6vw, 26px); border-left: 1px solid var(--line); }
-    .fact-num { font-size: var(--h2); font-weight: 500; line-height: 1; letter-spacing: -0.018em; margin-bottom: clamp(36px, 4.6vw, 72px); }
-
-    /* Section heads */
-    .head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.25rem, 4vw, 5rem); align-items: end; padding: 0 var(--m) clamp(2.25rem, 3.6vw, 4rem); }
-    .head .label { margin-bottom: 14px; }
-
-    /* Programs */
-    .programs-head { padding-top: 0; }
-    .rail { display: flex; gap: 2px; }
-    .program { position: relative; display: block; min-width: 0; overflow: hidden; background: var(--surface); }
-    .program img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--mono); transition: transform 1.2s var(--ease); }
-    .program:hover img { transform: scale(1.03); }
-    .program .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.62) 30%, rgba(10, 10, 10, 0) 62%); }
-    .program-body { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 2.2vw, 36px); }
-    .program-body .label { margin-bottom: 10px; color: var(--soft); }
-    .program:focus-visible { outline-offset: -4px; }
-    .program-inner { padding-top: 14px; }
-    .program-inner .btn { margin-top: 18px; }
-    .programs-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding: clamp(2rem, 3.2vw, 3.5rem) var(--m) var(--gap); }
-    .programs-note-copy { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; }
-    .programs-note-copy .h3 { font-size: clamp(1.375rem, 1.8vw, 2rem); }
-
-    /* Coaches */
-    .coaches { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 2px; }
-    .coaches-head { grid-column: 2; grid-row: 1; padding: clamp(2.5rem, 4vw, 5rem) var(--m) clamp(2.5rem, 4vw, 5rem) clamp(1.5rem, 3vw, 4rem); }
-    .coaches-head .label { margin-bottom: 14px; }
-    .coaches-head .text { margin-top: clamp(14px, 1.4vw, 22px); }
-    .coach { position: relative; overflow: hidden; background: var(--surface); }
-    .coach img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--mono); }
-    .coach .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.94) 0%, rgba(10, 10, 10, 0.66) 34%, rgba(10, 10, 10, 0) 68%); }
-    .coach-second .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.86) 46%, rgba(10, 10, 10, 0.32) 74%, rgba(10, 10, 10, 0) 92%); }
-    .coach-lead { grid-column: 1; grid-row: 1 / 3; min-height: clamp(36rem, 62vw, 66rem); }
-    .coach-second { grid-column: 2; grid-row: 2; min-height: clamp(26rem, 33vw, 38rem); }
-    .coach-body { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; height: 100%; padding: clamp(20px, 2.8vw, 44px); }
-    .coach-lead .coach-body { padding: var(--frame-end) var(--m) clamp(28px, 3.6vw, 56px); }
-    .coach-body .label { margin-bottom: 10px; color: var(--soft); }
-    .coach-body .text { max-width: 32em; margin-top: 12px; }
-    .coach-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 18px; }
-    .coach-foot .label { margin: 0; color: var(--ink); }
-
-    /* How it works */
-    .how { padding: var(--gap) 0; }
-    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0 var(--m); border-top: 1px solid var(--line); }
-    .step { padding: clamp(16px, 1.6vw, 26px) clamp(20px, 3vw, 48px) 0 0; }
-    .step + .step { padding-left: clamp(16px, 1.6vw, 26px); border-left: 1px solid var(--line); }
-    .step .label { display: block; margin-bottom: clamp(36px, 5.4vw, 88px); color: var(--soft); }
-    .step .text { margin-top: 12px; }
-
-    /* Follow the work */
-    .work { padding: 0 0 var(--gap); }
-    .work .btn { justify-self: start; margin-top: 20px; }
-    .strip { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1.25fr; gap: 2px; }
-    .strip figure { position: relative; overflow: hidden; height: clamp(22rem, 36vw, 40rem); background: var(--surface); }
-    .strip img { width: 100%; height: 100%; object-fit: cover; filter: var(--mono); }
-
-    /* Partners */
-    .partners { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 10fr); gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 0 var(--m) var(--gap); }
-    .partner-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
-    .partner { display: flex; align-items: center; justify-content: center; height: clamp(72px, 6.6vw, 110px); padding: 12px clamp(12px, 1.6vw, 26px); border: 1px solid var(--line); border-radius: var(--radius); transition: background 0.25s ease; }
-    .partner:hover { background: #EDEDED; }
-    .partner img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(1) brightness(0.82) contrast(2); }
-
-    /* APF Online */
-    .online { min-height: 100vh; min-height: 100svh; padding: clamp(7rem, 12vw, 12rem) var(--m) var(--frame-end); }
-    .online .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.55) 36%, rgba(10, 10, 10, 0) 70%); }
-    .online .frame-media { filter: var(--mono); }
-    .online .text { max-width: 34em; margin-top: 14px; color: #DCDCDC; }
-    .online .btn-pair { margin-top: clamp(24px, 2.7vw, 40px); }
-
-    /* FAQ */
-    .faq-band { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 5rem); padding: var(--gap) var(--m); }
-    .faq-side .label { margin-bottom: 14px; }
-    .faq-side .links { margin-top: 12px; }
-    .faq { border-top: 1px solid var(--line); }
-    .faq details { border-bottom: 1px solid var(--line); }
-    .faq summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: clamp(18px, 1.7vw, 26px) 0;
-      font-size: clamp(1.125rem, 1.55vw, 1.625rem);
-      font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: -0.008em;
-      cursor: pointer;
-      list-style: none;
-    }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq-icon { position: relative; flex: none; width: 14px; height: 14px; }
-    .faq-icon::before, .faq-icon::after { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: currentColor; transition: transform 0.35s var(--ease); }
-    .faq-icon::after { transform: rotate(90deg); }
-    .faq details[open] .faq-icon::after { transform: rotate(0deg); }
-    .faq details .text { max-width: 40em; padding-bottom: clamp(18px, 1.7vw, 26px); }
-
-    /* Book a session */
-    .book {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, clamp(26rem, 36vw, 40rem));
-      gap: clamp(2rem, 5vw, 6rem);
-      align-items: end;
-      overflow: hidden;
-      padding: clamp(7rem, 10vw, 10rem) var(--m) clamp(3rem, 5.55vw, 7rem);
-    }
-    .book .frame-media { filter: var(--mono); }
-    .book .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.78) 48%, rgba(10, 10, 10, 0.2) 100%); }
-    .book-info { position: relative; }
-    .book-info .label { margin-bottom: 14px; }
-    .book-info .text { color: #DCDCDC; }
-    .book-lead { max-width: 30em; margin-top: 14px; }
-    .next-steps { display: grid; gap: 12px; max-width: 34em; margin-top: clamp(24px, 2.6vw, 40px); padding-top: clamp(16px, 1.6vw, 24px); border-top: 1px solid var(--line); }
-    .next-steps li { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: baseline; }
-    .next-steps .num { font-size: var(--label); font-weight: 500; letter-spacing: 0.14em; color: var(--soft); }
-    .book-where { max-width: 34em; margin-top: clamp(18px, 1.8vw, 26px); }
-    .book-info .links { margin-top: 10px; }
-
-    /* Form */
-    .book-form { position: relative; padding: clamp(22px, 2.5vw, 40px); border-radius: var(--radius); background: var(--ink); color: var(--deep); }
-    .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
-    .field-row-single { margin-bottom: 14px; }
-    .book-form label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #444444; }
-    .book-form label span, .form-note span { color: var(--deep); }
-    .book-form input:not([type="hidden"]), .book-form select, .book-form textarea {
-      display: block;
-      width: 100%;
-      min-height: 46px;
-      padding: 11px 13px;
-      border: 1px solid #CCCCCC;
-      border-radius: var(--radius);
-      background-color: var(--ink);
-      font: inherit;
-      font-size: 15px;
-      color: var(--deep);
-      outline: none;
-      transition: border-color 0.2s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .book-form select { padding-right: 34px; background-repeat: no-repeat; background-position: right 14px center; }
-    .book-form textarea { resize: vertical; }
-    .book-form ::placeholder { color: #767676; }
-    .book-form input:not([type="hidden"]):focus, .book-form select:focus, .book-form textarea:focus { border-color: var(--ground); box-shadow: inset 0 0 0 1px var(--ground); }
-    .form-note { margin-bottom: 14px; font-size: 13px; color: #555555; }
-    .book-form button[type="submit"] { width: 100%; background: var(--ground); color: var(--ink); border: 0; cursor: pointer; }
-    .book-form button[type="submit"]:hover { background: #333333; }
-    .book-form button[type="submit"]:focus-visible { outline-color: var(--ground); }
-
-    /* Footer */
-    .site-footer { padding: clamp(3.5rem, 6vw, 6rem) var(--m) 28px; }
-    .footer-top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr); gap: clamp(2rem, 3vw, 4rem); }
-    .footer-brand img { width: auto; height: 52px; }
-    .footer-brand .text { max-width: 24em; margin: 18px 0 8px; }
-    .footer-col h3 { margin-bottom: 14px; color: var(--soft); }
-    .footer-links { display: grid; justify-items: start; gap: 2px; }
-    .footer-links a, .footer-links p { display: inline-flex; align-items: center; min-height: 32px; font-size: 15px; line-height: 1.3; color: var(--ink); transition: color 0.2s ease; overflow-wrap: anywhere; }
-    .footer-links a:hover { color: var(--soft); }
-    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; margin-top: clamp(2.5rem, 5vw, 5rem); padding-top: 18px; border-top: 1px solid var(--line); color: var(--soft); font-size: 13px; }
-    .footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
-
-    /* Programs open out on wide screens */
-    @media (min-width: 1024px) {
-      .rail { height: clamp(34rem, 54vw, 60rem); }
-      .program { flex: 1 1 0; transition: flex-grow 0.8s var(--ease); }
-      .rail:not(:hover):not(:focus-within) .program:first-child,
-      .rail .program:hover,
-      .rail .program:focus-visible { flex-grow: 2.15; }
-      .program-more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.7s var(--ease), opacity 0.35s ease; }
-      .program-clip { min-height: 0; overflow: hidden; }
-      .program-inner { width: clamp(19rem, 26vw, 30rem); }
-      .rail:not(:hover):not(:focus-within) .program:first-child .program-more,
-      .rail .program:hover .program-more,
-      .rail .program:focus-visible .program-more { grid-template-rows: 1fr; opacity: 1; transition-delay: 0s, 0.15s; }
-    }
-
-    @media (max-width: 1023px) {
-      :root { --nav-top: 14px; }
-      .site-nav { grid-template-columns: minmax(0, 1fr) auto; padding-bottom: 8px; }
-      .site-nav.is-solid { padding-top: 8px; }
-      .nav-links { display: none; }
-      .nav-brand img { height: 38px; }
-
-      .intro-top { grid-template-columns: minmax(0, 1fr); align-items: start; }
-      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .fact:nth-child(3) { padding-left: 0; border-left: 0; }
-      .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
-      .fact-num { margin-bottom: 24px; }
-      .fact { padding-bottom: 20px; }
-
-      .head { grid-template-columns: minmax(0, 1fr); align-items: start; }
-
-      .rail { gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--m); padding-inline: var(--m); scrollbar-width: none; overscroll-behavior-x: contain; }
-      .rail::-webkit-scrollbar { display: none; }
-      .program { display: flex; flex-direction: column; flex: 0 0 min(80vw, 25rem); background: none; scroll-snap-align: start; }
-      .program img { position: relative; flex: none; height: auto; aspect-ratio: 1 / 0.96; border-radius: var(--radius); }
-      .program:hover img { transform: none; }
-      .program .frame-scrim { display: none; }
-      .program-body { position: relative; flex: 1; display: flex; flex-direction: column; padding: 18px 0 0; }
-      .program-more, .program-clip, .program-inner { display: flex; flex-direction: column; flex: 1; }
-      .program-inner { padding-top: 10px; }
-      .program-inner .btn { align-self: flex-start; margin-top: auto; }
-      .program-inner .text { margin-bottom: 16px; }
-      .coach .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.84) 44%, rgba(10, 10, 10, 0.3) 66%, rgba(10, 10, 10, 0) 82%); }
-
-      .coaches { grid-template-columns: minmax(0, 1fr); }
-      .coaches-head { grid-column: 1; grid-row: auto; padding: 0 var(--m) clamp(2rem, 5vw, 3rem); }
-      .coach-lead, .coach-second { grid-column: 1; grid-row: auto; min-height: clamp(34rem, 125vw, 46rem); }
-      .coach-lead .coach-body, .coach-body { padding: var(--frame-end) var(--m) 28px; }
-
-      .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .strip figure { height: clamp(15rem, 56vw, 32rem); }
-
-      .partners { grid-template-columns: minmax(0, 1fr); }
-      .partner-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-      .faq-band { grid-template-columns: minmax(0, 1fr); }
-
-      .book { grid-template-columns: minmax(0, 1fr); padding-top: clamp(9rem, 44vw, 16rem); }
-      .book .frame-media { height: 100%; object-position: 50% 0; }
-      .book .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.96) 62%, rgba(10, 10, 10, 0.5) 86%, rgba(10, 10, 10, 0.25) 100%); }
-
-      .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-
-    @media (max-width: 639px) {
-      :root {
-        --display: calc((100vw - 2 * var(--m)) / 7.12);
-        --frame-end: 128px;
-      }
-      .steps { grid-template-columns: minmax(0, 1fr); }
-      .step { padding-right: 0; padding-bottom: 24px; }
-      .step + .step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-      .step .label { margin-bottom: 18px; }
-      .field-row { grid-template-columns: minmax(0, 1fr); }
-      .book-form input:not([type="hidden"]), .book-form select, .book-form textarea { font-size: 16px; }
-      .partner-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .partner:last-child { grid-column: 1 / -1; }
-      .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .footer-col-contact { grid-column: 1 / -1; }
-      .footer-bottom { display: grid; }
-      .btn-pair { gap: 10px; width: 100%; }
-      .btn { height: 56px; }
-      .btn-sm { height: 46px; }
-    }
-
-    @media (max-width: 359px) {
-      .btn-pair { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .js .reveal { opacity: 1; transform: none; transition: none; }
-      .hero .frame-copy > * { animation: none; }
-      .program, .program img, .program-more, .menu-panel { transition: none; }
-    }
-  </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
   <!-- Sutera lead events (GA4) -->
@@ -616,11 +119,11 @@
   })();
   </script>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- ==================== NAVIGATION ==================== -->
+  <!-- SITE-NAV:START -->
   <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-start">
       <button id="menu-btn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
@@ -695,11 +198,11 @@
     </div>
   </div>
 
-  <!-- Nav scripts -->
   <script>
     (function(){var b=document.getElementById('menu-btn'),m=document.getElementById('site-menu'),c=document.getElementById('menu-close'),r=document.documentElement;function s(o){m.classList.toggle('is-open',o);m.inert=!o;b.setAttribute('aria-expanded',o?'true':'false');r.classList.toggle('menu-lock',o);(o?c:b).focus({preventScroll:true})}b.addEventListener('click',function(){s(true)});m.querySelectorAll('[data-menu-close],a').forEach(function(e){e.addEventListener('click',function(){s(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('is-open'))s(false)})})();
     (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;n.classList.toggle('is-solid',y>80);n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y},{passive:true})})();
   </script>
+  <!-- SITE-NAV:END -->
 
   <main id="main">
 
@@ -901,6 +404,7 @@
 
   <!-- ==================== PARTNERS ==================== -->
   <!-- Inline reviews section goes above the partners, once there is a second Elfsight widget set to an inline layout -->
+  <!-- SITE-PARTNERS:START -->
   <section class="partners on-white" aria-labelledby="partners-title">
     <h2 id="partners-title" class="label label-soft reveal">Partners</h2>
     <div class="partner-row reveal">
@@ -911,6 +415,7 @@
       <a class="partner" href="https://hcdistributors.com.au/" target="_blank" rel="noopener noreferrer"><img width="300" height="300" src="Assets/Sponsors/cropped-HCD_Logo_New.webp" alt="HC Distributors" loading="lazy"></a>
     </div>
   </section>
+  <!-- SITE-PARTNERS:END -->
 
   <!-- ==================== APF ONLINE ==================== -->
   <section class="online frame" aria-labelledby="online-title">
@@ -981,71 +486,71 @@
       </p>
     </div>
 
-    <form id="home-contact-form" class="book-form reveal" action="https://formspree.io/f/xgopwqga" method="POST">
-        <input type="hidden" name="_subject" value="New enquiry (homepage) - Accelerate Performance Football">
-        <input type="hidden" name="_next" value="https://www.accelerateperformancefootball.com.au/thank-you.html">
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-        <div class="field-row">
-          <div>
-            <label for="home-form-first-name">First name <span>*</span></label>
-            <input type="text" id="home-form-first-name" name="first_name" autocomplete="given-name" required aria-required="true" placeholder="Jordan">
-          </div>
-          <div>
-            <label for="home-form-last-name">Last name</label>
-            <input type="text" id="home-form-last-name" name="last_name" autocomplete="family-name" placeholder="Smith">
-          </div>
-        </div>
-        <div class="field-row">
-          <div>
-            <label for="home-form-email">Email <span>*</span></label>
-            <input type="email" id="home-form-email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com">
-          </div>
-          <div>
-            <label for="home-form-phone">Phone number <span>*</span></label>
-            <input type="tel" id="home-form-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true" placeholder="04XX XXX XXX">
-          </div>
-        </div>
-        <div class="field-row">
-          <div>
-            <label for="home-form-age">Age</label>
-            <input type="number" id="home-form-age" name="age" min="5" max="99" inputmode="numeric" placeholder="e.g. 14">
-          </div>
-          <div>
-            <label for="home-form-club">Current Club (if any)</label>
-            <input type="text" id="home-form-club" name="current_club" placeholder="e.g. your current club">
-          </div>
-        </div>
-        <div class="field-row-single">
-          <label for="home-form-service">Interested In</label>
-          <select id="home-form-service" name="service" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
-            <option value="">Select a program</option>
-            <option value="junior-prep">Junior Prep</option>
-            <option value="senior-refinement">Senior Refinement</option>
-            <option value="off-season">Off-Season Conditioning</option>
-            <option value="injury-return">Injury Return</option>
-            <option value="not-sure">Not Sure Yet</option>
-          </select>
-        </div>
-        <div class="field-row-single">
-          <label for="home-form-message">Message <span>*</span></label>
-          <textarea id="home-form-message" name="message" rows="4" required aria-required="true" placeholder="Tell us about your goals and current level"></textarea>
-        </div>
-        <p class="form-note"><span>*</span> Required. We'll reply within 24 hours.</p>
-        <button type="submit" class="btn">
-          Send Message
-    
-        </button>
-      </form>
+    <form action="https://formspree.io/f/xgopwqga" class="book-form reveal" id="home-contact-form" method="POST">
+<input name="_subject" type="hidden" value="New enquiry (homepage) - Accelerate Performance Football"/>
+<input name="_next" type="hidden" value="https://www.accelerateperformancefootball.com.au/thank-you.html"/>
+<input aria-hidden="true" autocomplete="off" name="_gotcha" style="display:none" tabindex="-1" type="text"/>
+<div class="field-row">
+<div>
+<label for="home-form-first-name">First name <span>*</span></label>
+<input aria-required="true" autocomplete="given-name" id="home-form-first-name" name="first_name" placeholder="Jordan" required="" type="text"/>
+</div>
+<div>
+<label for="home-form-last-name">Last name</label>
+<input autocomplete="family-name" id="home-form-last-name" name="last_name" placeholder="Smith" type="text"/>
+</div>
+</div>
+<div class="field-row">
+<div>
+<label for="home-form-email">Email <span>*</span></label>
+<input aria-required="true" autocomplete="email" id="home-form-email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div>
+<label for="home-form-phone">Phone number <span>*</span></label>
+<input aria-required="true" autocomplete="tel" id="home-form-phone" inputmode="tel" name="phone" placeholder="04XX XXX XXX" required="" type="tel"/>
+</div>
+</div>
+<div class="field-row">
+<div>
+<label for="home-form-age">Age</label>
+<input id="home-form-age" inputmode="numeric" max="99" min="5" name="age" placeholder="e.g. 14" type="number"/>
+</div>
+<div>
+<label for="home-form-club">Current Club (if any)</label>
+<input id="home-form-club" name="current_club" placeholder="e.g. your current club" type="text"/>
+</div>
+</div>
+<div class="field-row-single">
+<label for="home-form-service">Interested In</label>
+<select id="home-form-service" name="service" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
+<option value="">Select a program</option>
+<option value="junior-prep">Junior Prep</option>
+<option value="senior-refinement">Senior Refinement</option>
+<option value="off-season">Off-Season Conditioning</option>
+<option value="injury-return">Injury Return</option>
+<option value="not-sure">Not Sure Yet</option>
+</select>
+</div>
+<div class="field-row-single">
+<label for="home-form-message">Message <span>*</span></label>
+<textarea aria-required="true" id="home-form-message" name="message" placeholder="Tell us about your goals and current level" required="" rows="4"></textarea>
+</div>
+<p class="form-note"><span>*</span> Required. We'll reply within 24 hours.</p>
+<button class="btn" type="submit">
+                Send Message
+                
+</button>
+</form>
   </section>
 
   </main>
 
-  <!-- ==================== GOOGLE REVIEWS (STICKY) ==================== -->
-  <div class="fixed bottom-4 left-4 z-50">
+  <!-- GOOGLE REVIEWS (STICKY) -->
+  <div class="reviews-badge">
     <div class="elfsight-app-aefd1437-8568-466c-9489-4de114840c19" data-elfsight-app-lazy></div>
   </div>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- SITE-FOOTER:START -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-top">
       <div class="footer-brand">
@@ -1055,7 +560,7 @@
       </div>
 
       <div class="footer-col">
-        <h3 class="label">Programs</h3>
+        <h2 class="label">Programs</h2>
         <nav class="footer-links" aria-label="Programs">
           <a href="services/junior-prep.html">Junior Prep</a>
           <a href="services/senior-refinement.html">Senior Refinement</a>
@@ -1066,7 +571,7 @@
       </div>
 
       <div class="footer-col">
-        <h3 class="label">Navigation</h3>
+        <h2 class="label">Navigation</h2>
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="about.html">About</a>
           <a href="coaches/chris-sutera.html">Chris Sutera</a>
@@ -1079,7 +584,7 @@
       </div>
 
       <div class="footer-col footer-col-contact">
-        <h3 class="label">Contact</h3>
+        <h2 class="label">Contact</h2>
         <div class="footer-links">
           <a href="tel:0401117862">0401 117 862</a>
           <a href="mailto:info.accelerateperformance@gmail.com">info.accelerateperformance@gmail.com</a>
@@ -1095,7 +600,6 @@
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
   <!-- Reveal on scroll -->
   <script>
     (function() {
@@ -1107,6 +611,9 @@
       }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
       els.forEach(function(el) { observer.observe(el); });
     })();
+  </script>
+  <!-- SITE-FOOTER:END -->
+  <script>
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelector('.hero-video').pause(); }
   </script>
 
