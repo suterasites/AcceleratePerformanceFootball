@@ -15,7 +15,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="/Assets/favicon-96.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0A0A0A">
+  <meta name="theme-color" content="#0D2122">
   <meta name="description" content="Private football coaching in West Melbourne. Technique-focused 1-on-1 sessions for juniors stepping up and seniors sharpening their game. Book a session today.">
   <meta name="keywords" content="private football coaching Melbourne, soccer coaching West Melbourne, football training Melbourne, junior football coaching, senior football training, 1 on 1 football coaching">
   <meta name="robots" content="index, follow">
@@ -95,149 +95,506 @@
   }
   </script>
 
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
 
-  <link rel="preload" href="Assets/fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="Assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Assets/Chris and Junior Player.jpeg" as="image" media="(orientation: landscape)">
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #0A0A0A; font-weight: 300; }
-    h1, h2, h3, .font-display { font-family: 'Bebas Neue', system-ui, sans-serif; font-weight: 400; letter-spacing: 0.04em; }
-    h4, .font-sans-bold { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; }
-
-    /* Grain overlay */
-    .grain::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
+    @font-face {
+      font-family: 'Inter Tight';
+      src: url('Assets/fonts/inter-tight-latin-variable.woff2') format('woff2');
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
     }
 
-    /* Shadows */
-    .shadow-card {
-      box-shadow:
-        0 1px 3px rgba(0,0,0,0.12),
-        0 6px 16px rgba(0,0,0,0.15);
-    }
-    .shadow-lift {
-      box-shadow:
-        0 2px 4px rgba(0,0,0,0.1),
-        0 12px 32px rgba(0,0,0,0.2),
-        0 28px 56px rgba(0,0,0,0.12);
+    :root {
+      --ground: #0D2122;
+      --surface: #24434B;
+      --ink: #FFFFFF;
+      --sage: #B4BAB3;
+      --deep: #0B1516;
+      --line: rgba(180, 186, 179, 0.24);
+      --font: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      --m: clamp(20px, 5.555vw, 140px);
+      --gap: clamp(4.5rem, 8.4vw, 10rem);
+      --radius: 5px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+      --display: clamp(3rem, 5.37vw, 6.5rem);
+      --h2: clamp(2rem, 3.34vw, 4rem);
+      --h3: clamp(1.625rem, 2.2vw, 2.5rem);
+      --body: clamp(1rem, 1.16vw, 1.25rem);
+      --label: 0.75rem;
+      --frame-end: clamp(128px, 8.9vw, 160px);
+      --nav-top: clamp(18px, 4.3vw, 66px);
     }
 
-    /* Spring easing */
-    .ease-spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+    html { scroll-behavior: smooth; background: var(--ground); }
+    html.menu-lock { overflow: hidden; }
+    body { font-family: var(--font); color: var(--ink); background: var(--ground); font-weight: 400; }
+    a { color: inherit; text-decoration: none; }
+    ol, ul { list-style: none; margin: 0; padding: 0; }
+    figure { margin: 0; }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: var(--ink); color: var(--deep); }
+    .skip-link:focus { left: 0; }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-    /* Focus */
-    .btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: var(--ground); }
+    ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
 
     /* Reveal */
-    .reveal {
+    .js .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s var(--ease);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    /* Stagger */
-    .stagger > *:nth-child(1) { transition-delay: 0ms; }
+    .js .reveal.visible { opacity: 1; transform: none; }
     .stagger > *:nth-child(2) { transition-delay: 120ms; }
     .stagger > *:nth-child(3) { transition-delay: 240ms; }
     .stagger > *:nth-child(4) { transition-delay: 360ms; }
 
-    /* Image treatment */
-    .img-treat {
-      position: relative;
-      overflow: hidden;
-    }
-    .img-treat::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.15), transparent 60%);
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-    .img-treat img {
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .img-treat:hover img {
-      transform: scale(1.04);
-    }
+    /* Type */
+    .label { font-size: var(--label); font-weight: 500; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; }
+    .label-sage { color: var(--sage); }
+    .display { font-size: var(--display); font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
+    .h2 { font-size: var(--h2); font-weight: 500; line-height: 1.04; letter-spacing: -0.018em; text-wrap: balance; }
+    .h3 { font-size: var(--h3); font-weight: 500; line-height: 1.06; letter-spacing: -0.014em; }
+    .text { font-size: var(--body); line-height: 1.55; color: var(--sage); text-wrap: pretty; }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: #0A0A0A; }
-    ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #444; }
-
-    /* Marquee */
-    @keyframes drift {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      padding: 0 30px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--deep);
+      font-size: var(--label);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      transition: background 0.25s ease;
     }
-    .drift-track { animation: drift 30s linear infinite; }
-
-    /* Counter animation */
-    .stat-num {
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      line-height: 1;
-      letter-spacing: 0.02em;
+    .btn:hover { background: var(--sage); }
+    .btn-sm { height: 46px; padding: 0 22px; }
+    .btn-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      width: min(100%, clamp(30rem, 38.2vw, 52rem));
     }
+    .btn-pair .btn { padding: 0 12px; }
 
-    /* Horizontal rule accent */
-    .accent-line {
-      width: 40px;
-      height: 1px;
-      background: #FFFFFF;
-    }
+    .links { display: flex; flex-wrap: wrap; column-gap: 28px; row-gap: 4px; }
+    .links a { display: inline-flex; align-items: center; min-height: 44px; }
+    .links a span { padding-bottom: 3px; border-bottom: 1px solid var(--line); transition: border-color 0.25s ease; }
+    .links a:hover span { border-color: var(--ink); }
 
-    /* Service card hover line */
-    .service-card::before {
-      content: '';
-      position: absolute;
+    /* Top bar */
+    .site-nav {
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: #FFFFFF;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 50;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      padding: var(--nav-top) var(--m) 12px;
+      transition: padding 0.45s var(--ease), background 0.45s ease, transform 0.45s var(--ease);
     }
-    .service-card:hover::before {
-      transform: scaleX(1);
+    .site-nav.is-solid { padding-top: 12px; background: var(--ground); }
+    .nav-start { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 30px); }
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 44px;
+      height: 44px;
+      margin-left: -14px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      background: none;
+      color: var(--ink);
+      cursor: pointer;
     }
-
-    /* Video hero */
-    .hero-video {
+    .menu-btn span { display: block; width: 16px; height: 2px; background: currentColor; }
+    .nav-brand { display: block; }
+    .nav-brand img { width: auto; height: 44px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: var(--label);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      transition: color 0.25s ease;
+    }
+    .nav-link:hover, .nav-group:hover .nav-link { color: var(--ink); }
+    .nav-group { position: relative; }
+    .nav-panel {
       position: absolute;
-      inset: 0;
+      top: 100%;
+      left: 50%;
+      width: min(500px, 80vw);
+      padding-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 6px);
+      transition: opacity 0.25s ease, transform 0.35s var(--ease), visibility 0.25s;
+    }
+    .nav-group:hover .nav-panel, .nav-group:focus-within .nav-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    .nav-panel-body { padding: 10px; border-radius: var(--radius); background: var(--ink); color: var(--deep); }
+    .nav-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; }
+    .nav-panel-item { display: block; padding: 14px; border-radius: 3px; transition: background 0.2s ease; }
+    .nav-panel-item:hover, .nav-panel-all:hover { background: #E9ECE7; }
+    .nav-panel-name { display: block; font-size: 15px; font-weight: 600; line-height: 1.25; }
+    .nav-panel-desc { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: #4B5B5A; }
+    .nav-panel-all { display: block; margin-top: 2px; padding: 12px 14px; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s ease; }
+    .nav-end { display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; }
+    .is-solid .nav-end { opacity: 1; visibility: visible; }
+    .site-nav :focus-visible, .menu :focus-visible { outline-offset: 2px; }
+
+    /* Menu */
+    .menu { position: fixed; inset: 0; z-index: 2147483600; visibility: hidden; transition: visibility 0s linear 0.55s; }
+    .menu.is-open { visibility: visible; transition-delay: 0s; }
+    .menu-scrim { position: absolute; inset: 0; background: rgba(6, 16, 17, 0.62); opacity: 0; transition: opacity 0.5s ease; }
+    .menu.is-open .menu-scrim { opacity: 1; }
+    .menu-panel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 37rem);
+      padding: var(--nav-top) var(--m) clamp(24px, 4vh, 48px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: var(--ground);
+      transform: translateX(-100%);
+      transition: transform 0.55s var(--ease);
+    }
+    .menu.is-open .menu-panel { transform: none; }
+    .menu-close { display: inline-flex; align-items: center; align-self: flex-start; min-height: 44px; background: none; color: var(--ink); cursor: pointer; }
+    .menu-list { margin-top: clamp(16px, 4vh, 44px); }
+    .menu-list > li { border-bottom: 1px solid var(--line); }
+    .menu-item { display: block; padding: 14px 0; font-size: clamp(1.625rem, 2.4vw, 2.125rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.014em; transition: color 0.2s ease; }
+    .menu-item:hover { color: var(--sage); }
+    .menu-sub { padding: 0 0 14px; }
+    .menu-sub a { display: flex; align-items: center; min-height: 34px; font-size: 16px; color: var(--sage); transition: color 0.2s ease; }
+    .menu-sub a:hover { color: var(--ink); }
+    .menu-end { display: grid; gap: 14px; margin-top: auto; padding-top: 28px; }
+    .menu-end .btn { width: 100%; }
+
+    /* Full-bleed frames: the hero's composition, repeated */
+    .frame { position: relative; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: var(--ground); }
+    .frame-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .frame-scrim { position: absolute; inset: 0; pointer-events: none; }
+    .frame-copy { position: relative; display: grid; justify-items: start; }
+    .frame-copy .label { margin-bottom: 14px; }
+
+    /* Hero */
+    .hero { height: 100vh; height: 100svh; min-height: 34rem; padding: 0 var(--m) var(--frame-end); }
+    .hero-photo { filter: saturate(0.96) contrast(1.04); transform-origin: 62% 40%; animation: drift 26s ease-out both; }
+    @keyframes drift { from { transform: scale(1.07); } to { transform: scale(1); } }
+    .hero-video { display: none; filter: saturate(0.94) contrast(1.05) brightness(0.9); }
+    @media (orientation: portrait) {
+      .hero-photo { animation: none; }
+      .hero-video { display: block; }
+    }
+    .hero .frame-scrim {
+      background:
+        linear-gradient(to bottom, rgba(13, 33, 34, 0.6) 0%, rgba(13, 33, 34, 0) 24%),
+        linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.56) 36%, rgba(13, 33, 34, 0) 68%);
+    }
+    .hero-label { display: flex; align-items: center; gap: 13px; }
+    .hero-label::before { content: ''; flex: none; width: 26px; height: 1px; background: currentColor; }
+    .hero .display { margin-bottom: clamp(24px, 2.7vw, 40px); }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .hero .frame-copy > * { animation: rise 1.1s var(--ease) both; }
+    .hero .frame-copy > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero .frame-copy > *:nth-child(3) { animation-delay: 0.2s; }
+
+    /* Intro and proof */
+    .intro { padding: var(--gap) var(--m); }
+    .intro-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 6vw, 7rem); align-items: end; }
+    .intro .h2 { max-width: 19.5em; }
+    .intro-reach .label { margin-bottom: 6px; }
+    .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(3rem, 6vw, 6rem); border-top: 1px solid var(--line); }
+    .fact { padding: clamp(16px, 1.6vw, 26px) 24px 0 0; }
+    .fact + .fact { padding-left: clamp(16px, 1.6vw, 26px); border-left: 1px solid var(--line); }
+    .fact-num { font-size: var(--h2); font-weight: 500; line-height: 1; letter-spacing: -0.018em; margin-bottom: clamp(36px, 4.6vw, 72px); }
+
+    /* Section heads */
+    .head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.25rem, 4vw, 5rem); align-items: end; padding: 0 var(--m) clamp(2.25rem, 3.6vw, 4rem); }
+    .head .label { margin-bottom: 14px; }
+
+    /* Programs */
+    .programs-head { padding-top: 0; }
+    .rail { display: flex; gap: 2px; }
+    .program { position: relative; display: block; min-width: 0; overflow: hidden; background: var(--surface); }
+    .program img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); transition: transform 1.2s var(--ease); }
+    .program:hover img { transform: scale(1.03); }
+    .program .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.62) 30%, rgba(13, 33, 34, 0) 62%); }
+    .program-body { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 2.2vw, 36px); }
+    .program-body .label { margin-bottom: 10px; color: var(--sage); }
+    .program:focus-visible { outline-offset: -4px; }
+    .program-inner { padding-top: 14px; }
+    .program-inner .btn { margin-top: 18px; }
+    .programs-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding: clamp(2rem, 3.2vw, 3.5rem) var(--m) var(--gap); }
+    .programs-note-copy { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; }
+    .programs-note-copy .h3 { font-size: clamp(1.375rem, 1.8vw, 2rem); }
+
+    /* Coaches */
+    .coaches { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 2px; }
+    .coaches-head { grid-column: 2; grid-row: 1; padding: clamp(2.5rem, 4vw, 5rem) var(--m) clamp(2.5rem, 4vw, 5rem) clamp(1.5rem, 3vw, 4rem); }
+    .coaches-head .label { margin-bottom: 14px; }
+    .coaches-head .text { margin-top: clamp(14px, 1.4vw, 22px); }
+    .coach { position: relative; overflow: hidden; background: var(--surface); }
+    .coach img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); }
+    .coach .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.94) 0%, rgba(13, 33, 34, 0.66) 34%, rgba(13, 33, 34, 0) 68%); }
+    .coach-second .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.86) 46%, rgba(13, 33, 34, 0.32) 74%, rgba(13, 33, 34, 0) 92%); }
+    .coach-lead { grid-column: 1; grid-row: 1 / 3; min-height: clamp(36rem, 62vw, 66rem); }
+    .coach-second { grid-column: 2; grid-row: 2; min-height: clamp(26rem, 33vw, 38rem); }
+    .coach-body { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; height: 100%; padding: clamp(20px, 2.8vw, 44px); }
+    .coach-lead .coach-body { padding: var(--frame-end) var(--m) clamp(28px, 3.6vw, 56px); }
+    .coach-body .label { margin-bottom: 10px; color: var(--sage); }
+    .coach-body .text { max-width: 32em; margin-top: 12px; }
+    .coach-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 18px; }
+    .coach-foot .label { margin: 0; color: var(--ink); }
+
+    /* How it works */
+    .how { padding: var(--gap) 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0 var(--m); border-top: 1px solid var(--line); }
+    .step { padding: clamp(16px, 1.6vw, 26px) clamp(20px, 3vw, 48px) 0 0; }
+    .step + .step { padding-left: clamp(16px, 1.6vw, 26px); border-left: 1px solid var(--line); }
+    .step .label { display: block; margin-bottom: clamp(36px, 5.4vw, 88px); color: var(--sage); }
+    .step .text { margin-top: 12px; }
+
+    /* Follow the work */
+    .work { padding: 0 0 var(--gap); }
+    .work .btn { justify-self: start; margin-top: 20px; }
+    .strip { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1.25fr; gap: 2px; }
+    .strip figure { position: relative; overflow: hidden; height: clamp(22rem, 36vw, 40rem); background: var(--surface); }
+    .strip img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); }
+    .strip img.daylight { filter: saturate(0.82) contrast(1.05) brightness(0.9); }
+
+    /* Partners */
+    .partners { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 10fr); gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 0 var(--m) var(--gap); }
+    .partner-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .partner { display: flex; align-items: center; justify-content: center; height: clamp(72px, 6.6vw, 110px); padding: 12px clamp(12px, 1.6vw, 26px); border-radius: var(--radius); background: var(--ink); transition: background 0.25s ease; }
+    .partner:hover { background: #E9ECE7; }
+    .partner img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+
+    /* APF Online */
+    .online { min-height: 100vh; min-height: 100svh; padding: clamp(7rem, 12vw, 12rem) var(--m) var(--frame-end); }
+    .online .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.55) 36%, rgba(13, 33, 34, 0) 70%); }
+    .online .frame-media { filter: hue-rotate(-16deg) saturate(0.86) contrast(1.04); }
+    .online .text { max-width: 34em; margin-top: 14px; color: #D6DAD4; }
+    .online .btn-pair { margin-top: clamp(24px, 2.7vw, 40px); }
+
+    /* FAQ */
+    .faq-band { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 5rem); padding: var(--gap) var(--m); }
+    .faq-side .label { margin-bottom: 14px; }
+    .faq-side .links { margin-top: 12px; }
+    .faq { border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: clamp(18px, 1.7vw, 26px) 0;
+      font-size: clamp(1.125rem, 1.55vw, 1.625rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.008em;
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq-icon { position: relative; flex: none; width: 14px; height: 14px; }
+    .faq-icon::before, .faq-icon::after { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: currentColor; transition: transform 0.35s var(--ease); }
+    .faq-icon::after { transform: rotate(90deg); }
+    .faq details[open] .faq-icon::after { transform: rotate(0deg); }
+    .faq details .text { max-width: 40em; padding-bottom: clamp(18px, 1.7vw, 26px); }
+
+    /* Book a session */
+    .book {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, clamp(26rem, 36vw, 40rem));
+      gap: clamp(2rem, 5vw, 6rem);
+      align-items: end;
+      overflow: hidden;
+      padding: clamp(7rem, 10vw, 10rem) var(--m) clamp(3rem, 5.55vw, 7rem);
+    }
+    .book .frame-media { filter: saturate(0.96) contrast(1.04); }
+    .book .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.78) 48%, rgba(13, 33, 34, 0.2) 100%); }
+    .book-info { position: relative; }
+    .book-info .label { margin-bottom: 14px; }
+    .book-info .text { color: #D6DAD4; }
+    .book-lead { max-width: 30em; margin-top: 14px; }
+    .next-steps { display: grid; gap: 12px; max-width: 34em; margin-top: clamp(24px, 2.6vw, 40px); padding-top: clamp(16px, 1.6vw, 24px); border-top: 1px solid var(--line); }
+    .next-steps li { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: baseline; }
+    .next-steps .num { font-size: var(--label); font-weight: 500; letter-spacing: 0.14em; color: var(--sage); }
+    .book-where { max-width: 34em; margin-top: clamp(18px, 1.8vw, 26px); }
+    .book-info .links { margin-top: 10px; }
+
+    /* Form */
+    .book-form { position: relative; padding: clamp(22px, 2.5vw, 40px); border-radius: var(--radius); background: var(--ink); color: var(--deep); }
+    .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .field-row-single { margin-bottom: 14px; }
+    .book-form label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3C4C4B; }
+    .book-form label span, .form-note span { color: var(--deep); }
+    .book-form input:not([type="hidden"]), .book-form select, .book-form textarea {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      min-height: 46px;
+      padding: 11px 13px;
+      border: 1px solid #C9CFC9;
+      border-radius: var(--radius);
+      background-color: var(--ink);
+      font: inherit;
+      font-size: 15px;
+      color: var(--deep);
+      outline: none;
+      transition: border-color 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .book-form select { padding-right: 34px; background-repeat: no-repeat; background-position: right 14px center; }
+    .book-form textarea { resize: vertical; }
+    .book-form ::placeholder { color: #788583; }
+    .book-form input:not([type="hidden"]):focus, .book-form select:focus, .book-form textarea:focus { border-color: var(--ground); box-shadow: inset 0 0 0 1px var(--ground); }
+    .form-note { margin-bottom: 14px; font-size: 13px; color: #4B5B5A; }
+    .book-form button[type="submit"] { width: 100%; background: var(--ground); color: var(--ink); border: 0; cursor: pointer; }
+    .book-form button[type="submit"]:hover { background: var(--surface); }
+    .book-form button[type="submit"]:focus-visible { outline-color: var(--ground); }
+
+    /* Footer */
+    .site-footer { padding: clamp(3.5rem, 6vw, 6rem) var(--m) 28px; }
+    .footer-top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr); gap: clamp(2rem, 3vw, 4rem); }
+    .footer-brand img { width: auto; height: 52px; }
+    .footer-brand .text { max-width: 24em; margin: 18px 0 8px; }
+    .footer-col h3 { margin-bottom: 14px; color: var(--sage); }
+    .footer-links { display: grid; justify-items: start; gap: 2px; }
+    .footer-links a, .footer-links p { display: inline-flex; align-items: center; min-height: 32px; font-size: 15px; line-height: 1.3; color: var(--ink); transition: color 0.2s ease; overflow-wrap: anywhere; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; margin-top: clamp(2.5rem, 5vw, 5rem); padding-top: 18px; border-top: 1px solid var(--line); color: var(--sage); font-size: 13px; }
+    .footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Programs open out on wide screens */
+    @media (min-width: 1024px) {
+      .rail { height: clamp(34rem, 54vw, 60rem); }
+      .program { flex: 1 1 0; transition: flex-grow 0.8s var(--ease); }
+      .rail:not(:hover):not(:focus-within) .program:first-child,
+      .rail .program:hover,
+      .rail .program:focus-visible { flex-grow: 2.15; }
+      .program-more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.7s var(--ease), opacity 0.35s ease; }
+      .program-clip { min-height: 0; overflow: hidden; }
+      .program-inner { width: clamp(19rem, 26vw, 30rem); }
+      .rail:not(:hover):not(:focus-within) .program:first-child .program-more,
+      .rail .program:hover .program-more,
+      .rail .program:focus-visible .program-more { grid-template-rows: 1fr; opacity: 1; transition-delay: 0s, 0.15s; }
     }
 
-    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 9999; padding: 8px 16px; background: #0A0A0A; color: #F5F5F5; text-decoration: none; }
-    .skip-link:focus { left: 0; }
+    @media (max-width: 1023px) {
+      :root { --nav-top: 14px; }
+      .site-nav { grid-template-columns: minmax(0, 1fr) auto; padding-bottom: 8px; }
+      .site-nav.is-solid { padding-top: 8px; }
+      .nav-links { display: none; }
+      .nav-brand img { height: 38px; }
+
+      .intro-top { grid-template-columns: minmax(0, 1fr); align-items: start; }
+      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+      .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .fact-num { margin-bottom: 24px; }
+      .fact { padding-bottom: 20px; }
+
+      .head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+
+      .rail { gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--m); padding-inline: var(--m); scrollbar-width: none; overscroll-behavior-x: contain; }
+      .rail::-webkit-scrollbar { display: none; }
+      .program { display: flex; flex-direction: column; flex: 0 0 min(80vw, 25rem); background: none; scroll-snap-align: start; }
+      .program img { position: relative; flex: none; height: auto; aspect-ratio: 1 / 0.96; border-radius: var(--radius); }
+      .program:hover img { transform: none; }
+      .program .frame-scrim { display: none; }
+      .program-body { position: relative; flex: 1; display: flex; flex-direction: column; padding: 18px 0 0; }
+      .program-more, .program-clip, .program-inner { display: flex; flex-direction: column; flex: 1; }
+      .program-inner { padding-top: 10px; }
+      .program-inner .btn { align-self: flex-start; margin-top: auto; }
+      .program-inner .text { margin-bottom: 16px; }
+      .coach .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.84) 44%, rgba(13, 33, 34, 0.3) 66%, rgba(13, 33, 34, 0) 82%); }
+
+      .coaches { grid-template-columns: minmax(0, 1fr); }
+      .coaches-head { grid-column: 1; grid-row: auto; padding: 0 var(--m) clamp(2rem, 5vw, 3rem); }
+      .coach-lead, .coach-second { grid-column: 1; grid-row: auto; min-height: clamp(34rem, 125vw, 46rem); }
+      .coach-lead .coach-body, .coach-body { padding: var(--frame-end) var(--m) 28px; }
+
+      .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .strip figure { height: clamp(15rem, 56vw, 32rem); }
+
+      .partners { grid-template-columns: minmax(0, 1fr); }
+      .partner-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+      .faq-band { grid-template-columns: minmax(0, 1fr); }
+
+      .book { grid-template-columns: minmax(0, 1fr); padding-top: clamp(9rem, 44vw, 16rem); }
+      .book .frame-media { height: 100%; object-position: 50% 0; }
+      .book .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 1) 0%, rgba(13, 33, 34, 0.96) 62%, rgba(13, 33, 34, 0.5) 86%, rgba(13, 33, 34, 0.25) 100%); }
+
+      .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 639px) {
+      :root {
+        --display: calc((100vw - 2 * var(--m)) / 7.12);
+        --frame-end: 128px;
+      }
+      .steps { grid-template-columns: minmax(0, 1fr); }
+      .step { padding-right: 0; padding-bottom: 24px; }
+      .step + .step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+      .step .label { margin-bottom: 18px; }
+      .field-row { grid-template-columns: minmax(0, 1fr); }
+      .book-form input:not([type="hidden"]), .book-form select, .book-form textarea { font-size: 16px; }
+      .partner-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .partner:last-child { grid-column: 1 / -1; }
+      .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-col-contact { grid-column: 1 / -1; }
+      .footer-bottom { display: grid; }
+      .btn-pair { gap: 10px; width: 100%; }
+      .btn { height: 56px; }
+      .btn-sm { height: 46px; }
+    }
+
+    @media (max-width: 359px) {
+      .btn-pair { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .hero .frame-copy > *, .hero-photo { animation: none; }
+      .program, .program img, .program-more, .menu-panel { transition: none; }
+    }
   </style>
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -264,590 +621,425 @@
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ==================== NAVIGATION ==================== -->
-  <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="flex items-center justify-between h-20 lg:h-24">
-        <a href="index.html" class="relative z-10 flex items-center gap-3" aria-label="Accelerate Performance Football home">
-          <img width="500" height="500" src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 lg:h-12 w-auto">
-        </a>
-
-        <!-- Desktop links -->
-        <div class="hidden lg:flex items-center gap-10">
-          <!-- What We Do Megamenu -->
-          <div class="relative group/services">
-            <a href="services.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-1.5">
-              What We Do
-              <svg class="w-3 h-3 opacity-50 group-hover/services:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </a>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-[opacity,visibility] duration-300 pointer-events-none group-hover/services:pointer-events-auto">
-              <div class="border border-white/8 p-5 w-[480px] shadow-lift" style="backdrop-filter: blur(16px); background: rgba(20,20,20,0.97);">
-                <div class="grid grid-cols-2 gap-2">
-                  <a href="services/junior-prep.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">01</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Junior Prep</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Getting younger players ready for senior football</p>
-                    </div>
-                  </a>
-                  <a href="services/senior-refinement.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">02</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Senior Refinement</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Level up what already makes you dangerous</p>
-                    </div>
-                  </a>
-                  <a href="services/off-season-conditioning.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">03</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Off-Season Conditioning</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Gain an edge while others rest</p>
-                    </div>
-                  </a>
-                  <a href="services/injury-return.html" class="flex items-start gap-3 p-3.5 rounded-lg hover:bg-white/5 transition-colors duration-200 group/item">
-                    <span class="font-display text-xl text-white/10 mt-0.5 shrink-0">04</span>
-                    <div>
-                      <p class="text-sm font-semibold text-white mb-0.5">Injury Return</p>
-                      <p class="text-[11px] text-white/30 leading-relaxed">Structured recovery to come back stronger</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="mt-3 pt-3 border-t border-white/5">
-                  <a href="services.html" class="text-xs text-white/30 hover:text-white/60 transition-colors duration-200 inline-flex items-center gap-1">
-                    View all programs
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a href="about.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">About</a>
-          <a href="faq.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">FAQ</a>
-          <a href="blog.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Blog</a>
-          <a href="contact.html" class="text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-300">Contact</a>
-        </div>
-
-        <!-- CTA + mobile toggle -->
-        <div class="flex items-center gap-4">
-          <a href="contact.html" class="btn hidden sm:inline-flex items-center gap-2 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-[13px] tracking-wide px-6 py-2.5 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
-            Book a Session
-          </a>
-          <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 text-white hover:text-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95 transition-transform duration-200" aria-label="Open menu" aria-expanded="false">
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-      </div>
+  <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-start">
+      <button id="menu-btn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
+      <a href="index.html" class="nav-brand" aria-label="Accelerate Performance Football home">
+        <img width="209" height="213" src="Assets/Logo Mark.png" alt="Accelerate Performance Football">
+      </a>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="lg:hidden overflow-hidden transition-[max-height] duration-300 ease-out max-h-0 bg-brand-black/97 backdrop-blur-xl border-t border-white/5">
-      <div class="px-6 py-6 flex flex-col gap-1">
-        <div>
-          <button id="mobile-services-toggle" class="w-full flex items-center justify-between px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 bg-transparent border-none cursor-pointer text-left" type="button">
-            What We Do
-            <svg id="mobile-services-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="mobile-services-panel" class="overflow-hidden max-h-0 transition-[max-height] duration-300">
-            <div class="pl-8 pr-4 pb-2 space-y-1">
-              <a href="services/junior-prep.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Junior Prep</a>
-              <a href="services/senior-refinement.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Senior Refinement</a>
-              <a href="services/off-season-conditioning.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Off-Season Conditioning</a>
-              <a href="services/injury-return.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Injury Return</a>
-              <a href="services.html" class="mobile-nav-link block px-4 py-2.5 text-[12px] font-medium tracking-wider uppercase text-white/30 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">View All Programs</a>
+    <div class="nav-links">
+      <div class="nav-group">
+        <a href="services.html" class="nav-link">What We Do</a>
+        <div class="nav-panel">
+          <div class="nav-panel-body">
+            <div class="nav-panel-grid">
+              <a href="services/junior-prep.html" class="nav-panel-item">
+                <span class="nav-panel-name">Junior Prep</span>
+                <span class="nav-panel-desc">Getting younger players ready for senior football</span>
+              </a>
+              <a href="services/senior-refinement.html" class="nav-panel-item">
+                <span class="nav-panel-name">Senior Refinement</span>
+                <span class="nav-panel-desc">Level up what already makes you dangerous</span>
+              </a>
+              <a href="services/off-season-conditioning.html" class="nav-panel-item">
+                <span class="nav-panel-name">Off-Season Conditioning</span>
+                <span class="nav-panel-desc">Gain an edge while others rest</span>
+              </a>
+              <a href="services/injury-return.html" class="nav-panel-item">
+                <span class="nav-panel-name">Injury Return</span>
+                <span class="nav-panel-desc">Structured recovery to come back stronger</span>
+              </a>
             </div>
+            <a href="services.html" class="nav-panel-all">View all programs</a>
           </div>
         </div>
-        <a href="about.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">About</a>
-        <a href="faq.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">FAQ</a>
-        <a href="blog.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Blog</a>
-        <a href="contact.html" class="mobile-nav-link block px-4 py-3.5 text-[13px] font-medium tracking-widest uppercase text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200">Contact</a>
-        <div class="mt-4 px-4">
-          <a href="contact.html" class="btn flex items-center justify-center gap-2 bg-white text-brand-black font-semibold text-sm px-6 py-3.5 w-full">Book a Session</a>
-        </div>
       </div>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-end">
+      <a href="contact.html" class="btn btn-sm">Book a Session</a>
     </div>
   </nav>
 
+  <!-- Menu, opened by the two-line button -->
+  <div id="site-menu" class="menu" inert>
+    <div class="menu-scrim" data-menu-close></div>
+    <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button id="menu-close" class="menu-close label" type="button" data-menu-close>Close</button>
+      <ul class="menu-list">
+        <li>
+          <a href="services.html" class="menu-item">What We Do</a>
+          <div class="menu-sub">
+            <a href="services/junior-prep.html">Junior Prep</a>
+            <a href="services/senior-refinement.html">Senior Refinement</a>
+            <a href="services/off-season-conditioning.html">Off-Season Conditioning</a>
+            <a href="services/injury-return.html">Injury Return</a>
+          </div>
+        </li>
+        <li><a href="about.html" class="menu-item">About</a></li>
+        <li><a href="faq.html" class="menu-item">FAQ</a></li>
+        <li><a href="blog.html" class="menu-item">Blog</a></li>
+        <li><a href="contact.html" class="menu-item">Contact</a></li>
+      </ul>
+      <div class="menu-end">
+        <a href="contact.html" class="btn">Book a Session</a>
+        <p class="links label">
+          <a href="tel:0401117862"><span>0401 117 862</span></a>
+          <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span>Text</span></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- Nav scripts -->
   <script>
-    (function(){var b=document.getElementById('mobile-menu-btn'),m=document.getElementById('mobile-menu'),h=document.getElementById('hamburger-icon'),c=document.getElementById('close-icon'),ls=m.querySelectorAll('a.mobile-nav-link');function t(){var o=m.style.maxHeight&&m.style.maxHeight!=='0px';m.style.maxHeight=o?'0px':m.scrollHeight+'px';h.classList.toggle('hidden',!o);c.classList.toggle('hidden',o);b.setAttribute('aria-expanded',String(!o))}b.addEventListener('click',t);ls.forEach(function(l){l.addEventListener('click',function(){m.style.maxHeight='0px';h.classList.remove('hidden');c.classList.add('hidden');b.setAttribute('aria-expanded','false')})})})();
-    (function(){var t=document.getElementById('mobile-services-toggle'),p=document.getElementById('mobile-services-panel'),ch=document.getElementById('mobile-services-chevron');if(t&&p){t.addEventListener('click',function(){var o=p.style.maxHeight&&p.style.maxHeight!=='0px';p.style.maxHeight=o?'0px':p.scrollHeight+'px';ch.style.transform=o?'':'rotate(180deg)'})}})();
-    (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;if(y>80){n.style.background='rgba(10,10,10,0.92)';n.style.backdropFilter='blur(16px)'}else{n.style.background='';n.style.backdropFilter=''}n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y})})();
+    (function(){var b=document.getElementById('menu-btn'),m=document.getElementById('site-menu'),c=document.getElementById('menu-close'),r=document.documentElement;function s(o){m.classList.toggle('is-open',o);m.inert=!o;b.setAttribute('aria-expanded',o?'true':'false');r.classList.toggle('menu-lock',o);(o?c:b).focus({preventScroll:true})}b.addEventListener('click',function(){s(true)});m.querySelectorAll('[data-menu-close],a').forEach(function(e){e.addEventListener('click',function(){s(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('is-open'))s(false)})})();
+    (function(){var n=document.getElementById('main-nav'),l=0;window.addEventListener('scroll',function(){var y=window.scrollY;n.classList.toggle('is-solid',y>80);n.style.transform=(y>l&&y>300)?'translateY(-100%)':'translateY(0)';l=y},{passive:true})})();
   </script>
 
   <main id="main">
 
-  <!-- ==================== HERO - VIDEO BACKGROUND ==================== -->
-  <header id="main-content" class="relative min-h-[100svh] flex items-center overflow-hidden grain">
-    <!-- Video background - replace src with actual video -->
-    <div class="absolute inset-0">
-      <video class="hero-video" autoplay loop muted playsinline style="filter: grayscale(100%);">
-        <source src="Assets/Video Hero.mp4" type="video/mp4">
-      </video>
-      <!-- Dark overlay -->
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-black/70 via-brand-black/50 to-brand-black/90"></div>
-    </div>
+  <!-- ==================== HERO ==================== -->
+  <header id="main-content" class="hero frame">
+    <picture>
+      <source media="(orientation: portrait)" srcset="Assets/Video%20Hero%20Poster.webp">
+      <img class="hero-photo frame-media" width="1440" height="1799" src="Assets/Chris and Junior Player.jpeg" alt="Coach Chris working with a junior player on technique" fetchpriority="high" style="object-position: 50% 64%;">
+    </picture>
+    <video class="hero-video frame-media" autoplay loop muted playsinline poster="Assets/Video Hero Poster.webp" aria-hidden="true">
+      <source src="Assets/Video Hero.mp4" type="video/mp4" media="(orientation: portrait)">
+    </video>
+    <div class="frame-scrim" aria-hidden="true"></div>
 
-    <!-- Content -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 lg:pt-40 lg:pb-32">
-      <div class="max-w-3xl">
-        <!-- Tagline -->
-        <div class="inline-flex items-center gap-4 mb-8">
-          <div class="accent-line"></div>
-          <span class="text-white/60 text-xs font-medium tracking-[0.3em] uppercase">Private Football Coaching, Melbourne</span>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="font-display text-[clamp(4rem,10vw,9rem)] text-white leading-[0.95] mb-6">
-          Get better<br>faster.
-        </h1>
-
-        <!-- Description -->
-        <p class="text-white/50 text-lg max-w-lg mb-12" style="line-height: 1.8;">
-          Dedicated technique and performance coaching for footballers who want more from every session.
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="btn inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
-            Book a Session
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="services.html" class="btn inline-flex items-center justify-center gap-3 text-white font-medium text-sm tracking-wide px-8 py-4 border border-white/15 hover:border-white/30 hover:bg-white/5 active:bg-white/8 transition-colors duration-300">
-            What We Do
-          </a>
-        </div>
-
-        <!-- Quick contact (mobile-friendly) -->
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-7 text-sm text-white/40">
-          <span class="text-xs uppercase tracking-[0.2em] text-white/30">Or reach Chris direct</span>
-          <a href="tel:0401117862" class="inline-flex items-center gap-2 hover:text-white transition-colors duration-200">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            Call
-          </a>
-          <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session." class="inline-flex items-center gap-2 hover:text-white transition-colors duration-200">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            Text
-          </a>
-          <span class="text-white/30">0401 117 862</span>
-        </div>
+    <div class="frame-copy">
+      <p class="label hero-label">Private football coaching, Melbourne</p>
+      <h1 class="display">Get better faster.</h1>
+      <div class="btn-pair">
+        <a class="btn" href="#contact">Book a Session</a>
+        <a class="btn" href="services.html">What We Do</a>
       </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
-      <span class="text-[10px] tracking-[0.3em] uppercase text-white">Scroll</span>
-      <div class="w-[1px] h-8 bg-white/40 animate-pulse"></div>
     </div>
   </header>
 
-  <!-- ==================== STATS BAR ==================== -->
-  <section class="bg-brand-black relative z-20 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
-      <div class="grid grid-cols-2 gap-10 lg:gap-8 max-w-md mx-auto lg:max-w-2xl stagger">
-        <div class="reveal text-center">
-          <p class="stat-num text-white">125+</p>
-          <p class="text-white/30 text-xs font-medium uppercase tracking-[0.15em] mt-2">Athletes Trained</p>
+  <!-- ==================== INTRO AND PROOF ==================== -->
+  <section class="intro" aria-label="Accelerate Performance Football at a glance">
+    <div class="intro-top reveal">
+      <p class="h2">Dedicated technique and performance coaching for footballers who want more from every session.</p>
+      <div class="intro-reach">
+        <p class="label label-sage">Or reach Chris direct</p>
+        <p class="links label">
+          <a href="tel:0401117862" aria-label="Call 0401 117 862"><span>0401 117 862</span></a>
+          <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span>Text</span></a>
+        </p>
+      </div>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><p class="fact-num">125+</p><p class="label label-sage">Athletes trained</p></div>
+      <div class="fact"><p class="fact-num">4+</p><p class="label label-sage">Years in business</p></div>
+      <div class="fact"><p class="fact-num">6+</p><p class="label label-sage">Starting age</p></div>
+      <div class="fact"><p class="fact-num">60</p><p class="label label-sage">Minutes a session</p></div>
+    </div>
+  </section>
+
+  <!-- ==================== PROGRAMS ==================== -->
+  <section id="services" aria-labelledby="programs-title">
+    <div class="head programs-head reveal">
+      <div>
+        <p class="label label-sage">Programs</p>
+        <h2 id="programs-title" class="h2">Four programs. One goal.</h2>
+      </div>
+      <p class="text">Every program is built around private coaching. We tailor each session to you, not a group template.</p>
+    </div>
+
+    <div class="rail reveal">
+      <a class="program" href="services/junior-prep.html">
+        <img width="1206" height="1507" src="Assets/Chris and Junior Player 2.jpeg" alt="Coach Chris Sutera running a private one-on-one junior football training session" loading="lazy" style="object-position: 42% 55%;">
+        <div class="frame-scrim" aria-hidden="true"></div>
+        <div class="program-body">
+          <p class="label">Ages 6+</p>
+          <h3 class="h3">Junior<br>Prep</h3>
+          <div class="program-more"><div class="program-clip"><div class="program-inner">
+            <p class="text">Getting younger players ready for senior-level football, with fundamentals drilled until they become second nature.</p>
+            <span class="btn btn-sm">Learn more</span>
+          </div></div></div>
         </div>
-        <div class="reveal text-center">
-          <p class="stat-num text-white">4+</p>
-          <p class="text-white/30 text-xs font-medium uppercase tracking-[0.15em] mt-2">Years in Business</p>
+      </a>
+      <a class="program" href="services/senior-refinement.html">
+        <img width="500" height="624" src="Assets/Chris and Senior Player.jpeg" alt="Coach Chris Sutera coaching a senior player one-on-one" loading="lazy" style="object-position: 78% 70%;">
+        <div class="frame-scrim" aria-hidden="true"></div>
+        <div class="program-body">
+          <p class="label">Experienced players</p>
+          <h3 class="h3">Senior<br>Refinement</h3>
+          <div class="program-more"><div class="program-clip"><div class="program-inner">
+            <p class="text">For players who already understand the game and want to level up. Refine what makes you dangerous.</p>
+            <span class="btn btn-sm">Learn more</span>
+          </div></div></div>
         </div>
+      </a>
+      <a class="program" href="services/off-season-conditioning.html">
+        <img width="500" height="625" src="Assets/Chris and Senior Players.jpeg" alt="Coach Chris Sutera putting senior players through off-season conditioning" loading="lazy" style="object-position: 55% 62%;">
+        <div class="frame-scrim" aria-hidden="true"></div>
+        <div class="program-body">
+          <p class="label">Off-season</p>
+          <h3 class="h3">Off-Season<br>Conditioning</h3>
+          <div class="program-more"><div class="program-clip"><div class="program-inner">
+            <p class="text">The break between seasons is where real gains happen. Gain an edge while others rest.</p>
+            <span class="btn btn-sm">Learn more</span>
+          </div></div></div>
+        </div>
+      </a>
+      <a class="program" href="services/injury-return.html">
+        <img width="500" height="552" src="Assets/Chris and Junior Players.jpeg" alt="Coach Chris Sutera leading a small-group football session" loading="lazy" style="object-position: 40% 45%;">
+        <div class="frame-scrim" aria-hidden="true"></div>
+        <div class="program-body">
+          <p class="label">Recovery</p>
+          <h3 class="h3">Injury<br>Return</h3>
+          <div class="program-more"><div class="program-clip"><div class="program-inner">
+            <p class="text">Structured recovery that gets you back stronger. We work alongside your medical team to rebuild strength and confidence.</p>
+            <span class="btn btn-sm">Learn more</span>
+          </div></div></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="programs-note reveal">
+      <div class="programs-note-copy">
+        <p class="h3">Not sure which fits?</p>
+        <p class="text">Tell us about the player and we'll point you the right way.</p>
+      </div>
+      <a class="btn btn-sm" href="#contact">Ask Chris</a>
+    </div>
+  </section>
+
+  <!-- ==================== COACHES ==================== -->
+  <section id="about" class="coaches" aria-labelledby="coaches-title">
+    <div class="coaches-head reveal">
+      <p class="label label-sage">Coaches</p>
+      <h2 id="coaches-title" class="h2">Precision in every movement, decision, and play.</h2>
+      <p class="text">Accelerate Performance Football was built on the belief that junior players deserve access to professional-level coaching, and senior athletes deserve better training options than what was available.</p>
+    </div>
+
+    <article class="coach coach-lead">
+      <img width="1206" height="1505" src="Assets/Chris 2.jpeg" alt="Chris Sutera, Head Coach at Accelerate Performance Football" loading="lazy" style="object-position: 50% 18%;">
+      <div class="frame-scrim" aria-hidden="true"></div>
+      <div class="coach-body">
+        <p class="label">Head coach and founder</p>
+        <h3 class="h3">Chris Sutera</h3>
+        <p class="text">Lead coach across every program we run. No drill runs unless it has a reason. No session ends without a player walking off knowing what got sharper.</p>
+        <div class="coach-foot">
+          <p class="label">25 years playing</p>
+          <p class="label">5 years coaching</p>
+          <a class="btn btn-sm" href="coaches/chris-sutera.html">Meet Chris</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="coach coach-second">
+      <img width="477" height="506" src="Assets/James.png" alt="James Sutera, Trainer at Accelerate Performance Football" loading="lazy" style="object-position: 100% 30%;">
+      <div class="frame-scrim" aria-hidden="true"></div>
+      <div class="coach-body">
+        <p class="label">Trainer</p>
+        <h3 class="h3">James Sutera</h3>
+        <p class="text">Hands-on training that connects with players at every level. Focused on building fundamentals and pushing athletes to find their edge.</p>
+        <div class="coach-foot">
+          <p class="label">16 years playing</p>
+          <p class="label">2 years coaching</p>
+          <a class="btn btn-sm" href="coaches/james-sutera.html">Meet James</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="how" aria-labelledby="how-title">
+    <div class="head reveal">
+      <div>
+        <p class="label label-sage">How it works</p>
+        <h2 id="how-title" class="h2">Every session is built around you.</h2>
+      </div>
+      <p class="text">Sessions run for 60 minutes, structured around a warm-up, dedicated technique work, and conditioning.</p>
+    </div>
+
+    <ol class="steps stagger">
+      <li class="step reveal">
+        <span class="label" aria-hidden="true">Step 1</span>
+        <h3 class="h3">Assess your level</h3>
+        <p class="text">Your first session evaluates your current ability, decision-making, and conditioning.</p>
+      </li>
+      <li class="step reveal">
+        <span class="label" aria-hidden="true">Step 2</span>
+        <h3 class="h3">Build your plan</h3>
+        <p class="text">A personalised training plan targeting weaknesses and position-specific skills.</p>
+      </li>
+      <li class="step reveal">
+        <span class="label" aria-hidden="true">Step 3</span>
+        <h3 class="h3">Track progress</h3>
+        <p class="text">Ongoing 60-minute sessions with measurable progress every step of the way.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== ON THE PITCH ==================== -->
+  <section class="work" aria-labelledby="pitch-title">
+    <div class="head reveal">
+      <div>
+        <p class="label label-sage">On the pitch</p>
+        <h2 id="pitch-title" class="h2">Follow the work.</h2>
+      </div>
+      <div>
+        <p class="text">Our training sessions, athlete progress, and match-day moments.</p>
+        <a class="btn btn-sm" style="margin-top: 16px;" href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+      </div>
+    </div>
+
+    <div class="strip reveal">
+      <figure><img width="500" height="500" src="Assets/Chris 3.jpeg" alt="Coach Chris Sutera running a technique drill on the pitch" loading="lazy" style="object-position: 62% 40%;"></figure>
+      <figure><img class="daylight" width="720" height="1280" src="Assets/Training Still Coach.webp" alt="Coach watching a player work through a drill" loading="lazy" style="object-position: 40% 48%;"></figure>
+      <figure><img class="daylight" width="720" height="1280" src="Assets/Training Still Drill.webp" alt="Player controlling the ball during a training drill" loading="lazy" style="object-position: 50% 50%;"></figure>
+      <figure><img class="daylight" width="720" height="1280" src="Assets/Video Hero Poster.webp" alt="Player striking the ball during a training session" loading="lazy" style="object-position: 30% 50%;"></figure>
+    </div>
+  </section>
+
+  <!-- ==================== PARTNERS ==================== -->
+  <!-- Inline reviews section goes above the partners, once there is a second Elfsight widget set to an inline layout -->
+  <section class="partners" aria-labelledby="partners-title">
+    <h2 id="partners-title" class="label label-sage reveal">Partners</h2>
+    <div class="partner-row reveal">
+      <a class="partner" href="https://www.loutakis.com.au/" target="_blank" rel="noopener noreferrer"><img width="510" height="99" src="Assets/Sponsors/Loutakis Real Estate.png" alt="Loutakis Real Estate" loading="lazy"></a>
+      <a class="partner" href="https://www.instagram.com/kstruct_/?hl=en" target="_blank" rel="noopener noreferrer"><img width="163" height="133" src="Assets/Sponsors/K-Struct New.png" alt="K-Struct" loading="lazy"></a>
+      <a class="partner" href="https://www.westernmitsubishi.com.au/" target="_blank" rel="noopener noreferrer"><img width="418" height="120" src="Assets/Sponsors/Western Mitsubishi.jpeg" alt="Western Mitsubishi" loading="lazy"></a>
+      <a class="partner" href="https://www.dilalloelectrical.com.au/" target="_blank" rel="noopener noreferrer"><img width="367" height="137" src="Assets/Sponsors/Di Lallo Electrical Services.jpeg" alt="Di Lallo Electrical Services" loading="lazy"></a>
+      <a class="partner" href="https://hcdistributors.com.au/" target="_blank" rel="noopener noreferrer"><img width="300" height="300" src="Assets/Sponsors/cropped-HCD_Logo_New.webp" alt="HC Distributors" loading="lazy"></a>
+    </div>
+  </section>
+
+  <!-- ==================== APF ONLINE ==================== -->
+  <section class="online frame" aria-labelledby="online-title">
+    <img class="frame-media" width="1440" height="1800" src="Assets/Chris.jpeg" alt="" loading="lazy" style="object-position: 50% 62%;">
+    <div class="frame-scrim" aria-hidden="true"></div>
+    <div class="frame-copy reveal">
+      <p class="label">APF Online</p>
+      <h2 id="online-title" class="h2">Train like a pro. Anywhere.</h2>
+      <p class="text">Professional drills, technique tutorials, and a real training method in your pocket, built so you can follow them on your own.</p>
+      <div class="btn-pair">
+        <a class="btn" href="https://www.skool.com/apf-online-football-2671/about" target="_blank" rel="noopener noreferrer">Start free trial</a>
+        <a class="btn" href="online.html#inside">See what's inside</a>
       </div>
     </div>
   </section>
 
-  <!-- ==================== ABOUT ==================== -->
-  <section id="about" class="bg-brand-dark relative overflow-hidden grain">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32">
-      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        <!-- Left - Image -->
-        <div class="reveal-left">
-          <div class="img-treat aspect-[4/5] relative">
-            <img width="864" height="1080" src="Assets/Chris and Junior Player.webp" alt="Coach Chris working with a junior player on technique" class="w-full h-full object-cover" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent"></div>
-          </div>
-        </div>
+  <!-- ==================== FAQ ==================== -->
+  <section class="faq-band" aria-labelledby="faq-title">
+    <div class="faq-side reveal">
+      <p class="label label-sage">Questions</p>
+      <h2 id="faq-title" class="h2">Before you book.</h2>
+      <p class="links label"><a href="faq.html"><span>See all questions</span></a></p>
+    </div>
 
-        <!-- Right - Content -->
-        <div class="reveal-right">
-          <div class="inline-flex items-center gap-4 mb-6">
-            <div class="accent-line"></div>
-            <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">About Us</span>
-          </div>
-          <h2 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] text-white leading-[1] mb-8">Precision in every movement, decision, and play.</h2>
-          <div class="space-y-6 text-white/40 text-[15px]" style="line-height: 1.85;">
-            <p>Accelerate Performance Football was built on the belief that junior players deserve access to professional-level coaching, and senior athletes deserve better training options than what was available.</p>
-            <p>We focus on bridging the gap between aspiring young talent and elite athletic development. Every session is tailored to the individual, built around their position, their weaknesses, and where they want to go.</p>
-          </div>
-
-          <!-- Process steps -->
-          <div class="mt-12 space-y-6 pt-10 border-t border-white/6">
-            <div class="flex items-start gap-5">
-              <span class="font-display text-3xl text-white/10 mt-[-4px]">01</span>
-              <div>
-                <h3 class="apf-sub text-white text-sm font-semibold mb-1">Assess Your Level</h3>
-                <p class="text-white/30 text-sm" style="line-height: 1.7;">First session evaluates your current ability, decision-making, and conditioning.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-5">
-              <span class="font-display text-3xl text-white/10 mt-[-4px]">02</span>
-              <div>
-                <h3 class="apf-sub text-white text-sm font-semibold mb-1">Build Your Plan</h3>
-                <p class="text-white/30 text-sm" style="line-height: 1.7;">A personalised training plan targeting weaknesses and position-specific skills.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-5">
-              <span class="font-display text-3xl text-white/10 mt-[-4px]">03</span>
-              <div>
-                <h3 class="apf-sub text-white text-sm font-semibold mb-1">Track Progress</h3>
-                <p class="text-white/30 text-sm" style="line-height: 1.7;">Ongoing 60-minute sessions with measurable progress every step of the way.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>Who do you coach?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <p class="text">We coach juniors from age 6 through to senior-level players. Ability and commitment matter more than age.</p>
+      </details>
+      <details>
+        <summary>What happens in a session?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <p class="text">Sessions run for 60 minutes, structured around a warm-up, dedicated technique work, and conditioning. The first session is an assessment, and from there we build a personalised training plan.</p>
+      </details>
+      <details>
+        <summary>What should I bring?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <p class="text">Football boots, water, and a willingness to work. That's it. We bring the rest.</p>
+      </details>
+      <details>
+        <summary>Is it one-on-one or small group?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <p class="text">Our focus is private one-on-one coaching tailored to the individual player. We also run Small Unit sessions for 2 to 6 players if you want to train with a sibling, teammate, or small group.</p>
+      </details>
+      <details>
+        <summary>Where do you train, and what does it cost?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <p class="text">We are Melbourne based and confirm the exact training location when you book. Cost depends on the program, whether you train one-on-one or in a Small Unit, and how many sessions you book. Get in touch and we will send through the options that suit your player.</p>
+      </details>
     </div>
   </section>
 
-  <!-- ==================== SPONSORS ==================== -->
-  <section class="bg-white py-16">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <p class="text-center text-neutral-400 text-xs font-medium tracking-[0.2em] uppercase mb-10">Our Partners</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
-        <a href="https://www.loutakis.com.au/" target="_blank" rel="noopener noreferrer"><img width="510" height="99" src="Assets/Sponsors/Loutakis Real Estate.png" alt="Loutakis Real Estate" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.instagram.com/kstruct_/?hl=en" target="_blank" rel="noopener noreferrer"><img width="163" height="133" src="Assets/Sponsors/K-Struct New.png" alt="K-Struct" class="h-20 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.westernmitsubishi.com.au/" target="_blank" rel="noopener noreferrer"><img width="418" height="120" src="Assets/Sponsors/Western Mitsubishi.jpeg" alt="Western Mitsubishi" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://www.dilalloelectrical.com.au/" target="_blank" rel="noopener noreferrer"><img width="367" height="137" src="Assets/Sponsors/Di Lallo Electrical Services.jpeg" alt="Di Lallo Electrical Services" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-        <a href="https://hcdistributors.com.au/" target="_blank" rel="noopener noreferrer"><img width="300" height="300" src="Assets/Sponsors/cropped-HCD_Logo_New.webp" alt="HC Distributors" class="h-14 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-300" loading="lazy"></a>
-      </div>
+  <!-- ==================== BOOK A SESSION ==================== -->
+  <section id="contact" class="book" aria-labelledby="book-title">
+    <img class="frame-media" width="500" height="625" src="Assets/Chris 4.jpeg" alt="" loading="lazy" style="object-position: 50% 42%;">
+    <div class="frame-scrim" aria-hidden="true"></div>
+
+    <div class="book-info reveal">
+      <p class="label">Get in touch</p>
+      <h2 id="book-title" class="display">Book a session.</h2>
+      <p class="text book-lead">We'll get back to you within 24 hours. Or reach Chris direct.</p>
+      <ol class="next-steps">
+        <li><span class="num">1</span><span class="text">Chris replies within 24 hours by call, text, or email.</span></li>
+        <li><span class="num">2</span><span class="text">Quick chat to understand the player's goals, level, and schedule.</span></li>
+        <li><span class="num">3</span><span class="text">Book the first assessment session - no commitment beyond that.</span></li>
+      </ol>
+      <p class="text book-where">Melbourne based. We confirm the exact training location when you book.</p>
+      <p class="links label">
+        <a href="tel:0401117862" aria-label="Call 0401 117 862"><span>0401 117 862</span></a>
+        <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span>Text</span></a>
+        <a href="mailto:info.accelerateperformance@gmail.com"><span>Email</span></a>
+      </p>
     </div>
-  </section>
 
-  <!-- ==================== SERVICES ==================== -->
-  <section id="services" class="bg-brand-black py-24 sm:py-32">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <!-- Section header -->
-      <div class="max-w-2xl mb-20 reveal">
-        <div class="inline-flex items-center gap-4 mb-6">
-          <div class="accent-line"></div>
-          <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">What We Offer</span>
-        </div>
-        <h2 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] text-white leading-[1] mb-5">Four programs. One goal.</h2>
-        <p class="text-white/30 text-[15px]" style="line-height: 1.85;">Every program is built around private coaching. We tailor each session to you, not a group template.</p>
-      </div>
-
-      <!-- Service Cards - 2x2 Grid -->
-      <div class="grid md:grid-cols-2 gap-4 stagger">
-        <!-- Junior Prep -->
-        <div class="service-card reveal relative bg-brand-dark border border-white/5 p-8 sm:p-10 lg:p-12 group hover:border-white/10 transition-colors duration-500">
-          <div class="flex items-start justify-between mb-8">
-            <span class="font-display text-6xl text-white/[0.04]">01</span>
-            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/20 mt-2">Ages 6+</span>
+    <form id="home-contact-form" class="book-form reveal" action="https://formspree.io/f/xgopwqga" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry (homepage) - Accelerate Performance Football">
+        <input type="hidden" name="_next" value="https://www.accelerateperformancefootball.com.au/thank-you.html">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <div class="field-row">
+          <div>
+            <label for="home-form-first-name">First name <span>*</span></label>
+            <input type="text" id="home-form-first-name" name="first_name" autocomplete="given-name" required aria-required="true" placeholder="Jordan">
           </div>
-          <h3 class="font-display text-4xl sm:text-5xl text-white mb-4">Junior Prep</h3>
-          <p class="text-white/30 text-sm mb-8" style="line-height: 1.8;">Getting younger players ready for senior-level football. Drilling fundamentals until they become second nature.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Ball control and first touch under pressure
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Passing precision - short, long, weighted
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Game awareness and football IQ
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Confidence building through visible progress
-            </li>
-          </ul>
-          <a href="services/junior-prep.html" class="btn inline-flex items-center gap-2 text-white text-sm font-medium hover:gap-3 transition-[gap] duration-300 group/link">
-            Learn more
-            <svg class="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-[opacity,transform] duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-
-        <!-- Senior Refinement -->
-        <div class="service-card reveal relative bg-brand-dark border border-white/5 p-8 sm:p-10 lg:p-12 group hover:border-white/10 transition-colors duration-500">
-          <div class="flex items-start justify-between mb-8">
-            <span class="font-display text-6xl text-white/[0.04]">02</span>
-            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/20 mt-2">Experienced Players</span>
-          </div>
-          <h3 class="font-display text-4xl sm:text-5xl text-white mb-4">Senior Refinement</h3>
-          <p class="text-white/30 text-sm mb-8" style="line-height: 1.8;">For players who already understand the game and want to level up. Refine what makes you dangerous.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Technical and tactical assessment
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Advanced ball control and passing accuracy
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Tactical positioning and field reading
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Match-ready conditioning and mental resilience
-            </li>
-          </ul>
-          <a href="services/senior-refinement.html" class="btn inline-flex items-center gap-2 text-white text-sm font-medium hover:gap-3 transition-[gap] duration-300 group/link">
-            Learn more
-            <svg class="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-[opacity,transform] duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-
-        <!-- Off-Season Conditioning -->
-        <div class="service-card reveal relative bg-brand-dark border border-white/5 p-8 sm:p-10 lg:p-12 group hover:border-white/10 transition-colors duration-500">
-          <div class="flex items-start justify-between mb-8">
-            <span class="font-display text-6xl text-white/[0.04]">03</span>
-            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/20 mt-2">Off-Season</span>
-          </div>
-          <h3 class="font-display text-4xl sm:text-5xl text-white mb-4">Off-Season Conditioning</h3>
-          <p class="text-white/30 text-sm mb-8" style="line-height: 1.8;">The break between seasons is where real gains happen. Gain an edge while others rest.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Aerobic endurance and explosive power
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Agility and directional change
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Technical skill maintenance
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Arrive at preseason in peak form
-            </li>
-          </ul>
-          <a href="services/off-season-conditioning.html" class="btn inline-flex items-center gap-2 text-white text-sm font-medium hover:gap-3 transition-[gap] duration-300 group/link">
-            Learn more
-            <svg class="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-[opacity,transform] duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-
-        <!-- Injury Return -->
-        <div class="service-card reveal relative bg-brand-dark border border-white/5 p-8 sm:p-10 lg:p-12 group hover:border-white/10 transition-colors duration-500">
-          <div class="flex items-start justify-between mb-8">
-            <span class="font-display text-6xl text-white/[0.04]">04</span>
-            <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/20 mt-2">Recovery</span>
-          </div>
-          <h3 class="font-display text-4xl sm:text-5xl text-white mb-4">Injury Return</h3>
-          <p class="text-white/30 text-sm mb-8" style="line-height: 1.8;">Structured recovery that gets you back stronger. We work alongside your medical team to rebuild strength and confidence.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Strength rebuilding and match fitness
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Weekly check-ins and program adjustments
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Clear milestones in speed, strength, confidence
-            </li>
-            <li class="flex items-center gap-3 text-sm text-white/40">
-              <div class="w-1 h-1 bg-white/30 rounded-full flex-shrink-0"></div>
-              Progress is measured, not guessed
-            </li>
-          </ul>
-          <a href="services/injury-return.html" class="btn inline-flex items-center gap-2 text-white text-sm font-medium hover:gap-3 transition-[gap] duration-300 group/link">
-            Learn more
-            <svg class="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-[opacity,transform] duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CTA MARQUEE ==================== -->
-  <section class="relative bg-white overflow-hidden" aria-label="Call to action">
-    <div class="relative z-10 py-20 sm:py-28">
-      <!-- Drifting background text -->
-      <div class="overflow-hidden mb-12 opacity-[0.08]">
-        <div class="flex drift-track whitespace-nowrap">
-          <span class="text-7xl sm:text-9xl lg:text-[10rem] font-display text-brand-black mx-8" aria-hidden="true">Get Better Faster.</span>
-          <span class="text-7xl sm:text-9xl lg:text-[10rem] font-display text-brand-black mx-8" aria-hidden="true">Get Better Faster.</span>
-          <span class="text-7xl sm:text-9xl lg:text-[10rem] font-display text-brand-black mx-8" aria-hidden="true">Get Better Faster.</span>
-          <span class="text-7xl sm:text-9xl lg:text-[10rem] font-display text-brand-black mx-8" aria-hidden="true">Get Better Faster.</span>
-        </div>
-      </div>
-
-      <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
-        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-brand-black mb-5">Ready to elevate your game?</h2>
-        <p class="text-brand-muted text-lg mb-10 max-w-xl mx-auto" style="line-height: 1.75;">Every session is built around you. Get in touch and let's start building your training plan.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" class="btn inline-flex items-center justify-center gap-3 bg-brand-black hover:bg-brand-dark active:bg-brand-grey text-white font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.03] active:scale-[0.97]">
-            Book a Session
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="tel:0401117862" class="btn inline-flex items-center justify-center gap-2.5 text-brand-black font-medium text-sm tracking-wide px-8 py-4 border border-brand-black/15 hover:border-brand-black/30 hover:bg-brand-black/5 active:bg-brand-black/8 transition-colors duration-300">
-            Call 0401 117 862
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- ==================== CONTACT ==================== -->
-  <section id="contact" class="bg-brand-black">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-5">
-        <!-- Left: Contact info -->
-        <div class="lg:col-span-2 bg-brand-dark px-6 sm:px-10 lg:px-14 py-16 sm:py-20 lg:py-28 relative grain">
-          <div class="max-w-sm reveal relative z-10">
-            <div class="inline-flex items-center gap-4 mb-6">
-              <div class="accent-line"></div>
-              <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Contact</span>
-            </div>
-            <h2 class="font-display text-4xl sm:text-5xl text-white mb-5">Get in touch.</h2>
-            <p class="text-white/30 text-[15px] mb-10" style="line-height: 1.8;">Fill out the form and we'll get back to you. Or call directly to book your first session.</p>
-
-            <div class="space-y-7">
-              <a href="tel:0401117862" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white/25 group-hover:bg-white/5 transition-colors duration-200">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-white group-hover:text-white/80 transition-colors duration-200">0401 117 862</p>
-                  <p class="text-xs text-white/20 mt-0.5">Call or text</p>
-                </div>
-              </a>
-
-              <a href="mailto:info.accelerateperformance@gmail.com" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white/25 group-hover:bg-white/5 transition-colors duration-200">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-semibold text-white group-hover:text-white/80 transition-colors duration-200">info.accelerateperformance<wbr>@gmail.com</p>
-                  <p class="text-xs text-white/20 mt-0.5">Email us</p>
-                </div>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <div class="w-11 h-11 border border-white/10 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-white">Western Melbourne, VIC</p>
-                  <p class="text-xs text-white/20 mt-0.5">Training location</p>
-                </div>
-              </div>
-            </div>
+          <div>
+            <label for="home-form-last-name">Last name</label>
+            <input type="text" id="home-form-last-name" name="last_name" autocomplete="family-name" placeholder="Smith">
           </div>
         </div>
-
-        <!-- Right: Form -->
-        <div class="lg:col-span-3 px-6 sm:px-10 lg:px-14 py-16 sm:py-20 lg:py-28 flex items-center bg-brand-black">
-          <div class="w-full max-w-lg reveal">
-            <h3 class="font-display text-3xl text-white mb-2">Book your first session.</h3>
-            <p class="text-white/30 text-sm mb-6">We'll get back to you within 24 hours.</p>
-
-            <div class="mb-8 pb-7 border-b border-white/8">
-              <p class="text-[11px] uppercase tracking-[0.22em] text-white/35 mb-4">What happens next</p>
-              <ol class="space-y-3 text-[13px] text-white/55">
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">01</span>
-                  <span>Chris replies within 24 hours by call, text, or email.</span>
-                </li>
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">02</span>
-                  <span>Quick chat to understand the player's goals, level, and schedule.</span>
-                </li>
-                <li class="flex gap-3">
-                  <span class="font-mono text-[11px] text-white/35 mt-[3px] flex-shrink-0">03</span>
-                  <span>Book the first assessment session - no commitment beyond that.</span>
-                </li>
-              </ol>
-            </div>
-
-            <form id="home-contact-form" action="https://formspree.io/f/xgopwqga" method="POST">
-              <input type="hidden" name="_subject" value="New enquiry (homepage) - Accelerate Performance Football">
-              <input type="hidden" name="_next" value="https://www.accelerateperformancefootball.com.au/thank-you.html">
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="home-form-first-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">First name <span class="text-white/50">*</span></label>
-                  <input type="text" id="home-form-first-name" name="first_name" autocomplete="given-name" required aria-required="true" placeholder="Jordan" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="home-form-last-name" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Last name</label>
-                  <input type="text" id="home-form-last-name" name="last_name" autocomplete="family-name" placeholder="Smith" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="home-form-email" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Email <span class="text-white/50">*</span></label>
-                  <input type="email" id="home-form-email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="home-form-phone" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Phone number <span class="text-white/50">*</span></label>
-                  <input type="tel" id="home-form-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true" placeholder="04XX XXX XXX" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="home-form-age" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Age</label>
-                  <input type="number" id="home-form-age" name="age" min="5" max="99" inputmode="numeric" placeholder="e.g. 14" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-                <div>
-                  <label for="home-form-club" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Current Club (if any)</label>
-                  <input type="text" id="home-form-club" name="current_club" placeholder="e.g. your current club" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10">
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="home-form-service" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Interested In</label>
-                <select id="home-form-service" name="service" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 appearance-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
-                  <option value="">Select a program</option>
-                  <option value="junior-prep">Junior Prep</option>
-                  <option value="senior-refinement">Senior Refinement</option>
-                  <option value="off-season">Off-Season Conditioning</option>
-                  <option value="injury-return">Injury Return</option>
-                  <option value="not-sure">Not Sure Yet</option>
-                </select>
-              </div>
-              <div class="mb-6">
-                <label for="home-form-message" class="block text-xs font-medium text-white/30 uppercase tracking-wide mb-2">Message <span class="text-white/50">*</span></label>
-                <textarea id="home-form-message" name="message" rows="4" required aria-required="true" class="w-full px-4 py-3.5 bg-brand-dark border border-white/8 rounded-lg text-sm text-white placeholder-white/20 transition-colors duration-200 focus:outline-none focus:border-white/25 focus:ring-1 focus:ring-white/10 resize-none" placeholder="Tell us about your goals and current level"></textarea>
-              </div>
-              <p class="text-xs text-white/30 mb-5"><span class="text-white/50">*</span> Required. We'll reply within 24 hours.</p>
-              <button type="submit" class="btn inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/90 active:bg-white/80 text-brand-black font-semibold text-sm tracking-wide px-8 py-4 transition-transform duration-300 ease-spring hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto">
-                Send Message
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
-            </form>
+        <div class="field-row">
+          <div>
+            <label for="home-form-email">Email <span>*</span></label>
+            <input type="email" id="home-form-email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com">
+          </div>
+          <div>
+            <label for="home-form-phone">Phone number <span>*</span></label>
+            <input type="tel" id="home-form-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true" placeholder="04XX XXX XXX">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== INSTAGRAM FEED ==================== -->
-  <section class="bg-brand-dark py-24 sm:py-32 relative grain">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="max-w-2xl mb-16 reveal">
-        <div class="inline-flex items-center gap-4 mb-6">
-          <div class="accent-line"></div>
-          <span class="text-white/40 text-xs font-medium tracking-[0.3em] uppercase">Follow Us</span>
+        <div class="field-row">
+          <div>
+            <label for="home-form-age">Age</label>
+            <input type="number" id="home-form-age" name="age" min="5" max="99" inputmode="numeric" placeholder="e.g. 14">
+          </div>
+          <div>
+            <label for="home-form-club">Current Club (if any)</label>
+            <input type="text" id="home-form-club" name="current_club" placeholder="e.g. your current club">
+          </div>
         </div>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl leading-[0.95] mb-6">On The Pitch</h2>
-        <p class="text-white/50 text-lg leading-relaxed max-w-xl">Follow our training sessions, athlete progress, and match-day moments.</p>
-      </div>
-      <div class="elfsight-app-7e023c1a-eec5-465e-ba5d-24f87b944c89" data-elfsight-app-lazy></div>
-    </div>
+        <div class="field-row-single">
+          <label for="home-form-service">Interested In</label>
+          <select id="home-form-service" name="service" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888888' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
+            <option value="">Select a program</option>
+            <option value="junior-prep">Junior Prep</option>
+            <option value="senior-refinement">Senior Refinement</option>
+            <option value="off-season">Off-Season Conditioning</option>
+            <option value="injury-return">Injury Return</option>
+            <option value="not-sure">Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="field-row-single">
+          <label for="home-form-message">Message <span>*</span></label>
+          <textarea id="home-form-message" name="message" rows="4" required aria-required="true" placeholder="Tell us about your goals and current level"></textarea>
+        </div>
+        <p class="form-note"><span>*</span> Required. We'll reply within 24 hours.</p>
+        <button type="submit" class="btn">
+          Send Message
+    
+        </button>
+      </form>
   </section>
 
   </main>
@@ -858,64 +1050,52 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-brand-black pt-16 pb-8 border-t border-white/5" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-14">
-        <!-- Brand -->
-        <div class="lg:col-span-2">
-          <div class="flex items-center gap-3 mb-5">
-            <img width="500" height="500" src="Assets/Logo.png" alt="Accelerate Performance Football" class="h-10 w-auto" loading="lazy">
-          </div>
-          <p class="text-sm text-white/35 mb-5" style="line-height: 1.7;">Melbourne-based private football coaching. Dedicated technique and performance training for footballers who want more.</p>
-          <a href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-white/45 hover:bg-white/10 hover:text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2" aria-label="Follow us on Instagram">
-            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-        </div>
-
-        <!-- Programs -->
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Programs</h3>
-          <nav class="space-y-2.5" aria-label="Programs">
-            <a href="services/junior-prep.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Junior Prep</a>
-            <a href="services/senior-refinement.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Senior Refinement</a>
-            <a href="services/off-season-conditioning.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Off-Season Conditioning</a>
-            <a href="services/injury-return.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Injury Return</a>
-            <a href="online.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Online Training</a>
-          </nav>
-        </div>
-
-
-        <!-- Navigation -->
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Navigation</h3>
-          <nav class="space-y-2.5" aria-label="Footer navigation">
-            <a href="about.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">About</a>
-            <a href="coaches/chris-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Chris Sutera</a>
-            <a href="coaches/james-sutera.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">James Sutera</a>
-            <a href="faq.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">FAQ</a>
-            <a href="blog.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Blog</a>
-            <a href="contact.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Contact</a>
-            <a href="privacy.html" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">Privacy Policy</a>
-          </nav>
-        </div>
-
-        <!-- Contact -->
-        <div>
-          <h3 class="apf-sub text-xs font-medium text-white/45 uppercase tracking-[0.15em] mb-5">Contact</h3>
-          <div class="space-y-2.5">
-            <a href="tel:0401117862" class="block text-sm text-white/35 hover:text-white transition-colors duration-200">0401 117 862</a>
-            <a href="mailto:info.accelerateperformance@gmail.com" class="block text-xs text-white/35 hover:text-white transition-colors duration-200">info.accelerateperformance@gmail.com</a>
-            <p class="text-sm text-white/35">Melbourne based</p>
-          </div>
-        </div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" aria-label="Accelerate Performance Football home"><img width="209" height="213" src="Assets/Logo Mark.png" alt="Accelerate Performance Football" loading="lazy"></a>
+        <p class="text">Melbourne-based private football coaching. Dedicated technique and performance training for footballers who want more.</p>
+        <p class="links label"><a href="https://www.instagram.com/accelerate.performance_/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><span>Instagram</span></a></p>
       </div>
 
-      <!-- Bottom bar -->
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <p class="text-xs text-white/20">&copy; 2026 Accelerate Performance Football. All rights reserved.</p>
-        <p class="text-xs text-white/20">Melbourne, Victoria, Australia</p>
-        <p class="text-xs text-white/20">Built by <a href="https://suterasites.com.au/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">Sutera Sites</a></p>
+      <div class="footer-col">
+        <h3 class="label">Programs</h3>
+        <nav class="footer-links" aria-label="Programs">
+          <a href="services/junior-prep.html">Junior Prep</a>
+          <a href="services/senior-refinement.html">Senior Refinement</a>
+          <a href="services/off-season-conditioning.html">Off-Season Conditioning</a>
+          <a href="services/injury-return.html">Injury Return</a>
+          <a href="online.html">Online Training</a>
+        </nav>
       </div>
+
+      <div class="footer-col">
+        <h3 class="label">Navigation</h3>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="about.html">About</a>
+          <a href="coaches/chris-sutera.html">Chris Sutera</a>
+          <a href="coaches/james-sutera.html">James Sutera</a>
+          <a href="faq.html">FAQ</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </nav>
+      </div>
+
+      <div class="footer-col footer-col-contact">
+        <h3 class="label">Contact</h3>
+        <div class="footer-links">
+          <a href="tel:0401117862">0401 117 862</a>
+          <a href="mailto:info.accelerateperformance@gmail.com">info.accelerateperformance@gmail.com</a>
+          <p>Melbourne based</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Accelerate Performance Football. All rights reserved.</p>
+      <p>Melbourne, Victoria, Australia</p>
+      <p>Built by <a href="https://suterasites.com.au/" target="_blank" rel="noopener noreferrer">Sutera Sites</a></p>
     </div>
   </footer>
 
@@ -923,7 +1103,7 @@
   <!-- Reveal on scroll -->
   <script>
     (function() {
-      var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      var els = document.querySelectorAll('.reveal');
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
           if (e.isIntersecting) e.target.classList.add('visible');
@@ -931,6 +1111,7 @@
       }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
       els.forEach(function(el) { observer.observe(el); });
     })();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelector('.hero-video').pause(); }
   </script>
 
 </body>
