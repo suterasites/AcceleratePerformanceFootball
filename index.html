@@ -15,7 +15,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="/Assets/favicon-96.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0D2122">
+  <meta name="theme-color" content="#0A0A0A">
   <meta name="description" content="Private football coaching in West Melbourne. Technique-focused 1-on-1 sessions for juniors stepping up and seniors sharpening their game. Book a session today.">
   <meta name="keywords" content="private football coaching Melbourne, soccer coaching West Melbourne, football training Melbourne, junior football coaching, senior football training, 1 on 1 football coaching">
   <meta name="robots" content="index, follow">
@@ -99,7 +99,6 @@
   <link rel="stylesheet" href="styles.css">
 
   <link rel="preload" href="Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="Assets/Chris and Junior Player.jpeg" as="image" media="(orientation: landscape)">
 
   <style>
     @font-face {
@@ -111,12 +110,13 @@
     }
 
     :root {
-      --ground: #0D2122;
-      --surface: #24434B;
+      --ground: #0A0A0A;
+      --surface: #1C1C1C;
       --ink: #FFFFFF;
-      --sage: #B4BAB3;
-      --deep: #0B1516;
-      --line: rgba(180, 186, 179, 0.24);
+      --soft: #B8B8B8;
+      --deep: #0A0A0A;
+      --line: rgba(255, 255, 255, 0.2);
+      --mono: grayscale(1) contrast(1.06);
       --font: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
       --m: clamp(20px, 5.555vw, 140px);
@@ -143,6 +143,13 @@
     .skip-link:focus { left: 0; }
     :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
+    /* White bands */
+    .on-white { --soft: #555555; --line: rgba(10, 10, 10, 0.18); background: var(--ink); color: var(--deep); }
+    .on-white .btn { background: var(--deep); color: var(--ink); }
+    .on-white .btn:hover { background: #333333; }
+    .on-white .links a:hover span { border-color: var(--deep); }
+    .on-white :focus-visible { outline-color: var(--deep); }
+
     /* Custom scrollbar */
     ::-webkit-scrollbar { width: 7px; }
     ::-webkit-scrollbar-track { background: var(--ground); }
@@ -161,11 +168,11 @@
 
     /* Type */
     .label { font-size: var(--label); font-weight: 500; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; }
-    .label-sage { color: var(--sage); }
+    .label-soft { color: var(--soft); }
     .display { font-size: var(--display); font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
     .h2 { font-size: var(--h2); font-weight: 500; line-height: 1.04; letter-spacing: -0.018em; text-wrap: balance; }
     .h3 { font-size: var(--h3); font-weight: 500; line-height: 1.06; letter-spacing: -0.014em; }
-    .text { font-size: var(--body); line-height: 1.55; color: var(--sage); text-wrap: pretty; }
+    .text { font-size: var(--body); line-height: 1.55; color: var(--soft); text-wrap: pretty; }
 
     /* Buttons */
     .btn {
@@ -185,7 +192,7 @@
       white-space: nowrap;
       transition: background 0.25s ease;
     }
-    .btn:hover { background: var(--sage); }
+    .btn:hover { background: var(--soft); }
     .btn-sm { height: 46px; padding: 0 22px; }
     .btn-pair {
       display: grid;
@@ -261,9 +268,9 @@
     .nav-panel-body { padding: 10px; border-radius: var(--radius); background: var(--ink); color: var(--deep); }
     .nav-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; }
     .nav-panel-item { display: block; padding: 14px; border-radius: 3px; transition: background 0.2s ease; }
-    .nav-panel-item:hover, .nav-panel-all:hover { background: #E9ECE7; }
+    .nav-panel-item:hover, .nav-panel-all:hover { background: #EDEDED; }
     .nav-panel-name { display: block; font-size: 15px; font-weight: 600; line-height: 1.25; }
-    .nav-panel-desc { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: #4B5B5A; }
+    .nav-panel-desc { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: #555555; }
     .nav-panel-all { display: block; margin-top: 2px; padding: 12px 14px; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.2s ease; }
     .nav-end { display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; }
     .is-solid .nav-end { opacity: 1; visibility: visible; }
@@ -272,7 +279,7 @@
     /* Menu */
     .menu { position: fixed; inset: 0; z-index: 2147483600; visibility: hidden; transition: visibility 0s linear 0.55s; }
     .menu.is-open { visibility: visible; transition-delay: 0s; }
-    .menu-scrim { position: absolute; inset: 0; background: rgba(6, 16, 17, 0.62); opacity: 0; transition: opacity 0.5s ease; }
+    .menu-scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.62); opacity: 0; transition: opacity 0.5s ease; }
     .menu.is-open .menu-scrim { opacity: 1; }
     .menu-panel {
       position: absolute;
@@ -294,9 +301,9 @@
     .menu-list { margin-top: clamp(16px, 4vh, 44px); }
     .menu-list > li { border-bottom: 1px solid var(--line); }
     .menu-item { display: block; padding: 14px 0; font-size: clamp(1.625rem, 2.4vw, 2.125rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.014em; transition: color 0.2s ease; }
-    .menu-item:hover { color: var(--sage); }
+    .menu-item:hover { color: var(--soft); }
     .menu-sub { padding: 0 0 14px; }
-    .menu-sub a { display: flex; align-items: center; min-height: 34px; font-size: 16px; color: var(--sage); transition: color 0.2s ease; }
+    .menu-sub a { display: flex; align-items: center; min-height: 34px; font-size: 16px; color: var(--soft); transition: color 0.2s ease; }
     .menu-sub a:hover { color: var(--ink); }
     .menu-end { display: grid; gap: 14px; margin-top: auto; padding-top: 28px; }
     .menu-end .btn { width: 100%; }
@@ -310,17 +317,11 @@
 
     /* Hero */
     .hero { height: 100vh; height: 100svh; min-height: 34rem; padding: 0 var(--m) var(--frame-end); }
-    .hero-photo { filter: saturate(0.96) contrast(1.04); transform-origin: 62% 40%; animation: drift 26s ease-out both; }
-    @keyframes drift { from { transform: scale(1.07); } to { transform: scale(1); } }
-    .hero-video { display: none; filter: saturate(0.94) contrast(1.05) brightness(0.9); }
-    @media (orientation: portrait) {
-      .hero-photo { animation: none; }
-      .hero-video { display: block; }
-    }
+    .hero-video { filter: grayscale(1) contrast(1.08) brightness(0.88); }
     .hero .frame-scrim {
       background:
-        linear-gradient(to bottom, rgba(13, 33, 34, 0.6) 0%, rgba(13, 33, 34, 0) 24%),
-        linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.56) 36%, rgba(13, 33, 34, 0) 68%);
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0) 24%),
+        linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.56) 36%, rgba(10, 10, 10, 0) 68%);
     }
     .hero-label { display: flex; align-items: center; gap: 13px; }
     .hero-label::before { content: ''; flex: none; width: 26px; height: 1px; background: currentColor; }
@@ -348,11 +349,11 @@
     .programs-head { padding-top: 0; }
     .rail { display: flex; gap: 2px; }
     .program { position: relative; display: block; min-width: 0; overflow: hidden; background: var(--surface); }
-    .program img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); transition: transform 1.2s var(--ease); }
+    .program img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--mono); transition: transform 1.2s var(--ease); }
     .program:hover img { transform: scale(1.03); }
-    .program .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.62) 30%, rgba(13, 33, 34, 0) 62%); }
+    .program .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.62) 30%, rgba(10, 10, 10, 0) 62%); }
     .program-body { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 2.2vw, 36px); }
-    .program-body .label { margin-bottom: 10px; color: var(--sage); }
+    .program-body .label { margin-bottom: 10px; color: var(--soft); }
     .program:focus-visible { outline-offset: -4px; }
     .program-inner { padding-top: 14px; }
     .program-inner .btn { margin-top: 18px; }
@@ -366,14 +367,14 @@
     .coaches-head .label { margin-bottom: 14px; }
     .coaches-head .text { margin-top: clamp(14px, 1.4vw, 22px); }
     .coach { position: relative; overflow: hidden; background: var(--surface); }
-    .coach img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); }
-    .coach .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.94) 0%, rgba(13, 33, 34, 0.66) 34%, rgba(13, 33, 34, 0) 68%); }
-    .coach-second .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.86) 46%, rgba(13, 33, 34, 0.32) 74%, rgba(13, 33, 34, 0) 92%); }
+    .coach img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--mono); }
+    .coach .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.94) 0%, rgba(10, 10, 10, 0.66) 34%, rgba(10, 10, 10, 0) 68%); }
+    .coach-second .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.86) 46%, rgba(10, 10, 10, 0.32) 74%, rgba(10, 10, 10, 0) 92%); }
     .coach-lead { grid-column: 1; grid-row: 1 / 3; min-height: clamp(36rem, 62vw, 66rem); }
     .coach-second { grid-column: 2; grid-row: 2; min-height: clamp(26rem, 33vw, 38rem); }
     .coach-body { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; height: 100%; padding: clamp(20px, 2.8vw, 44px); }
     .coach-lead .coach-body { padding: var(--frame-end) var(--m) clamp(28px, 3.6vw, 56px); }
-    .coach-body .label { margin-bottom: 10px; color: var(--sage); }
+    .coach-body .label { margin-bottom: 10px; color: var(--soft); }
     .coach-body .text { max-width: 32em; margin-top: 12px; }
     .coach-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 18px; }
     .coach-foot .label { margin: 0; color: var(--ink); }
@@ -383,7 +384,7 @@
     .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0 var(--m); border-top: 1px solid var(--line); }
     .step { padding: clamp(16px, 1.6vw, 26px) clamp(20px, 3vw, 48px) 0 0; }
     .step + .step { padding-left: clamp(16px, 1.6vw, 26px); border-left: 1px solid var(--line); }
-    .step .label { display: block; margin-bottom: clamp(36px, 5.4vw, 88px); color: var(--sage); }
+    .step .label { display: block; margin-bottom: clamp(36px, 5.4vw, 88px); color: var(--soft); }
     .step .text { margin-top: 12px; }
 
     /* Follow the work */
@@ -391,21 +392,20 @@
     .work .btn { justify-self: start; margin-top: 20px; }
     .strip { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1.25fr; gap: 2px; }
     .strip figure { position: relative; overflow: hidden; height: clamp(22rem, 36vw, 40rem); background: var(--surface); }
-    .strip img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96) contrast(1.04); }
-    .strip img.daylight { filter: saturate(0.82) contrast(1.05) brightness(0.9); }
+    .strip img { width: 100%; height: 100%; object-fit: cover; filter: var(--mono); }
 
     /* Partners */
     .partners { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 10fr); gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 0 var(--m) var(--gap); }
     .partner-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
-    .partner { display: flex; align-items: center; justify-content: center; height: clamp(72px, 6.6vw, 110px); padding: 12px clamp(12px, 1.6vw, 26px); border-radius: var(--radius); background: var(--ink); transition: background 0.25s ease; }
-    .partner:hover { background: #E9ECE7; }
-    .partner img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+    .partner { display: flex; align-items: center; justify-content: center; height: clamp(72px, 6.6vw, 110px); padding: 12px clamp(12px, 1.6vw, 26px); border: 1px solid var(--line); border-radius: var(--radius); transition: background 0.25s ease; }
+    .partner:hover { background: #EDEDED; }
+    .partner img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(1) brightness(0.82) contrast(2); }
 
     /* APF Online */
     .online { min-height: 100vh; min-height: 100svh; padding: clamp(7rem, 12vw, 12rem) var(--m) var(--frame-end); }
-    .online .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.92) 0%, rgba(13, 33, 34, 0.55) 36%, rgba(13, 33, 34, 0) 70%); }
-    .online .frame-media { filter: hue-rotate(-16deg) saturate(0.86) contrast(1.04); }
-    .online .text { max-width: 34em; margin-top: 14px; color: #D6DAD4; }
+    .online .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.55) 36%, rgba(10, 10, 10, 0) 70%); }
+    .online .frame-media { filter: var(--mono); }
+    .online .text { max-width: 34em; margin-top: 14px; color: #DCDCDC; }
     .online .btn-pair { margin-top: clamp(24px, 2.7vw, 40px); }
 
     /* FAQ */
@@ -444,15 +444,15 @@
       overflow: hidden;
       padding: clamp(7rem, 10vw, 10rem) var(--m) clamp(3rem, 5.55vw, 7rem);
     }
-    .book .frame-media { filter: saturate(0.96) contrast(1.04); }
-    .book .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.78) 48%, rgba(13, 33, 34, 0.2) 100%); }
+    .book .frame-media { filter: var(--mono); }
+    .book .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.78) 48%, rgba(10, 10, 10, 0.2) 100%); }
     .book-info { position: relative; }
     .book-info .label { margin-bottom: 14px; }
-    .book-info .text { color: #D6DAD4; }
+    .book-info .text { color: #DCDCDC; }
     .book-lead { max-width: 30em; margin-top: 14px; }
     .next-steps { display: grid; gap: 12px; max-width: 34em; margin-top: clamp(24px, 2.6vw, 40px); padding-top: clamp(16px, 1.6vw, 24px); border-top: 1px solid var(--line); }
     .next-steps li { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: baseline; }
-    .next-steps .num { font-size: var(--label); font-weight: 500; letter-spacing: 0.14em; color: var(--sage); }
+    .next-steps .num { font-size: var(--label); font-weight: 500; letter-spacing: 0.14em; color: var(--soft); }
     .book-where { max-width: 34em; margin-top: clamp(18px, 1.8vw, 26px); }
     .book-info .links { margin-top: 10px; }
 
@@ -460,14 +460,14 @@
     .book-form { position: relative; padding: clamp(22px, 2.5vw, 40px); border-radius: var(--radius); background: var(--ink); color: var(--deep); }
     .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
     .field-row-single { margin-bottom: 14px; }
-    .book-form label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3C4C4B; }
+    .book-form label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #444444; }
     .book-form label span, .form-note span { color: var(--deep); }
     .book-form input:not([type="hidden"]), .book-form select, .book-form textarea {
       display: block;
       width: 100%;
       min-height: 46px;
       padding: 11px 13px;
-      border: 1px solid #C9CFC9;
+      border: 1px solid #CCCCCC;
       border-radius: var(--radius);
       background-color: var(--ink);
       font: inherit;
@@ -480,11 +480,11 @@
     }
     .book-form select { padding-right: 34px; background-repeat: no-repeat; background-position: right 14px center; }
     .book-form textarea { resize: vertical; }
-    .book-form ::placeholder { color: #788583; }
+    .book-form ::placeholder { color: #767676; }
     .book-form input:not([type="hidden"]):focus, .book-form select:focus, .book-form textarea:focus { border-color: var(--ground); box-shadow: inset 0 0 0 1px var(--ground); }
-    .form-note { margin-bottom: 14px; font-size: 13px; color: #4B5B5A; }
+    .form-note { margin-bottom: 14px; font-size: 13px; color: #555555; }
     .book-form button[type="submit"] { width: 100%; background: var(--ground); color: var(--ink); border: 0; cursor: pointer; }
-    .book-form button[type="submit"]:hover { background: var(--surface); }
+    .book-form button[type="submit"]:hover { background: #333333; }
     .book-form button[type="submit"]:focus-visible { outline-color: var(--ground); }
 
     /* Footer */
@@ -492,11 +492,11 @@
     .footer-top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr); gap: clamp(2rem, 3vw, 4rem); }
     .footer-brand img { width: auto; height: 52px; }
     .footer-brand .text { max-width: 24em; margin: 18px 0 8px; }
-    .footer-col h3 { margin-bottom: 14px; color: var(--sage); }
+    .footer-col h3 { margin-bottom: 14px; color: var(--soft); }
     .footer-links { display: grid; justify-items: start; gap: 2px; }
     .footer-links a, .footer-links p { display: inline-flex; align-items: center; min-height: 32px; font-size: 15px; line-height: 1.3; color: var(--ink); transition: color 0.2s ease; overflow-wrap: anywhere; }
-    .footer-links a:hover { color: var(--sage); }
-    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; margin-top: clamp(2.5rem, 5vw, 5rem); padding-top: 18px; border-top: 1px solid var(--line); color: var(--sage); font-size: 13px; }
+    .footer-links a:hover { color: var(--soft); }
+    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; margin-top: clamp(2.5rem, 5vw, 5rem); padding-top: 18px; border-top: 1px solid var(--line); color: var(--soft); font-size: 13px; }
     .footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
 
     /* Programs open out on wide screens */
@@ -541,7 +541,7 @@
       .program-inner { padding-top: 10px; }
       .program-inner .btn { align-self: flex-start; margin-top: auto; }
       .program-inner .text { margin-bottom: 16px; }
-      .coach .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 0.96) 0%, rgba(13, 33, 34, 0.84) 44%, rgba(13, 33, 34, 0.3) 66%, rgba(13, 33, 34, 0) 82%); }
+      .coach .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.84) 44%, rgba(10, 10, 10, 0.3) 66%, rgba(10, 10, 10, 0) 82%); }
 
       .coaches { grid-template-columns: minmax(0, 1fr); }
       .coaches-head { grid-column: 1; grid-row: auto; padding: 0 var(--m) clamp(2rem, 5vw, 3rem); }
@@ -558,7 +558,7 @@
 
       .book { grid-template-columns: minmax(0, 1fr); padding-top: clamp(9rem, 44vw, 16rem); }
       .book .frame-media { height: 100%; object-position: 50% 0; }
-      .book .frame-scrim { background: linear-gradient(to top, rgba(13, 33, 34, 1) 0%, rgba(13, 33, 34, 0.96) 62%, rgba(13, 33, 34, 0.5) 86%, rgba(13, 33, 34, 0.25) 100%); }
+      .book .frame-scrim { background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.96) 62%, rgba(10, 10, 10, 0.5) 86%, rgba(10, 10, 10, 0.25) 100%); }
 
       .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .footer-brand { grid-column: 1 / -1; }
@@ -592,7 +592,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
-      .hero .frame-copy > *, .hero-photo { animation: none; }
+      .hero .frame-copy > * { animation: none; }
       .program, .program img, .program-more, .menu-panel { transition: none; }
     }
   </style>
@@ -705,12 +705,8 @@
 
   <!-- ==================== HERO ==================== -->
   <header id="main-content" class="hero frame">
-    <picture>
-      <source media="(orientation: portrait)" srcset="Assets/Video%20Hero%20Poster.webp">
-      <img class="hero-photo frame-media" width="1440" height="1799" src="Assets/Chris and Junior Player.jpeg" alt="Coach Chris working with a junior player on technique" fetchpriority="high" style="object-position: 50% 64%;">
-    </picture>
-    <video class="hero-video frame-media" autoplay loop muted playsinline poster="Assets/Video Hero Poster.webp" aria-hidden="true">
-      <source src="Assets/Video Hero.mp4" type="video/mp4" media="(orientation: portrait)">
+    <video class="hero-video frame-media" autoplay loop muted playsinline poster="Assets/Video Hero Poster.webp" aria-hidden="true" style="object-position: 50% 40%;">
+      <source src="Assets/Video Hero.mp4" type="video/mp4">
     </video>
     <div class="frame-scrim" aria-hidden="true"></div>
 
@@ -729,7 +725,7 @@
     <div class="intro-top reveal">
       <p class="h2">Dedicated technique and performance coaching for footballers who want more from every session.</p>
       <div class="intro-reach">
-        <p class="label label-sage">Or reach Chris direct</p>
+        <p class="label label-soft">Or reach Chris direct</p>
         <p class="links label">
           <a href="tel:0401117862" aria-label="Call 0401 117 862"><span>0401 117 862</span></a>
           <a href="sms:+61401117862?body=Hi%20APF%2C%20I%27d%20like%20to%20book%20a%20session."><span>Text</span></a>
@@ -737,10 +733,10 @@
       </div>
     </div>
     <div class="facts reveal">
-      <div class="fact"><p class="fact-num">125+</p><p class="label label-sage">Athletes trained</p></div>
-      <div class="fact"><p class="fact-num">4+</p><p class="label label-sage">Years in business</p></div>
-      <div class="fact"><p class="fact-num">6+</p><p class="label label-sage">Starting age</p></div>
-      <div class="fact"><p class="fact-num">60</p><p class="label label-sage">Minutes a session</p></div>
+      <div class="fact"><p class="fact-num">125+</p><p class="label label-soft">Athletes trained</p></div>
+      <div class="fact"><p class="fact-num">4+</p><p class="label label-soft">Years in business</p></div>
+      <div class="fact"><p class="fact-num">6+</p><p class="label label-soft">Starting age</p></div>
+      <div class="fact"><p class="fact-num">60</p><p class="label label-soft">Minutes a session</p></div>
     </div>
   </section>
 
@@ -748,7 +744,7 @@
   <section id="services" aria-labelledby="programs-title">
     <div class="head programs-head reveal">
       <div>
-        <p class="label label-sage">Programs</p>
+        <p class="label label-soft">Programs</p>
         <h2 id="programs-title" class="h2">Four programs. One goal.</h2>
       </div>
       <p class="text">Every program is built around private coaching. We tailor each session to you, not a group template.</p>
@@ -817,7 +813,7 @@
   <!-- ==================== COACHES ==================== -->
   <section id="about" class="coaches" aria-labelledby="coaches-title">
     <div class="coaches-head reveal">
-      <p class="label label-sage">Coaches</p>
+      <p class="label label-soft">Coaches</p>
       <h2 id="coaches-title" class="h2">Precision in every movement, decision, and play.</h2>
       <p class="text">Accelerate Performance Football was built on the belief that junior players deserve access to professional-level coaching, and senior athletes deserve better training options than what was available.</p>
     </div>
@@ -854,10 +850,10 @@
   </section>
 
   <!-- ==================== HOW IT WORKS ==================== -->
-  <section class="how" aria-labelledby="how-title">
+  <section class="how on-white" aria-labelledby="how-title">
     <div class="head reveal">
       <div>
-        <p class="label label-sage">How it works</p>
+        <p class="label label-soft">How it works</p>
         <h2 id="how-title" class="h2">Every session is built around you.</h2>
       </div>
       <p class="text">Sessions run for 60 minutes, structured around a warm-up, dedicated technique work, and conditioning.</p>
@@ -883,10 +879,10 @@
   </section>
 
   <!-- ==================== ON THE PITCH ==================== -->
-  <section class="work" aria-labelledby="pitch-title">
+  <section class="work on-white" aria-labelledby="pitch-title">
     <div class="head reveal">
       <div>
-        <p class="label label-sage">On the pitch</p>
+        <p class="label label-soft">On the pitch</p>
         <h2 id="pitch-title" class="h2">Follow the work.</h2>
       </div>
       <div>
@@ -897,16 +893,16 @@
 
     <div class="strip reveal">
       <figure><img width="500" height="500" src="Assets/Chris 3.jpeg" alt="Coach Chris Sutera running a technique drill on the pitch" loading="lazy" style="object-position: 62% 40%;"></figure>
-      <figure><img class="daylight" width="720" height="1280" src="Assets/Training Still Coach.webp" alt="Coach watching a player work through a drill" loading="lazy" style="object-position: 40% 48%;"></figure>
-      <figure><img class="daylight" width="720" height="1280" src="Assets/Training Still Drill.webp" alt="Player controlling the ball during a training drill" loading="lazy" style="object-position: 50% 50%;"></figure>
-      <figure><img class="daylight" width="720" height="1280" src="Assets/Video Hero Poster.webp" alt="Player striking the ball during a training session" loading="lazy" style="object-position: 30% 50%;"></figure>
+      <figure><img width="720" height="1280" src="Assets/Training Still Coach.webp" alt="Coach watching a player work through a drill" loading="lazy" style="object-position: 40% 48%;"></figure>
+      <figure><img width="720" height="1280" src="Assets/Training Still Drill.webp" alt="Player controlling the ball during a training drill" loading="lazy" style="object-position: 50% 50%;"></figure>
+      <figure><img width="1440" height="1799" src="Assets/Chris and Junior Player.jpeg" alt="Coach Chris working with a junior player on technique" loading="lazy" style="object-position: 50% 64%;"></figure>
     </div>
   </section>
 
   <!-- ==================== PARTNERS ==================== -->
   <!-- Inline reviews section goes above the partners, once there is a second Elfsight widget set to an inline layout -->
-  <section class="partners" aria-labelledby="partners-title">
-    <h2 id="partners-title" class="label label-sage reveal">Partners</h2>
+  <section class="partners on-white" aria-labelledby="partners-title">
+    <h2 id="partners-title" class="label label-soft reveal">Partners</h2>
     <div class="partner-row reveal">
       <a class="partner" href="https://www.loutakis.com.au/" target="_blank" rel="noopener noreferrer"><img width="510" height="99" src="Assets/Sponsors/Loutakis Real Estate.png" alt="Loutakis Real Estate" loading="lazy"></a>
       <a class="partner" href="https://www.instagram.com/kstruct_/?hl=en" target="_blank" rel="noopener noreferrer"><img width="163" height="133" src="Assets/Sponsors/K-Struct New.png" alt="K-Struct" loading="lazy"></a>
@@ -932,9 +928,9 @@
   </section>
 
   <!-- ==================== FAQ ==================== -->
-  <section class="faq-band" aria-labelledby="faq-title">
+  <section class="faq-band on-white" aria-labelledby="faq-title">
     <div class="faq-side reveal">
-      <p class="label label-sage">Questions</p>
+      <p class="label label-soft">Questions</p>
       <h2 id="faq-title" class="h2">Before you book.</h2>
       <p class="links label"><a href="faq.html"><span>See all questions</span></a></p>
     </div>
