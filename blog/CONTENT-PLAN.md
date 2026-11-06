@@ -22,12 +22,12 @@ based). Every post routes to a service and the Book a Session CTA.
 
 - 700-1100 words. Useful, specific, APF voice: precise, results-focused, no fluff, no consultant-speak.
 - No em dashes (hard rule, also auto-enforced by the renderer).
-- Location: APF is Melbourne based. Say "Melbourne" only - never name a training venue or club,
-  and never list suburbs (removed 2026-10-28 at the client's request).
+- Location: APF is Melbourne based. Say "Melbourne" or "West Melbourne" - never name a training venue or club,
+  and never list other suburbs (removed 2026-10-28 at the client's request).
 - Pricing: never quote prices, per-session rates or package names (Tune Up, Game Changer, Total 90)
   and never link to /pricing - pricing is not published (2026-10-28). Send cost questions to the contact page.
 - Never fabricate results, testimonials, athlete names, stats beyond the site's own
-  (125+ athletes, 92% progression, 4+ years), or club affiliations.
+  (125+ athletes, 4+ years), or club affiliations.
 - One in-body link to the routing service page + the `cta` object. Use `../` paths in post links.
 - Meta `description` <=160 chars, keyword-rich. Byline `author`: "APF Coaching Team".
 - Take the top unstarted backlog topic (or a clearly better timely one), then move it to the Published log.

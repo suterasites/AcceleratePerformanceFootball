@@ -179,7 +179,7 @@ def head(prefix: str, *, title: str, description: str, canonical: str,
   <meta property="og:locale" content="en_AU">
   <meta property="og:site_name" content="Accelerate Performance Football">
   <meta name="geo.region" content="AU-VIC">
-  <meta name="geo.placename" content="Melbourne, Victoria">
+  <meta name="geo.placename" content="West Melbourne, Victoria">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
@@ -361,7 +361,7 @@ def render_index(posts: list) -> str:
         "@type": "Blog",
         "@id": canonical,
         "name": "Accelerate Performance Football Blog",
-        "description": "Football coaching insights, drills, and player development guides from a private coaching team in Melbourne.",
+        "description": "Football coaching insights, drills, and player development guides from a private coaching team in West Melbourne.",
         "url": canonical,
         "publisher": {"@type": "Organization", "name": "Accelerate Performance Football",
                       "logo": {"@type": "ImageObject", "url": SITE + "/Assets/Logo.png"}},
@@ -379,7 +379,7 @@ def render_index(posts: list) -> str:
     doc = head(
         "",
         title="Football Coaching Blog | Accelerate Performance Football",
-        description="Football coaching insights, skills drills, and player development guides for juniors and seniors across Melbourne. New articles every week.",
+        description="Football coaching insights, skills drills, and player development guides for juniors and seniors across West Melbourne. New articles every week.",
         canonical=canonical,
         og_type="website",
         extra_schema=schema_tag,
