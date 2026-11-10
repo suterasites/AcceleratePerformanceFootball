@@ -52,13 +52,13 @@ based). Every post routes to a service and the Book a Session CTA.
 | 2026-10-21 | Football training in Point Cook: your local options (retired 2026-10-28, 301 to /blog) | football-training-point-cook | Local Football | - |
 | 2026-10-28 | Building match fitness that lasts 90 minutes | building-match-fitness-90-minutes | Conditioning & Fitness | Off-Season Conditioning |
 | 2026-11-04 | Confidence on the ball: coaching the mental side of football | confidence-on-the-ball-mental-side-football | Junior Development | Junior Prep |
+| 2026-11-11 | Passing under pressure: drills to keep the ball moving | passing-under-pressure-drills | Skills & Drills | Senior Refinement |
 
 ## Topic backlog (pick the top unstarted one each week)
 
 | # | Working title | Category | Target search intent | Routes to |
 |---|---------------|----------|----------------------|-----------|
-| 1 | Passing Under Pressure: Drills to Keep the Ball Moving | Skills & Drills | "passing drills under pressure" | Senior Refinement |
-| 2 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Contact |
+| 1 | Small-Group vs 1-on-1 Coaching: Which Is Right for Your Player | Senior Performance | "small group football coaching" | Contact |
 | 3 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
 | 4 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
 | 5 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |
