@@ -10,3 +10,7 @@
 /pricing/* /contact 301
 /pricing /contact 301
 /pricing.html /contact 301
+
+# The weekly blog routine reads these from git, so they stay tracked, but they are not pages.
+/blog/CONTENT-PLAN.md /blog 301
+/blog/_posts/* /blog 301
