@@ -54,12 +54,12 @@ based). Every post routes to a service and the Book a Session CTA.
 | 2026-11-04 | Confidence on the ball: coaching the mental side of football | confidence-on-the-ball-mental-side-football | Junior Development | Junior Prep |
 | 2026-11-11 | Passing under pressure: drills to keep the ball moving | passing-under-pressure-drills | Skills & Drills | Senior Refinement |
 | 2026-11-18 | Small-group vs 1-on-1 coaching: which is right for your player? | small-group-vs-1-on-1-coaching | Senior Performance | Contact |
+| 2026-11-25 | Getting scouted: what selectors actually look for | getting-scouted-what-selectors-look-for | Senior Performance | Senior Refinement |
 
 ## Topic backlog (pick the top unstarted one each week)
 
 | # | Working title | Category | Target search intent | Routes to |
 |---|---------------|----------|----------------------|-----------|
-| 3 | Getting Scouted: What Selectors Actually Look For | Senior Performance | "how to get scouted soccer Australia" | Senior Refinement |
 | 4 | How to Stay Sharp During the Off-Season Without Overdoing It | Conditioning & Fitness | "off season football training tips" | Off-Season Conditioning |
 | 5 | What a Football Warm-Up Should Actually Achieve | Skills & Drills | "football warm up routine" | Senior Refinement |
 | 6 | Reading the Game: How to Improve Your Football IQ | Senior Performance | "improve football iq decision making" | Senior Refinement |
@@ -68,5 +68,11 @@ based). Every post routes to a service and the Book a Session CTA.
 | 9 | Five Signs Your Football Training Isn't Working | Senior Performance | "why am i not improving at football" | Senior Refinement |
 | 10 | How to Set Goals for the Football Season Ahead | Junior Development | "football season goals young players" | Junior Prep |
 | 11 | The Role of Nutrition in Football Performance | Conditioning & Fitness | "football nutrition tips" | Off-Season Conditioning |
+| 12 | How to Build a Weekly Training Routine Around Club Sessions | Conditioning & Fitness | "football training schedule weekly" | Off-Season Conditioning |
+| 13 | Turning Setbacks Into Progress: How Good Players Handle a Bad Season | Junior Development | "how to bounce back bad football season" | Junior Prep |
+| 14 | The Difference Between Training Hard and Training Smart | Senior Performance | "train smarter football" | Senior Refinement |
+| 15 | Why Consistency Beats Intensity in Youth Football Development | Junior Development | "youth football development tips melbourne" | Junior Prep |
+| 16 | Improving Your Throw-In: The Set Piece Most Players Ignore | Skills & Drills | "football throw-in technique" | Senior Refinement |
+| 17 | How to Read a Defensive Block and Find Space | Senior Performance | "how to beat a low block football" | Senior Refinement |
 
 Keep at least ~8 topics here. When it runs low, append a fresh batch before the next Wednesday.
