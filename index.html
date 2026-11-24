@@ -96,6 +96,7 @@
   </script>
 
   <script>document.documentElement.classList.add('js')</script>
+  <link rel="preload" href="Assets/Video Hero Poster.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="apf.css">
   <link rel="preload" href="Assets/fonts/inter-tight-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -208,9 +209,7 @@
 
   <!-- ==================== HERO ==================== -->
   <header id="main-content" class="hero frame">
-    <video class="hero-video frame-media" autoplay loop muted playsinline poster="Assets/Video Hero Poster.webp" aria-hidden="true" style="object-position: 50% 40%;">
-      <source src="Assets/Video Hero.mp4" type="video/mp4">
-    </video>
+    <video class="hero-video frame-media" loop muted playsinline preload="none" poster="Assets/Video Hero Poster.webp" data-src="Assets/Video Hero Desktop.mp4" aria-hidden="true" style="object-position: 50% 40%;"></video>
     <div class="frame-scrim" aria-hidden="true"></div>
 
     <div class="frame-copy">
@@ -614,7 +613,17 @@
   </script>
   <!-- SITE-FOOTER:END -->
   <script>
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelector('.hero-video').pause(); }
+    /* Hero video plays on tablet and desktop only. Phones, reduced motion and data saver keep the poster, so they never download the video. */
+    (function () {
+      var v = document.querySelector('.hero-video');
+      var c = navigator.connection;
+      if (!v || !window.matchMedia('(min-width: 768px)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (c && c.saveData)) return;
+      v.muted = true;
+      v.src = v.getAttribute('data-src');
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    })();
   </script>
 
 </body>
